@@ -15,6 +15,7 @@ func play_call(call_name):
 
 func outgoing_call(to_name,call_name):
 	$CallFrom.text="Calling"
+	$CallFrom.show()
 	$Name.text=to_name
 	on_call=call_name
 	$AnimationPlayer.play("OutgoingCall")
@@ -24,6 +25,7 @@ func outgoing_call(to_name,call_name):
 	play_call(on_call)
 	
 func incoming_call(from_name,call_name):
+	$PhoneIcon.show()
 	$CallFrom.text="Call From"
 	$Name.text=from_name
 	$AnimationPlayer.play("NewCall")

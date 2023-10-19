@@ -413,7 +413,7 @@ script = ExtResource("1_bvmg2")
 [node name="Game" type="Node" parent="."]
 
 [node name="player" parent="Game" instance=ExtResource("11_ny7jf")]
-transform = Transform3D(0.474718, 0, 0.880138, 0, 1, 0, -0.880138, 0, 0.474718, 6.61344, 2, 18.8596)
+transform = Transform3D(0.474718, 0, 0.880138, 0, 1, 0, -0.880138, 0, 0.474718, 80.7099, 2, 98.8765)
 
 [node name="PumpkinZones" type="Node3D" parent="Game"]
 script = ExtResource("49_j67jk")
