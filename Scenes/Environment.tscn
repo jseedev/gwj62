@@ -1,5 +1,6 @@
-[gd_scene load_steps=67 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=68 format=3 uid="uid://dlpnyn1b5v37v"]
 
+[ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
 [ext_resource type="PackedScene" uid="uid://4x21rfbljmtd" path="res://Art/3D Assets/Hayroll.tscn" id="2_cijx3"]
 [ext_resource type="PackedScene" uid="uid://byrk8hub4byox" path="res://Art/3D Assets/Tree_1.tscn" id="3_j1oc4"]
@@ -407,11 +408,12 @@ orientation = 0
 [sub_resource type="BoxMesh" id="BoxMesh_otiqm"]
 
 [node name="Environment" type="Node3D"]
+script = ExtResource("1_bvmg2")
 
 [node name="Game" type="Node" parent="."]
 
 [node name="player" parent="Game" instance=ExtResource("11_ny7jf")]
-transform = Transform3D(0.474718, 0, 0.880138, 0, 1, 0, -0.880138, 0, 0.474718, 100.299, 2, 94.7432)
+transform = Transform3D(0.474718, 0, 0.880138, 0, 1, 0, -0.880138, 0, 0.474718, 6.61344, 2, 18.8596)
 
 [node name="PumpkinZones" type="Node3D" parent="Game"]
 script = ExtResource("49_j67jk")
@@ -2828,6 +2830,7 @@ mesh = SubResource("BoxMesh_otiqm")
 
 [node name="MorningSun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.394006, -0.307831, 0, -0.615661, 0.788011, -0.5, 0.682437, 0.533178, 2.8583, 6.96954, 2.2441)
+visible = false
 light_color = Color(0.835294, 0.913725, 0.831373, 1)
 shadow_enabled = true
 

@@ -77,5 +77,4 @@ script = ExtResource("3_1el6q")
 
 [node name="outdoorsambiance" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_240at")
-stream_paused = true
 bus = &"sfx"
