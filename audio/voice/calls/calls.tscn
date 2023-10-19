@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b76j03ldohgh2"]
+[gd_scene load_steps=22 format=3 uid="uid://b76j03ldohgh2"]
 
 [ext_resource type="AudioStream" uid="uid://b7j131cxihav0" path="res://audio/voice/errol_candy_call1.ogg" id="1_j8b0w"]
 [ext_resource type="AudioStream" uid="uid://csuduel1766st" path="res://audio/voice/candy_call1.ogg" id="2_b1gyp"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://bpwm4yam5cbx4" path="res://audio/voice/candy_call3.ogg" id="10_o0j3r"]
 [ext_resource type="AudioStream" uid="uid://bko52a7dbx2gs" path="res://audio/voice/holo_voicemail1.ogg" id="11_qjxf0"]
 [ext_resource type="AudioStream" uid="uid://c5capmcecrwdv" path="res://audio/voice/errol_voicemail1.ogg" id="12_n1jvn"]
+[ext_resource type="AudioStream" uid="uid://csihbgnmjd32k" path="res://audio/music/music_1_ambient_in_progress.ogg" id="13_fu51f"]
 
 [sub_resource type="Animation" id="Animation_q3uxb"]
 resource_name = "call1"
@@ -311,7 +312,7 @@ tracks/1/use_blend = false
 
 [sub_resource type="Animation" id="Animation_3n3vg"]
 resource_name = "call3"
-length = 80.0
+length = 18.0
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -611,25 +612,6 @@ tracks/1/keys = {
 }
 tracks/1/use_blend = true
 
-[sub_resource type="Animation" id="Animation_qy5ve"]
-resource_name = "holo_voicemail"
-length = 46.0
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Caller")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("11_qjxf0")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
-
 [sub_resource type="Animation" id="Animation_yhtlo"]
 resource_name = "errol_voicemail1"
 length = 48.0
@@ -644,6 +626,25 @@ tracks/0/keys = {
 "end_offset": 0.0,
 "start_offset": 0.0,
 "stream": ExtResource("12_n1jvn")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_qy5ve"]
+resource_name = "holo_voicemail"
+length = 46.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Caller")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_qjxf0")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -666,6 +667,7 @@ _data = {
 bus = &"dialogue"
 
 [node name="Caller" type="AudioStreamPlayer" parent="."]
+volume_db = 4.0
 bus = &"dialogue"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -676,5 +678,6 @@ libraries = {
 }
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-volume_db = -23.0
+stream = ExtResource("13_fu51f")
+volume_db = -15.337
 bus = &"music"

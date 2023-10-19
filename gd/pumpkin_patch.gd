@@ -7,12 +7,10 @@ extends Node3D
 
 var player = null
 
-func _process(delta):
-	if Input.is_action_just_pressed("interact"):
-		$pumpkin_harvesting.play()
-
 func _physics_process(delta):
 	if Input.is_action_pressed("interact") and hilight.visible:
+		if !$pumpkin_harvesting.playing:
+			$pumpkin_harvesting.play()
 		ui_part.show() #Show the ui piece for this pumpkin
 		harvest_progress.value+=delta #change progress bar value with delta.
 		var hval = harvest_progress.value
@@ -26,7 +24,7 @@ func _physics_process(delta):
 				player.holding_item=true
 			#example call
 			await get_tree().create_timer(1.0).timeout
-			player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo")
+			player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
 	elif ui_part.visible:
 		harvest_progress.value=0
 		ui_part.hide()

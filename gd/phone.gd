@@ -1,25 +1,42 @@
 extends MeshInstance3D
 var ringing = true
 var con_timer=0
+var on_call = null
 
 func _physics_process(_delta):
 	if ringing and Input.is_action_just_released("answer_phone"):
 		answer()
+		play_call(on_call)
 	if visible and Input.is_action_just_pressed("ui_cancel"):
 		hang_up()
 
-func incoming_call(from_name):
+func play_call(call_name):
+	$calls/AnimationPlayer.play(call_name)
+
+func outgoing_call(to_name,call_name):
+	$CallFrom.text="Calling"
+	$Name.text=to_name
+	on_call=call_name
+	$AnimationPlayer.play("OutgoingCall")
+	$ConnectedTime.hide()
+	await get_tree().create_timer(8.0).timeout
+	answer()
+	play_call(on_call)
+	
+func incoming_call(from_name,call_name):
 	$CallFrom.text="Call From"
 	$Name.text=from_name
 	$AnimationPlayer.play("NewCall")
 	$ConnectedTime.hide()
 	ringing=true
+	on_call=call_name
 	
 func hang_up():
 	$PhoneIcon.hide()
 	$ConnectedTime.hide()
 	$CallFrom.text="CALL\nENDED"
 	$AnimationPlayer.play("HangUp")
+	$calls/AnimationPlayer.stop()
 	ringing=false
 	
 func answer():
