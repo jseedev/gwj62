@@ -1,2 +1,2 @@
-# gwj62
-GoneWildJam #62
+# Godot Wild Jam 62
+Let's go.
