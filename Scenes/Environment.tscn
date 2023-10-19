@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=78 format=3 uid="uid://dlpnyn1b5v37v"]
 
 [ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dts1nex87uiu5" path="res://Art/3D Assets/Grass.tscn" id="10_hg11y"]
 [ext_resource type="Material" uid="uid://dpk2wr34ylrg3" path="res://Art/Materials/Evergreen.tres" id="10_jhi8s"]
 [ext_resource type="PackedScene" uid="uid://bfjm3ah2xthl2" path="res://Art/3D Assets/Wheat.tscn" id="11_h6l4n"]
-[ext_resource type="AudioStream" uid="uid://baxfgyrcaw15o" path="res://audio/music/ambiance_day_loop.ogg" id="11_jug0o"]
 [ext_resource type="PackedScene" uid="uid://yw75bmw7w4o6" path="res://objects/player.tscn" id="11_ny7jf"]
 [ext_resource type="Material" uid="uid://dsdei2twdsqql" path="res://Art/Materials/RolledWheat.tres" id="12_boqbt"]
 [ext_resource type="PackedScene" uid="uid://bhe4jqel3dymo" path="res://Art/3D Assets/Field.tscn" id="12_y8rbw"]
@@ -19,9 +18,20 @@
 [ext_resource type="PackedScene" uid="uid://bc8ov8ghxpen4" path="res://Art/3D Assets/Fence.tscn" id="18_12qgq"]
 [ext_resource type="Environment" uid="uid://cw374elg52t6d" path="res://Art/Environment/MorningSky.tres" id="18_ymmth"]
 [ext_resource type="PackedScene" uid="uid://bgrt1utm3m3y" path="res://Art/3D Assets/FencePost.tscn" id="19_ajqy5"]
+[ext_resource type="AudioStream" uid="uid://dnir66fa05ttb" path="res://audio/enviornment/ambiance_birds1_loop.ogg" id="21_guumy"]
+[ext_resource type="AudioStream" uid="uid://cdwqlo3qd1t0k" path="res://audio/enviornment/ambiance_birds2_loop.ogg" id="22_0yxd5"]
 [ext_resource type="PackedScene" uid="uid://dbwdc6alyox68" path="res://Art/3D Assets/Cornstalk.tscn" id="23_b8vt0"]
+[ext_resource type="AudioStream" uid="uid://c6v8l7thgefns" path="res://audio/enviornment/ambiance_birds3_loop.ogg" id="23_vvwj2"]
+[ext_resource type="AudioStream" uid="uid://qjjp0cr7bqbi" path="res://audio/enviornment/ambiance_birds4_loop.ogg" id="24_6o1mo"]
 [ext_resource type="PackedScene" uid="uid://d22gjxqxnnh5h" path="res://Art/3D Assets/Evergreen.tscn" id="24_rfhnl"]
 [ext_resource type="PackedScene" uid="uid://dl0txf5313eto" path="res://Art/3D Assets/Grain_Bin.tscn" id="24_tkc0h"]
+[ext_resource type="AudioStream" uid="uid://dr2hxhv74v8ee" path="res://audio/enviornment/ambiance_birds5_loop.ogg" id="25_m8uv0"]
+[ext_resource type="AudioStream" uid="uid://bkmxfoj085upt" path="res://audio/enviornment/ambiance_distantcars1_loop.ogg" id="26_6k6ps"]
+[ext_resource type="AudioStream" uid="uid://k6j4t5fogrkm" path="res://audio/enviornment/ambiance_distantcars2_loop.ogg" id="27_23p5i"]
+[ext_resource type="AudioStream" uid="uid://dr3rnm0comwgr" path="res://audio/enviornment/ambiance_crickets1_loop.ogg" id="28_48dk4"]
+[ext_resource type="AudioStream" uid="uid://djt6w45oa21ep" path="res://audio/enviornment/ambiance_crickets2_loop.ogg" id="29_1crol"]
+[ext_resource type="AudioStream" uid="uid://dxfkutms02d8f" path="res://audio/enviornment/ambiance_crickets3_loop.ogg" id="30_lsq8c"]
+[ext_resource type="AudioStream" uid="uid://6ls6saxch7wx" path="res://audio/music/music_1_theme_92bpm_loop.ogg" id="31_iixge"]
 [ext_resource type="Script" path="res://gd/pumpkin_zones.gd" id="49_j67jk"]
 [ext_resource type="Script" path="res://gd/pumpkin_spawn.gd" id="50_u10re"]
 [ext_resource type="PackedScene" uid="uid://bgsdpi6h3lm5i" path="res://objects/pumpkin_patch.tscn" id="51_4vo7y"]
@@ -413,7 +423,10 @@ script = ExtResource("1_bvmg2")
 [node name="Game" type="Node" parent="."]
 
 [node name="player" parent="Game" instance=ExtResource("11_ny7jf")]
-transform = Transform3D(0.474718, 0, 0.880138, 0, 1, 0, -0.880138, 0, 0.474718, 6.61344, 2, 18.8596)
+transform = Transform3D(0.474718, 0, 0.880138, 0, 1, 0, -0.880138, 0, 0.474718, -3.99706, 6.11936, 18.8596)
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Game/player"]
+current = true
 
 [node name="PumpkinZones" type="Node3D" parent="Game"]
 script = ExtResource("49_j67jk")
@@ -473,11 +486,6 @@ script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn8" instance=ExtResource("51_4vo7y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.325464, 0)
-
-[node name="outdoorsAmbiance" type="AudioStreamPlayer" parent="Game"]
-stream = ExtResource("11_jug0o")
-volume_db = -10.024
-autoplay = true
 
 [node name="Level" type="Node" parent="."]
 
@@ -614,6 +622,7 @@ mesh = SubResource("ArrayMesh_klfxx")
 skeleton = NodePath("")
 
 [node name="Field" parent="Level" instance=ExtResource("12_y8rbw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.131949, 0.0535958, 0.0387192)
 
 [node name="Fences" type="Node" parent="Level"]
 
@@ -2827,6 +2836,123 @@ draw_pass_1 = SubResource("QuadMesh_1a61l")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Level"]
 transform = Transform3D(13.4016, 0, -12.9587, 0, 13.1171, 0, 8.37751, 0, 20.7302, 109.557, 5.99799, 108.233)
 mesh = SubResource("BoxMesh_otiqm")
+
+[node name="ambient3daudio" type="Node" parent="Level"]
+
+[node name="birds1" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -93.3629, 0, -69.5473)
+stream = ExtResource("21_guumy")
+volume_db = 3.0
+unit_size = 20.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+bus = &"sfx"
+attenuation_filter_db = -18.0
+
+[node name="birds2" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.6147, 0, -255.44)
+stream = ExtResource("22_0yxd5")
+volume_db = 3.0
+unit_size = 15.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+bus = &"sfx"
+attenuation_filter_db = -18.0
+
+[node name="birds3" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.683, 6.79443, 78.607)
+stream = ExtResource("23_vvwj2")
+volume_db = 3.0
+unit_size = 20.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+bus = &"sfx"
+attenuation_filter_db = -18.0
+
+[node name="birds4" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01021, 21.253, 175.008)
+stream = ExtResource("24_6o1mo")
+volume_db = 3.0
+unit_size = 15.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+bus = &"sfx"
+attenuation_filter_db = -18.0
+
+[node name="birds5" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 249.543, 0, -300.831)
+stream = ExtResource("25_m8uv0")
+volume_db = 3.0
+unit_size = 20.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+bus = &"sfx"
+attenuation_filter_db = -18.0
+
+[node name="traffic1" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -233.064, 37.0272, -75.3821)
+stream = ExtResource("26_6k6ps")
+volume_db = 6.0
+unit_size = 30.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+attenuation_filter_cutoff_hz = 10000.0
+attenuation_filter_db = -12.0
+
+[node name="traffic2" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -194.635, 88.4418, 183.081)
+stream = ExtResource("27_23p5i")
+volume_db = 6.0
+unit_size = 30.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+attenuation_filter_cutoff_hz = 10000.0
+attenuation_filter_db = -12.0
+
+[node name="crickets1" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -103.577, 0, 33.3456)
+stream = ExtResource("28_48dk4")
+unit_size = 15.0
+max_db = 0.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+bus = &"sfx"
+attenuation_filter_db = -18.0
+
+[node name="crickets2" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.07, 0, 143.765)
+stream = ExtResource("29_1crol")
+unit_size = 15.0
+max_db = 0.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+bus = &"sfx"
+attenuation_filter_db = -18.0
+
+[node name="crickets3" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 159.624, 0, -115.773)
+stream = ExtResource("30_lsq8c")
+unit_size = 15.0
+max_db = 0.0
+autoplay = true
+max_distance = 500.0
+panning_strength = 0.7
+bus = &"sfx"
+attenuation_filter_db = -18.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Level"]
+stream = ExtResource("31_iixge")
+volume_db = -12.0
+autoplay = true
 
 [node name="MorningSun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.394006, -0.307831, 0, -0.615661, 0.788011, -0.5, 0.682437, 0.533178, 2.8583, 6.96954, 2.2441)
