@@ -15,6 +15,12 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var cameraTarget = $Camera_Target
 var holding_item = false
 
+#Flag for when the player exactly performs a step (needed for sfx)
+var just_stepping = false
+var stepping = false
+
+var ground_type = "grass"
+ 
 var walking = false
 var just_walking = false
 var running = false
@@ -24,7 +30,12 @@ var just_running = false
 var init = 0
 var timeOffset = 0
 var bob = 0.0
+var bob_alpha = 0.0
 var tilt = 0.0
+
+# animation junk
+@onready var Viewmodel = $Viewmodel
+@onready var Animations = $Viewmodel/AnimationPlayer
 
 #this function can be replaced with lerp()
 #func interpolate(from, to, by):
@@ -35,33 +46,40 @@ func runtime():
 	
 
 func _ready():
+	Animations.play("Idle", 0.5)
 	init = Time.get_unix_time_from_system()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	$AnimationPlayer.play("walk")
+
+func play_step_sound():
+	get_node("footsteps_" + ground_type).play()
 
 func _process(delta):
+	if just_walking and walking or just_running and running:
+		timeOffset = runtime()
 	if walking:
 		if just_walking:
 			just_walking = false
-			timeOffset = runtime()
-			$AnimationPlayer.play("walk", .5)
+			Animations.play("Walk", 0.9, 1.75)
 	elif running:
 		if just_running:
 			just_running = false
-			$AnimationPlayer.play("run", .5)
+			Animations.play("Run", 0.5, 1.75)
 	else:
-		$AnimationPlayer.pause()
+		if just_walking or just_running:
+			Animations.play("Idle", 0.9)
+	if stepping:
+		if just_stepping:
+			just_stepping = false
+			play_step_sound()
 
 func _physics_process(delta):
 	#If our player is holding a pumpkin, make it visible. Otherwise, hide it.
 	if is_instance_valid(hand_pumpkin):
 		if holding_item and !hand_pumpkin.visible:
 			hand_pumpkin.show()
-			$Camera3D/ArmRig.show()
 			#todo - change hand placements
 		elif !holding_item and hand_pumpkin.visible:
 			hand_pumpkin.hide()
-			$Camera3D/ArmRig.hide()
 			#todo - change hand placements
 		
 	# Add the gravity.
@@ -77,11 +95,17 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_pressed("run") and input_dir.y<0:
+		if not running:
+			just_running = true
+		
 		running = true
 		walking = false
 		velocity.x = direction.x * SPEED * RUN_MULT
 		velocity.z = direction.z * SPEED * RUN_MULT
 	elif direction:
+		if not walking:
+			just_walking = true
+		
 		walking = true
 		running = false
 		velocity.x = direction.x * SPEED
@@ -94,12 +118,27 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	var move = 0
-	if (running or walking):
-		move = 1
+	var move = 0.0
+	var timeScale = 1.0
+	if walking:
+		move = 1.0
+	if running:
+		move = 1.75
+		timeScale = 2.0
+	
+	bob_alpha = lerp(bob_alpha, move, 0.075)
 	
 	# procedural headbob junk
-	bob = lerp(bob, cos((runtime() - timeOffset) * SPEED * RUN_MULT) * move * 0.05, 0.1)
+	bob = lerp(bob, cos((runtime() - timeOffset) * SPEED * RUN_MULT * timeScale) * bob_alpha * 0.05, 0.1)
+	
+	#When bobbing closes to end of movement before turning back to the other direction, raise flag that step sound should play
+	if abs(bob - 0.05) < 0.02 or abs(bob + 0.05) < 0.02:
+		if not stepping: just_stepping = true
+		stepping = true
+	else:
+		stepping = false
+		just_stepping = false
+		
 	tilt = lerp(tilt, -input_dir.x / 15, 0.1)
 	Camera.rotation = cameraTarget.rotation + Vector3(-abs(bob) / 2.5, (bob / 5), tilt)
 	
