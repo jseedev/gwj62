@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://gd/pumpkin_zones.gd" id="2_21luo"]
 [ext_resource type="Script" path="res://gd/pumpkin_spawn.gd" id="3_1el6q"]
 [ext_resource type="PackedScene" uid="uid://bgsdpi6h3lm5i" path="res://objects/pumpkin_patch.tscn" id="4_otko1"]
-[ext_resource type="AudioStream" uid="uid://baxfgyrcaw15o" path="res://audio/music/ambiance_day_loop.ogg" id="5_240at"]
+[ext_resource type="AudioStream" uid="uid://baxfgyrcaw15o" path="res://audio/enviornment/ambiance_day_loop.ogg" id="5_xyipy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jti26"]
 size = Vector3(47.6739, 0.113309, 48.4659)
@@ -76,5 +76,5 @@ script = ExtResource("3_1el6q")
 [node name="pumpkin" parent="PumpkinZones/PumpkinSpawn8" instance=ExtResource("4_otko1")]
 
 [node name="outdoorsambiance" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_240at")
+stream = ExtResource("5_xyipy")
 bus = &"sfx"
