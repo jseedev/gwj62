@@ -1,6 +1,6 @@
 [gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://birsl7vk8d86i"]
 
-[ext_resource type="Texture2D" uid="uid://dnmm3d1kvyme1" path="res://Art/Textures/GrainBin/GrainBin_Base_color.png" id="1_n1jwi"]
+[ext_resource type="Texture2D" uid="uid://pwtr6tp4dbdi" path="res://Art/Textures/GrainBin/GrainBin_Base_color.png" id="1_n1jwi"]
 [ext_resource type="Texture2D" uid="uid://nfsqhtq4hoym" path="res://Art/Textures/GrainBin/GrainBin_Normal_DirectX.png" id="2_5mvg8"]
 
 [resource]
