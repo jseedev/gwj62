@@ -1,0 +1,5 @@
+[gd_resource type="Environment" format=3 uid="uid://cgsm6yevvnkym"]
+
+[resource]
+adjustment_enabled = true
+adjustment_saturation = 0.01

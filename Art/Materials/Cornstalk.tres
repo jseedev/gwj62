@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cqm8pv2cgei31"]
+
+[ext_resource type="Shader" uid="uid://bqbq1uluxwu2j" path="res://Art/Materials/Sway_Shader_Scissor.tres" id="1_x107v"]
+[ext_resource type="Texture2D" uid="uid://ndh03ujtv3p0" path="res://Art/Textures/Cornstalk/Cornstalk_Color.png" id="2_htm60"]
+[ext_resource type="Texture2D" uid="uid://b706m4j3slqpd" path="res://Art/Textures/Misc/Gradient.png" id="3_70fdv"]
+[ext_resource type="Texture2D" uid="uid://lfnbhfu1tusk" path="res://Art/Textures/Cornstalk/Cornstalk_Normal_DirectX.png" id="4_ih7pg"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_x107v")
+shader_parameter/Wind_Speed = 0.5
+shader_parameter/Wind_Strength = 0.05
+shader_parameter/Texture_Wind_Speed = 1.0
+shader_parameter/Texture_Wind_Strength = 0.01
+shader_parameter/Tint = Color(0.947045, 0.747644, 0.494729, 1)
+shader_parameter/Scissor_Threshold = 0.5
+shader_parameter/Albedo = ExtResource("2_htm60")
+shader_parameter/Alpha_Mask = ExtResource("3_70fdv")
+shader_parameter/Normal = ExtResource("4_ih7pg")
