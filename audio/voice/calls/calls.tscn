@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b76j03ldohgh2"]
+[gd_scene load_steps=21 format=3 uid="uid://b76j03ldohgh2"]
 
 [ext_resource type="AudioStream" uid="uid://b7j131cxihav0" path="res://audio/voice/errol_candy_call1.ogg" id="1_j8b0w"]
 [ext_resource type="AudioStream" uid="uid://csuduel1766st" path="res://audio/voice/candy_call1.ogg" id="2_b1gyp"]
@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://bpwm4yam5cbx4" path="res://audio/voice/candy_call3.ogg" id="10_o0j3r"]
 [ext_resource type="AudioStream" uid="uid://bko52a7dbx2gs" path="res://audio/voice/holo_voicemail1.ogg" id="11_qjxf0"]
 [ext_resource type="AudioStream" uid="uid://c5capmcecrwdv" path="res://audio/voice/errol_voicemail1.ogg" id="12_n1jvn"]
-[ext_resource type="AudioStream" uid="uid://csihbgnmjd32k" path="res://audio/music/music_1_ambient_in_progress.ogg" id="13_fu51f"]
 
 [sub_resource type="Animation" id="Animation_q3uxb"]
 resource_name = "call1"
@@ -678,6 +677,5 @@ libraries = {
 }
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("13_fu51f")
 volume_db = -15.337
 bus = &"music"
