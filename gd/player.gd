@@ -10,10 +10,21 @@ const mouse_sensitivity = .005
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
-@onready var hand_pumpkin = $Camera3D/ItemHolder/Pumpkin
+@onready var hand_pumpkin = $Viewmodel/ArmRig/Skeleton3D/InHand/Pumpkin
 @onready var Camera = $Camera3D
 @onready var cameraTarget = $Camera_Target
-var holding_item = false
+var holding_item = false : set = _set_holding_pumpkin
+
+func _set_holding_pumpkin(ibool):
+	holding_item=ibool
+	if is_instance_valid(hand_pumpkin):
+		if ibool and !hand_pumpkin.visible:
+			hand_pumpkin.show()
+			$Viewmodel/AnimationPlayer.play("RestPose")
+			#todo - change hand placements
+		elif !ibool and hand_pumpkin.visible:
+			hand_pumpkin.hide()
+			$Viewmodel/AnimationPlayer.play("Idle",0.5)
 
 #Flag for when the player exactly performs a step (needed for sfx)
 var just_stepping = false
@@ -49,6 +60,8 @@ func _ready():
 	Animations.play("Idle", 0.5)
 	init = Time.get_unix_time_from_system()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	await get_tree().create_timer(2.0).timeout
+	$Camera3D/PhoneHolder/Phone.outgoing_call("Candy","call1")
 
 func play_step_sound():
 	get_node("footsteps_" + ground_type).play()
@@ -59,29 +72,23 @@ func _process(delta):
 	if walking:
 		if just_walking:
 			just_walking = false
-			Animations.play("Walk", 0.9, 1.75)
+			if !holding_item:
+				Animations.play("Walk", 0.9, 1.75)
 	elif running:
 		if just_running:
 			just_running = false
-			Animations.play("Run", 0.5, 1.75)
+			if !holding_item:
+				Animations.play("Run", 0.5, 1.75)
 	else:
-		if just_walking or just_running:
-			Animations.play("Idle", 0.9)
+		if (just_walking or just_running):
+			if !holding_item:
+				Animations.play("Idle", 0.9)
 	if stepping:
 		if just_stepping:
 			just_stepping = false
 			play_step_sound()
 
 func _physics_process(delta):
-	#If our player is holding a pumpkin, make it visible. Otherwise, hide it.
-	if is_instance_valid(hand_pumpkin):
-		if holding_item and !hand_pumpkin.visible:
-			hand_pumpkin.show()
-			#todo - change hand placements
-		elif !holding_item and hand_pumpkin.visible:
-			hand_pumpkin.hide()
-			#todo - change hand placements
-		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
