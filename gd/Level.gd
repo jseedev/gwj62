@@ -1,6 +1,12 @@
 extends Node
 
+var pumpkins_picked = 0
+var player = null #filled by the player itself.
+var ended = false
+
 signal call_ended(call)
+signal pumpkin_gathered(player)
+signal game_over(player)
 
 var environments = {
 	day = {
@@ -42,14 +48,6 @@ func lerp_environment(night_weight):
 		else:
 			mat[prop]=lerp(environments.day[prop],environments.night[prop],night_weight)
 
-@onready var music_player = $Level/Music
-func _on_call_ended(call):
-	if call == "call2":
-		#change music to new tune
-		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-
-		
-
 func change_music(new_track):
 	if music_player.playing:
 		var mtween = get_tree().create_tween()
@@ -62,3 +60,39 @@ func change_music(new_track):
 	music_player.play()
 	vtween.tween_property(music_player,"volume_db",-12.0,2.0)
 	vtween.play()
+
+
+var villain_scene = preload("res://objects/villain.tscn")
+var villain = null
+func spawn_villain():
+	if villain == null:
+		villain = villain_scene.instantiate()
+		villain.player=player
+		$Game.add_child(villain)
+		var point = $Game/SpawnPoints.get_children().pick_random()
+		villain.global_position = point.global_position
+		villain.global_position.y = 6.0
+		print("villain spawned")
+	else:
+		print("villain already spawned")
+
+func _on_pumpkin_gathered(player):
+	pumpkins_picked+=1
+	if pumpkins_picked == 1:
+		#tween the environment
+		var sky_tween = get_tree().create_tween()
+		sky_tween.tween_method(get_tree().current_scene.lerp_environment,0.0,0.25,6.0)
+		sky_tween.play()
+		await get_tree().create_timer(1.0).timeout
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+		spawn_villain()
+
+@onready var music_player = $Level/Music
+func _on_call_ended(call):
+	if call == "call2":
+		#change music to new tune
+		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+
+
+func _on_game_over(player):
+	print("Game over .. player was caught.")

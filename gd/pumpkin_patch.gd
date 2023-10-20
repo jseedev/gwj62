@@ -22,13 +22,7 @@ func _physics_process(delta):
 			$pumpkin_harvesting.stop()
 			if is_instance_valid(player):
 				player.holding_item=true
-			#tween the environment
-			var sky_tween = get_tree().create_tween()
-			sky_tween.tween_method(get_tree().current_scene.lerp_environment,0.0,0.25,6.0)
-			sky_tween.play()
-			#example call after 1 second.
-			await get_tree().create_timer(1.0).timeout
-			player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+			get_tree().current_scene.emit_signal("pumpkin_gathered",player)
 	elif ui_part.visible:
 		harvest_progress.value=0
 		ui_part.hide()

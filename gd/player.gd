@@ -57,6 +57,7 @@ func runtime():
 	
 
 func _ready():
+	get_tree().current_scene.player=self
 	Animations.play("Idle", 0.5)
 	init = Time.get_unix_time_from_system()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -89,10 +90,11 @@ func _process(delta):
 			play_step_sound()
 
 func _physics_process(delta):
+	if position.y <= -2.0:
+		position.y = 6.0
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
 	# Handle Jump.
 	#if Input.is_action_just_pressed("jump") and is_on_floor():
 	#	velocity.y = JUMP_VELOCITY

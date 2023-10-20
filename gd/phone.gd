@@ -14,6 +14,7 @@ func _physics_process(_delta):
 		call_playing=false
 		var current_level = get_tree().current_scene
 		current_level.emit_signal("call_ended",on_call)
+		hang_up()
 		
 
 func play_call(call_name):
@@ -26,9 +27,10 @@ func outgoing_call(to_name,call_name):
 	on_call=call_name
 	$AnimationPlayer.play("OutgoingCall")
 	$ConnectedTime.hide()
-	await get_tree().create_timer(8.0).timeout
-	answer()
-	play_call(on_call)
+	await get_tree().create_timer(7.0).timeout
+	if visible:
+		answer()
+		play_call(on_call)
 	
 	
 func incoming_call(from_name,call_name):
