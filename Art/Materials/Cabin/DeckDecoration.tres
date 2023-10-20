@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bckg1kbl7xnsu"]
+
+[ext_resource type="Texture2D" uid="uid://l8i1pyu48v6r" path="res://Art/Textures/Cabin/Deck_Thing_Base_color.png" id="1_iup1r"]
+
+[resource]
+albedo_texture = ExtResource("1_iup1r")

@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ccrjh7pgpy3ag"]
+
+[ext_resource type="Texture2D" uid="uid://db58m7ynvw0c7" path="res://Art/Textures/Cabin/Interior_Main_Base_color.png" id="1_64qwa"]
+[ext_resource type="Texture2D" uid="uid://datrtuaulasu8" path="res://Art/Textures/Cabin/Interior_Main_Normal_DirectX.png" id="2_sp0fg"]
+
+[resource]
+albedo_texture = ExtResource("1_64qwa")
+normal_enabled = true
+normal_texture = ExtResource("2_sp0fg")

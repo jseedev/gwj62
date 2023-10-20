@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://h85pmp3dom2n"]
+
+[ext_resource type="Texture2D" uid="uid://8exq3di881vq" path="res://Art/Textures/Cabin/Firelog_Base_color.png" id="1_ma265"]
+[ext_resource type="Texture2D" uid="uid://bj5773xyvypcq" path="res://Art/Textures/Cabin/Firelog_Normal_DirectX.png" id="2_b2pij"]
+
+[resource]
+albedo_texture = ExtResource("1_ma265")
+normal_enabled = true
+normal_texture = ExtResource("2_b2pij")
