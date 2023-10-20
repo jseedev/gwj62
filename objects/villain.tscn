@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://gd/Villain.gd" id="1_d2nk1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yrd17"]
+radius = 0.25
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_pamfm"]
 
@@ -18,9 +19,6 @@ shape = SubResource("CapsuleShape3D_yrd17")
 mesh = SubResource("CapsuleMesh_pamfm")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 3.0
-target_desired_distance = 5.0
-path_max_distance = 10.01
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25

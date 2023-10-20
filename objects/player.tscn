@@ -273,16 +273,19 @@ script = ExtResource("1_twiyk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 shape = SubResource("CapsuleShape3D_ex6vp")
 
+[node name="Viewmodel" parent="." instance=ExtResource("41_srr5f")]
+transform = Transform3D(-2.87621e-08, 0, -0.658, 0, 0.658, 0, 0.658, 0, -2.87621e-08, 0, -0.279, -0.441)
+
 [node name="Camera3D" type="Camera3D" parent="."]
 environment = ExtResource("2_2yxsw")
 current = true
 fov = 60.0
 
 [node name="PhoneHolder" type="Node3D" parent="Camera3D"]
-transform = Transform3D(0.833886, 0, -0.551937, 0, 1, 0, 0.551937, 0, 0.833886, 0.135, -0.08, -0.185)
+transform = Transform3D(0.364676, 0, -0.405014, 0, 0.545, 0, 0.405014, 0, 0.364676, 0.073, -0.031, -0.095)
 
 [node name="Phone" parent="Camera3D/PhoneHolder" instance=ExtResource("2_owhr2")]
-transform = Transform3D(0.154, 0, 0, 0, 0.154, 0, 0, 0, 0.154, 0, 0, 0)
+transform = Transform3D(0.131, 0, 0, 0, 0.131, 0, 0, 0, 0.131, 0.003, -0.013, 0)
 
 [node name="footsteps_woodcreak" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_qx3bh")
@@ -321,10 +324,5 @@ libraries = {
 
 [node name="Camera_Target" type="Node3D" parent="."]
 
-[node name="Viewmodel" parent="." instance=ExtResource("41_srr5f")]
-transform = Transform3D(-2.87621e-08, 0, -0.658, 0, 0.658, 0, 0.658, 0, -2.87621e-08, 0, -0.279, -0.441)
-
 [node name="Breathing" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("43_echou")
-
-[editable path="Camera3D/PhoneHolder/Phone"]

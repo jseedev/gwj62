@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dqnqme6031gtg"]
+
+[ext_resource type="Script" path="res://gd/GroundSound.gd" id="1_4m5mr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4woo"]
+size = Vector3(65.199, 2, 46.156)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b1ujg"]
+size = Vector3(64.018, 2, 34.86)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_meqgu"]
+size = Vector3(37.995, 2, 19.221)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f66wv"]
+size = Vector3(78.609, 2, 28.594)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71607"]
+size = Vector3(69.537, 2, 36.699)
+
+[node name="GroundTemp" type="Node3D"]
+
+[node name="Dirt" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.518303, 0)
+script = ExtResource("1_4m5mr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9499, 0, 18.3978)
+shape = SubResource("BoxShape3D_p4woo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.3104, 0, -46.3925)
+shape = SubResource("BoxShape3D_b1ujg")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Dirt"]
+transform = Transform3D(0.741156, 0, 0.671333, 0, 1, 0, -0.671333, 0, 0.741156, 61.3869, 0, -49.7437)
+shape = SubResource("BoxShape3D_meqgu")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.6753, 0, -89.3338)
+shape = SubResource("BoxShape3D_f66wv")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Dirt"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.9499, 0, 75.6521)
+shape = SubResource("BoxShape3D_71607")

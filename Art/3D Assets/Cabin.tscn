@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://uhxdrcml7y3n"]
+[gd_scene load_steps=38 format=3 uid="uid://bjjjkm3b6sjtx"]
 
 [ext_resource type="Material" uid="uid://dh30ykdoo2d8o" path="res://Art/Materials/Cabin/Windows.tres" id="1_716qi"]
 [ext_resource type="Material" uid="uid://ccrjh7pgpy3ag" path="res://Art/Materials/Cabin/Cabin_Interior.tres" id="2_m2hln"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://h85pmp3dom2n" path="res://Art/Materials/Cabin/Firelog.tres" id="4_8ypjv"]
 [ext_resource type="Material" uid="uid://hudxlx3cwl8q" path="res://Art/Materials/Cabin/Cabinets.tres" id="5_g67eg"]
 [ext_resource type="Material" uid="uid://bckg1kbl7xnsu" path="res://Art/Materials/Cabin/DeckDecoration.tres" id="7_ish01"]
+[ext_resource type="Script" path="res://gd/GroundSound.gd" id="9_qu0yb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wednt"]
 
@@ -272,6 +273,9 @@ shadow_mesh = SubResource("ArrayMesh_jnum0")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_glrhp"]
 data = PackedVector3Array(-0.270882, -0.433887, 0.0177482, -0.270882, 0.437564, -0.0177482, -0.270882, 0.437564, 0.0177482, -0.270882, -0.433887, 0.0177482, -0.270882, -0.433887, -0.0177482, -0.270882, 0.437564, -0.0177482, -0.270882, -0.433887, -0.0177482, 0.270882, 0.437564, -0.0177482, -0.270882, 0.437564, -0.0177482, -0.270882, -0.433887, -0.0177482, 0.270882, -0.433887, -0.0177482, 0.270882, 0.437564, -0.0177482, 0.270882, -0.433887, -0.0177482, 0.270882, 0.437564, 0.0177482, 0.270882, 0.437564, -0.0177482, 0.270882, -0.433887, -0.0177482, 0.270882, -0.433887, 0.0177482, 0.270882, 0.437564, 0.0177482, 0.270882, -0.433887, 0.0177482, -0.270882, 0.437564, 0.0177482, 0.270882, 0.437564, 0.0177482, 0.270882, -0.433887, 0.0177482, -0.270882, -0.433887, 0.0177482, -0.270882, 0.437564, 0.0177482, -0.270882, -0.433887, -0.0177482, 0.270882, -0.433887, 0.0177482, 0.270882, -0.433887, -0.0177482, -0.270882, -0.433887, -0.0177482, -0.270882, -0.433887, 0.0177482, 0.270882, -0.433887, 0.0177482, 0.270882, 0.437564, -0.0177482, -0.270882, 0.437564, 0.0177482, -0.270882, 0.437564, -0.0177482, 0.270882, 0.437564, -0.0177482, 0.270882, 0.437564, 0.0177482, -0.270882, 0.437564, 0.0177482)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_6bvlr"]
+size = Vector3(4.039, 1, 3.07974)
+
 [node name="Cabin" type="Node3D"]
 
 [node name="WindowPanes" type="MeshInstance3D" parent="."]
@@ -332,3 +336,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25457, 0, 0.015717)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/DoorCol"]
 shape = SubResource("ConcavePolygonShape3D_glrhp")
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("9_qu0yb")
+ground_type = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.527098, 0.393802)
+shape = SubResource("BoxShape3D_6bvlr")

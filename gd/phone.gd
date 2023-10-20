@@ -23,6 +23,7 @@ func play_call(call_name):
 func outgoing_call(to_name,call_name):
 	$CallFrom.text="Calling"
 	$CallFrom.show()
+	$PhoneIcon.show()
 	$Name.text=to_name
 	on_call=call_name
 	$AnimationPlayer.play("OutgoingCall")
@@ -45,7 +46,7 @@ func incoming_call(from_name,call_name):
 func hang_up():
 	$PhoneIcon.hide()
 	$ConnectedTime.hide()
-	$CallFrom.text="CALL\nENDED"
+	$CallFrom.text="Call\nEnded"
 	$AnimationPlayer.play("HangUp")
 	$calls/AnimationPlayer.stop()
 	ringing=false

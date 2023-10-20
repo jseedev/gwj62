@@ -18,8 +18,9 @@ func _physics_process(delta):
 	if target != Vector3.ZERO and !nav_agent.is_target_reached():
 		var next_point = nav_agent.get_next_path_position()
 		next_point.y=global_position.y
-		next_point.z+=0.0001
-		look_at(next_point,Vector3.UP) #use later for skeleton
+		#next_point.z+=0.0001
+		if next_point != global_position:
+			look_at(next_point,Vector3.UP) #use later for skeleton
 		rotation.x=0
 		rotation.z=0
 		velocity=(next_point-global_position).normalized()
