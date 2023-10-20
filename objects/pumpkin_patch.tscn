@@ -25,7 +25,7 @@ is_hemisphere = true
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnt6m"]
 size = Vector3(1, 0.281999, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4j85p"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcetw"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_tl2ax")
 roughness_texture = ExtResource("5_808gi")
@@ -91,7 +91,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142148, 0)
 shape = SubResource("BoxShape3D_pnt6m")
 
 [node name="Pumpkin" parent="." instance=ExtResource("1_b6pku")]
-material_override = SubResource("StandardMaterial3D_4j85p")
+material_override = SubResource("StandardMaterial3D_xcetw")
 
 [node name="pumpkin_pick" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_axts7")

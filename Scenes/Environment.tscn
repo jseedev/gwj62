@@ -2959,6 +2959,12 @@ transform = Transform3D(0.375033, -0.0288063, 1.03058, 0.00429136, 1.09669, 0.02
 [node name="GrainBin2" parent="." instance=ExtResource("24_tkc0h")]
 transform = Transform3D(-0.776239, -0.0105999, -0.630349, -0.00616245, 0.999939, -0.00922623, 0.630408, -0.00327727, -0.776257, 121.378, -0.425683, 33.0741)
 
+[node name="GrainBin7" parent="." instance=ExtResource("24_tkc0h")]
+transform = Transform3D(0.348022, -0.0780569, -1.02778, 0.0150322, 2.9717, -0.0252288, 1.09242, -0.0160248, 0.327773, -398.762, -2.30514, 137.75)
+
+[node name="GrainBin9" parent="." instance=ExtResource("24_tkc0h")]
+transform = Transform3D(-0.928983, -0.0339519, -0.750534, -0.00737506, 3.20285, -0.0109853, 0.754456, -0.0104972, -0.924262, -408.282, -2.69292, 124.462)
+
 [node name="GrainBin4" parent="." instance=ExtResource("24_tkc0h")]
 transform = Transform3D(0.875743, 0, -0.307865, 0, 0.928281, 0, 0.307865, 0, 0.875743, -384.055, -0.0451345, 102.148)
 
