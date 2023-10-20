@@ -8,7 +8,7 @@ extends Node3D
 var player = null
 
 func _physics_process(delta):
-	if Input.is_action_pressed("interact") and hilight.visible:
+	if Input.is_action_pressed("interact") and hilight.visible and !player.get_node("Camera3D/PhoneHolder/Phone/AnimationPlayer").is_playing():
 		if !$pumpkin_harvesting.playing:
 			$pumpkin_harvesting.play()
 		ui_part.show() #Show the ui piece for this pumpkin
@@ -22,12 +22,7 @@ func _physics_process(delta):
 			$pumpkin_harvesting.stop()
 			if is_instance_valid(player):
 				player.holding_item=true
-			#example call
-			await get_tree().create_timer(1.0).timeout
-			player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-			var sky_tween = get_tree().create_tween()
-			sky_tween.tween_method(get_tree().current_scene.lerp_environment,0.0,1.0,3.0)
-			sky_tween.play()
+			get_tree().current_scene.emit_signal("pumpkin_gathered",player)
 	elif ui_part.visible:
 		harvest_progress.value=0
 		ui_part.hide()
