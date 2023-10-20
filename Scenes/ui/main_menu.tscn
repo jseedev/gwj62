@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bk162gdkpqxvo"]
+
+[ext_resource type="Script" path="res://gd/main_menu.gd" id="1_0tj6m"]
+[ext_resource type="PackedScene" uid="uid://c3kcvcvfe5xil" path="res://objects/2DLeaves.tscn" id="2_1ngt8"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0tj6m")
+
+[node name="Behind" type="CanvasLayer" parent="."]
+
+[node name="RedBackground" type="ColorRect" parent="Behind"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.215686, 0, 0, 1)
+
+[node name="FallingLeaves" parent="Behind" instance=ExtResource("2_1ngt8")]
+
+[node name="Front" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="MainMenuAnimPlayer" type="AnimationPlayer" parent="."]
+
+[node name="TransitionAnimPlayer" type="AnimationPlayer" parent="."]
