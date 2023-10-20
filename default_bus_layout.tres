@@ -1,6 +1,13 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://b6vwrmcibobc6"]
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://b6vwrmcibobc6"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_g3fa5"]
+resource_name = "Reverb"
+predelay_feedback = 0.0
+room_size = 0.2
+wet = 0.0
 
 [resource]
+bus/0/send = &"cabin"
 bus/1/name = &"sfx"
 bus/1/solo = false
 bus/1/mute = false
@@ -19,3 +26,11 @@ bus/3/mute = false
 bus/3/bypass_fx = false
 bus/3/volume_db = 0.0
 bus/3/send = &"Master"
+bus/4/name = &"ambiance"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = &"sfx"
+bus/4/effect/0/effect = SubResource("AudioEffectReverb_g3fa5")
+bus/4/effect/0/enabled = true
