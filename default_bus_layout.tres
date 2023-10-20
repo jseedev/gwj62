@@ -7,7 +7,6 @@ room_size = 0.2
 wet = 0.0
 
 [resource]
-bus/0/send = &"cabin"
 bus/1/name = &"sfx"
 bus/1/solo = false
 bus/1/mute = false

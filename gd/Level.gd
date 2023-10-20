@@ -76,7 +76,7 @@ func spawn_villain():
 	else:
 		print("villain already spawned")
 
-func _on_pumpkin_gathered(player):
+func _on_pumpkin_gathered(tplayer):
 	pumpkins_picked+=1
 	if pumpkins_picked == 1:
 		#tween the environment
@@ -84,15 +84,15 @@ func _on_pumpkin_gathered(player):
 		sky_tween.tween_method(get_tree().current_scene.lerp_environment,0.0,0.25,6.0)
 		sky_tween.play()
 		await get_tree().create_timer(1.0).timeout
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+		tplayer.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
 		spawn_villain()
 
 @onready var music_player = $Level/Music
-func _on_call_ended(call):
-	if call == "call2":
+func _on_call_ended(callid):
+	if callid == "call2":
 		#change music to new tune
 		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
 
 
-func _on_game_over(player):
+func _on_game_over(_player):
 	print("Game over .. player was caught.")

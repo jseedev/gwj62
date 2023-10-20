@@ -1,4 +1,5 @@
 extends Area3D
+class_name GroundSound
 
 enum step_materials {GRASS,LEAVES,STONE,DIRT,WOOD}
 var string_types = ["grass","leaves","rock","dirt","woodcreak"]

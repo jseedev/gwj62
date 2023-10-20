@@ -13,6 +13,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var hand_pumpkin = $Viewmodel/ArmRig/Skeleton3D/InHand/Pumpkin
 @onready var Camera = $Camera3D
 @onready var cameraTarget = $Camera_Target
+@onready var phone = $Camera3D/PhoneHolder/Phone
+
 var holding_item = false : set = _set_holding_pumpkin
 
 func _set_holding_pumpkin(ibool):

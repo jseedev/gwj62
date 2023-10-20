@@ -24,6 +24,7 @@ func outgoing_call(to_name,call_name):
 	$CallFrom.text="Calling"
 	$CallFrom.show()
 	$PhoneIcon.show()
+	$PhoneIcon.transparency=0.0
 	$Name.text=to_name
 	on_call=call_name
 	$AnimationPlayer.play("OutgoingCall")

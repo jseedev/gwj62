@@ -8,7 +8,7 @@
 [ext_resource type="Material" uid="uid://h85pmp3dom2n" path="res://Art/Materials/Cabin/Firelog.tres" id="4_8ypjv"]
 [ext_resource type="Material" uid="uid://hudxlx3cwl8q" path="res://Art/Materials/Cabin/Cabinets.tres" id="5_g67eg"]
 [ext_resource type="Material" uid="uid://bckg1kbl7xnsu" path="res://Art/Materials/Cabin/DeckDecoration.tres" id="7_ish01"]
-[ext_resource type="Script" path="res://gd/GroundSound.gd" id="9_qu0yb"]
+[ext_resource type="Script" path="res://gd/CabinSounds.gd" id="9_xoc0f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wednt"]
 
@@ -337,10 +337,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25457, 0, 0.015717)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/DoorCol"]
 shape = SubResource("ConcavePolygonShape3D_glrhp")
 
-[node name="Area3D" type="Area3D" parent="."]
-script = ExtResource("9_qu0yb")
+[node name="SoundsArea" type="Area3D" parent="."]
+script = ExtResource("9_xoc0f")
 ground_type = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SoundsArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.527098, 0.393802)
 shape = SubResource("BoxShape3D_6bvlr")
