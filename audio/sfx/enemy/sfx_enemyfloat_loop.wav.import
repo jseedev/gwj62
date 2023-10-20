@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cymalssqr6jtm"
-path="res://.godot/imported/sfrx_enemyfloat_loop.wav-b3cd35f3173f4d7db8e36e41e5c61d69.sample"
+path="res://.godot/imported/sfx_enemyfloat_loop.wav-9880fd3e87e8fe88065a819c01619aa2.sample"
 
 [deps]
 
-source_file="res://audio/sfx/sfrx_enemyfloat_loop.wav"
-dest_files=["res://.godot/imported/sfrx_enemyfloat_loop.wav-b3cd35f3173f4d7db8e36e41e5c61d69.sample"]
+source_file="res://audio/sfx/enemy/sfx_enemyfloat_loop.wav"
+dest_files=["res://.godot/imported/sfx_enemyfloat_loop.wav-9880fd3e87e8fe88065a819c01619aa2.sample"]
 
 [params]
 
