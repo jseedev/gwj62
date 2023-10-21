@@ -60,7 +60,7 @@ func lerp_environment(night_weight):
 		else:
 			mat[prop]=lerp(environments.day[prop],environments.night[prop],night_weight)
 
-func change_music(new_track):
+func change_music(new_track,new_volume=-12.0):
 	if music_player.playing:
 		var mtween = get_tree().create_tween()
 		mtween.tween_property(music_player,"volume_db",-50.0,2.0)
@@ -70,7 +70,7 @@ func change_music(new_track):
 	var vtween = get_tree().create_tween()
 	music_player.stream=new_track
 	music_player.play()
-	vtween.tween_property(music_player,"volume_db",-12.0,2.0)
+	vtween.tween_property(music_player,"volume_db",new_volume,2.0)
 	vtween.play()
 
 
@@ -113,7 +113,6 @@ func _on_pumpkin_gathered():
 		await get_tree().create_timer(1.0).timeout
 		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
 		tween_sky(1.0)
-		#change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"))
 
 var env_current = 0.0
 func tween_sky(amount):
@@ -126,7 +125,7 @@ func tween_sky(amount):
 func _on_call_ended(callid):
 	if callid == "holo_voicemail":
 		#change music to new tune
-		change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"))
+		change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
 		#tween the environment
 		tween_sky(1.0)
 		spawn_villain()
