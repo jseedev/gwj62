@@ -92,8 +92,7 @@ func _on_pumpkin_gathered():
 	pumpkins_picked+=1
 	if pumpkins_picked == 1:
 		await get_tree().create_timer(1.0).timeout
-		#player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","call2")
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
 		tween_sky(0.30)
 		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
 	elif pumpkins_picked == 2:
