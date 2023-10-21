@@ -87,7 +87,12 @@ func spawn_villain():
 		print("villain spawned")
 	else:
 		print("villain already spawned")
-
+		
+func despawn_villain():
+	if villain != null:
+		villain.queue_free()
+		villain=null
+		
 func _on_pumpkin_gathered():
 	pumpkins_picked+=1
 	if pumpkins_picked == 1:
