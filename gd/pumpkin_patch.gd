@@ -22,7 +22,7 @@ func _physics_process(delta):
 			$pumpkin_harvesting.stop()
 			if is_instance_valid(player):
 				player.holding_item=true
-			get_tree().current_scene.emit_signal("pumpkin_gathered",player)
+			get_tree().current_scene.emit_signal("pumpkin_gathered")
 	elif ui_part.visible:
 		harvest_progress.value=0
 		ui_part.hide()

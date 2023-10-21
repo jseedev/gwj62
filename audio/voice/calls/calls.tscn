@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b76j03ldohgh2"]
+[gd_scene load_steps=33 format=3 uid="uid://b76j03ldohgh2"]
 
 [ext_resource type="AudioStream" uid="uid://b7j131cxihav0" path="res://audio/voice/errol_candy_call1.ogg" id="1_j8b0w"]
 [ext_resource type="AudioStream" uid="uid://csuduel1766st" path="res://audio/voice/candy_call1.ogg" id="2_b1gyp"]
@@ -12,6 +12,9 @@
 [ext_resource type="AudioStream" uid="uid://bpwm4yam5cbx4" path="res://audio/voice/candy_call3.ogg" id="10_o0j3r"]
 [ext_resource type="AudioStream" uid="uid://bko52a7dbx2gs" path="res://audio/voice/holo_voicemail1.ogg" id="11_qjxf0"]
 [ext_resource type="AudioStream" uid="uid://c5capmcecrwdv" path="res://audio/voice/errol_voicemail1.ogg" id="12_n1jvn"]
+[ext_resource type="AudioStream" uid="uid://m20hlsp4emmk" path="res://audio/voice/errol_voicemail2.ogg" id="13_w2gty"]
+[ext_resource type="AudioStream" uid="uid://bvptbiavmeksf" path="res://audio/voice/errol_short_vms.ogg" id="14_p1fvt"]
+[ext_resource type="AudioStream" uid="uid://dodcmak3anaqc" path="res://audio/voice/errol_solos.ogg" id="15_egiwg"]
 
 [sub_resource type="Animation" id="Animation_q3uxb"]
 resource_name = "call1"
@@ -366,7 +369,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 107.26,
+"end_offset": 107.419,
 "start_offset": 0.0,
 "stream": ExtResource("8_wotdf")
 }, {
@@ -422,7 +425,7 @@ tracks/0/keys = {
 "start_offset": 108.57,
 "stream": ExtResource("8_wotdf")
 }],
-"times": PackedFloat32Array(0, 8.6, 22.8, 25.7, 35.6, 49.1, 57.1, 67.5, 72.7, 79.5, 98.6, 104.8, 128.26, 144.1)
+"times": PackedFloat32Array(0.1, 8.6, 22.8, 25.7, 35.6, 49.1, 57.1, 67.5, 72.7, 79.5, 98.6, 104.8, 128.26, 144.1)
 }
 tracks/0/use_blend = true
 tracks/1/type = "audio"
@@ -649,6 +652,25 @@ tracks/0/keys = {
 }
 tracks/0/use_blend = true
 
+[sub_resource type="Animation" id="Animation_ypdml"]
+resource_name = "errol_voicemail2"
+length = 41.193
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_w2gty")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ns8kx"]
 _data = {
 "call1": SubResource("Animation_q3uxb"),
@@ -657,7 +679,152 @@ _data = {
 "call4": SubResource("Animation_w3c5h"),
 "call5": SubResource("Animation_hab38"),
 "errol_voicemail1": SubResource("Animation_yhtlo"),
+"errol_voicemail2": SubResource("Animation_ypdml"),
 "holo_voicemail": SubResource("Animation_qy5ve")
+}
+
+[sub_resource type="Animation" id="Animation_dp8pc"]
+resource_name = "vm1"
+length = 3.1385
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 12.3466,
+"start_offset": 0.0,
+"stream": ExtResource("14_p1fvt")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_5rg5i"]
+resource_name = "vm2"
+length = 5.648
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 4.42349,
+"start_offset": 5.69139,
+"stream": ExtResource("14_p1fvt")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_w4hc8"]
+resource_name = "vm3"
+length = 3.3
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0398512,
+"start_offset": 12.486,
+"stream": ExtResource("14_p1fvt")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_ujdf3"]
+resource_name = "pumpkin1"
+length = 2.5335
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 13.669,
+"start_offset": 0.0,
+"stream": ExtResource("15_egiwg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_v5j46"]
+resource_name = "pumpkin2"
+length = 2.5335
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 9.28534,
+"start_offset": 4.42349,
+"stream": ExtResource("15_egiwg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_xdsc7"]
+resource_name = "pumpkin3"
+length = 2.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 4.08476,
+"start_offset": 9.70378,
+"stream": ExtResource("15_egiwg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_kxsji"]
+resource_name = "missing_cabin"
+length = 4.1675
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.438364,
+"start_offset": 12.055,
+"stream": ExtResource("15_egiwg")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1rsm8"]
+_data = {
+"missing_cabin": SubResource("Animation_kxsji"),
+"pumpkin1": SubResource("Animation_ujdf3"),
+"pumpkin2": SubResource("Animation_v5j46"),
+"pumpkin3": SubResource("Animation_xdsc7"),
+"vm1": SubResource("Animation_dp8pc"),
+"vm2": SubResource("Animation_5rg5i"),
+"vm3": SubResource("Animation_w4hc8")
 }
 
 [node name="calls" type="Node"]
@@ -680,3 +847,8 @@ libraries = {
 [node name="Music" type="AudioStreamPlayer" parent="."]
 volume_db = -15.337
 bus = &"music"
+
+[node name="Solos" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1rsm8")
+}

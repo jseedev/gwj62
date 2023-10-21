@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://yw75bmw7w4o6"]
+[gd_scene load_steps=65 format=3 uid="uid://yw75bmw7w4o6"]
 
 [ext_resource type="Script" path="res://gd/player.gd" id="1_twiyk"]
 [ext_resource type="Environment" uid="uid://cw374elg52t6d" path="res://Art/Environment/MorningSky.tres" id="2_2yxsw"]
@@ -41,11 +41,26 @@
 [ext_resource type="AudioStream" uid="uid://osd2v68g1v6x" path="res://audio/sfx/footsteps/footstep_stone6.wav" id="37_njnjg"]
 [ext_resource type="AudioStream" uid="uid://cotbexju707pr" path="res://audio/sfx/footsteps/footstep_stone7.wav" id="38_n40lf"]
 [ext_resource type="PackedScene" uid="uid://gl8cgqb4sok2" path="res://Art/3D Assets/Viewmodel_Arms_2.tscn" id="41_srr5f"]
+[ext_resource type="AudioStream" uid="uid://iqrq1d4j7swd" path="res://audio/voice/errol_gasps.ogg" id="42_ib2is"]
+[ext_resource type="AudioStream" uid="uid://d3xrtqofvcdsb" path="res://audio/stingers/stinger_jumpscare_noleadin.wav" id="43_8lcfv"]
 [ext_resource type="AudioStream" uid="uid://cwtv7gbk5macx" path="res://audio/voice/breathing2.ogg" id="43_echou"]
+[ext_resource type="AudioStream" uid="uid://clv5h5300u57q" path="res://audio/voice/breathing1.ogg" id="45_tqow2"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ex6vp"]
 radius = 0.2
 height = 1.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uw86g"]
+size = Vector3(6, 6, 80)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_rp0wo"]
+top_radius = 0.0
+bottom_radius = 15.0
+height = 80.0
+radial_segments = 16
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ds6x5"]
+points = PackedVector3Array(-15, -40, -9.53674e-07, -13.8606, -40, -5.74099, -13.8606, -40, 5.73806, -12.0018, -24.0016, -9.53674e-07, -6.36648, -8.00313, -6.36648, -10.6069, -40, -10.6069, -6.00235, 7.9953, -9.53674e-07, -9.53674e-07, 40, -9.53674e-07, -2.12314, 23.9937, -2.12314, -10.6069, -40, 10.604, -6.36648, -8.00313, 6.36355, -5.74099, -40, -13.8606, 15, -40, -9.53674e-07, 13.8577, -40, -5.74099, 6.36355, -8.00313, -6.36648, 5.73806, -40, -13.8606, -9.53674e-07, 7.9953, -6.00235, -5.74099, -40, 13.8577, -9.53674e-07, -40, 15, 5.73806, -40, 13.8577, 6.36355, -8.00313, 6.36355, 13.8577, -40, 5.73806, -9.53674e-07, -24.0016, -12.0018, -9.53674e-07, -40, -15, 10.604, -40, -10.6069, 10.604, -40, 10.604)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qx3bh"]
 streams_count = 8
@@ -265,6 +280,138 @@ _data = {
 "walk": SubResource("Animation_mru3d")
 }
 
+[sub_resource type="Animation" id="Animation_8myd8"]
+resource_name = "gasp1"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 6.1371,
+"start_offset": 0.0,
+"stream": ExtResource("42_ib2is")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_u0lyv"]
+resource_name = "gasp2"
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 4.70245,
+"start_offset": 1.41472,
+"stream": ExtResource("42_ib2is")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_fmxch"]
+resource_name = "gasp3"
+length = 4.95
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 2.67003,
+"start_offset": 3.8855,
+"stream": ExtResource("42_ib2is")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../PlayerSFX")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 3.20803,
+"start_offset": 0.0,
+"stream": ExtResource("43_8lcfv")
+}],
+"times": PackedFloat32Array(0.5)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_qboja"]
+resource_name = "breathing_light"
+length = 3.5945
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.338736,
+"start_offset": 0.0,
+"stream": ExtResource("43_echou")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_3ft2a"]
+resource_name = "breathing_heavy"
+length = 2.5785
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.478215,
+"start_offset": 0.0996282,
+"stream": ExtResource("45_tqow2")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 2.74974,
+"start_offset": 0.0,
+"stream": ExtResource("43_echou")
+}],
+"times": PackedFloat32Array(1.4)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_frmqy"]
+_data = {
+"breathing_heavy": SubResource("Animation_3ft2a"),
+"breathing_light": SubResource("Animation_qboja"),
+"gasp1": SubResource("Animation_8myd8"),
+"gasp2": SubResource("Animation_u0lyv"),
+"gasp3": SubResource("Animation_fmxch")
+}
+
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_twiyk")
@@ -286,6 +433,27 @@ transform = Transform3D(0.364676, 0, -0.405014, 0, 0.545, 0, 0.405014, 0, 0.3646
 
 [node name="Phone" parent="Camera3D/PhoneHolder" instance=ExtResource("2_owhr2")]
 transform = Transform3D(0.131, 0, 0, 0, 0.131, 0, 0, 0, 0.131, 0.003, -0.013, 0)
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.289, -40.6621)
+shape = SubResource("BoxShape3D_uw86g")
+target_position = Vector3(0, 0, 0)
+max_results = 1
+collision_mask = 3
+
+[node name="LineOfSight" type="Area3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.289464, 0)
+collision_layer = 2
+collision_mask = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D/LineOfSight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.165353, -40.3182)
+visible = false
+mesh = SubResource("CylinderMesh_rp0wo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/LineOfSight"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.165353, -40.3182)
+shape = SubResource("ConvexPolygonShape3D_ds6x5")
 
 [node name="footsteps_woodcreak" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_qx3bh")
@@ -324,5 +492,17 @@ libraries = {
 
 [node name="Camera_Target" type="Node3D" parent="."]
 
-[node name="Breathing" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("43_echou")
+[node name="PlayerSounds" type="AudioStreamPlayer" parent="."]
+volume_db = 3.0
+bus = &"dialogue"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSounds"]
+libraries = {
+"": SubResource("AnimationLibrary_frmqy")
+}
+
+[node name="PlayerSFX" type="AudioStreamPlayer" parent="."]
+volume_db = -3.0
+bus = &"sfx"
+
+[connection signal="body_entered" from="Camera3D/LineOfSight" to="." method="_on_line_of_sight_body_entered"]

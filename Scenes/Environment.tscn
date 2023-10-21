@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=95 format=3 uid="uid://dlpnyn1b5v37v"]
 
 [ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
@@ -36,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://dxfkutms02d8f" path="res://audio/enviornment/ambiance_crickets3_loop.ogg" id="30_lsq8c"]
 [ext_resource type="AudioStream" uid="uid://6ls6saxch7wx" path="res://audio/music/music_1_theme_92bpm_loop.ogg" id="31_iixge"]
 [ext_resource type="PackedScene" uid="uid://bjjjkm3b6sjtx" path="res://Art/3D Assets/Cabin.tscn" id="36_fc0h5"]
+[ext_resource type="PackedScene" uid="uid://dfrifan71ggdm" path="res://objects/pumpkin_pile.tscn" id="40_gn86w"]
 [ext_resource type="Script" path="res://gd/pumpkin_zones.gd" id="49_j67jk"]
 [ext_resource type="Script" path="res://gd/pumpkin_spawn.gd" id="50_u10re"]
 [ext_resource type="PackedScene" uid="uid://bgsdpi6h3lm5i" path="res://objects/pumpkin_patch.tscn" id="51_4vo7y"]
@@ -504,6 +505,18 @@ turbulence_noise_strength = 0.15
 [sub_resource type="QuadMesh" id="QuadMesh_1a61l"]
 orientation = 0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uo5g4"]
+size = Vector3(1.90262, 1, 2.18713)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gf7y0"]
+transparency = 1
+albedo_color = Color(1, 0.65098, 0.32549, 0.4)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5m0gm"]
+material = SubResource("StandardMaterial3D_gf7y0")
+radius = 1.105
+is_hemisphere = true
+
 [node name="Environment" type="Node3D"]
 script = ExtResource("1_bvmg2")
 
@@ -516,59 +529,61 @@ transform = Transform3D(-0.67447, 0, 0.738302, 0, 1, 0, -0.738302, 0, -0.67447, 
 current = true
 
 [node name="PumpkinZones" type="Node3D" parent="Game"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7414, -3.8147e-06, -45.7523)
 script = ExtResource("49_j67jk")
+number_of_spawns = 7
 
 [node name="PumpkinSpawn" type="Marker3D" parent="Game/PumpkinZones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65951, 0.235365, -15.6227)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65951, 0.490754, -15.6227)
 script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn" instance=ExtResource("51_4vo7y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.641402, 0)
 
 [node name="PumpkinSpawn2" type="Marker3D" parent="Game/PumpkinZones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.69492, 0.116365, 11.6994)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.69492, 0.108323, 11.6994)
 script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn2" instance=ExtResource("51_4vo7y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.245153, 0)
 
 [node name="PumpkinSpawn3" type="Marker3D" parent="Game/PumpkinZones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2078, 0.282382, -11.7957)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2078, 0.959898, -11.7957)
 script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn3" instance=ExtResource("51_4vo7y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.76093, 0)
 
 [node name="PumpkinSpawn4" type="Marker3D" parent="Game/PumpkinZones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4519, 0.0756395, 9.89657)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.4519, -0.0157574, 9.89657)
 script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn4" instance=ExtResource("51_4vo7y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.291092, 0)
 
 [node name="PumpkinSpawn5" type="Marker3D" parent="Game/PumpkinZones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142445, 0.26645, 13.2112)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142445, 0.1592, 13.2112)
 script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn5" instance=ExtResource("51_4vo7y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.360119, 0)
 
 [node name="PumpkinSpawn6" type="Marker3D" parent="Game/PumpkinZones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.575, 0.598024, -4.47703)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.575, 0.640469, -4.47703)
 script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn6" instance=ExtResource("51_4vo7y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.960226, 0)
 
 [node name="PumpkinSpawn7" type="Marker3D" parent="Game/PumpkinZones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29188, 0.0296395, 1.33667)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29188, 0.146571, 1.33667)
 script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn7" instance=ExtResource("51_4vo7y")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.355549, 0)
 
 [node name="PumpkinSpawn8" type="Marker3D" parent="Game/PumpkinZones"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.13287, 0, 1.45425)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.13287, 0.295999, 1.45425)
 script = ExtResource("50_u10re")
 
 [node name="pumpkin" parent="Game/PumpkinZones/PumpkinSpawn8" instance=ExtResource("51_4vo7y")]
@@ -3284,6 +3299,29 @@ editor_only = true
 environment = ExtResource("18_ymmth")
 camera_attributes = ExtResource("8_gek8w")
 
+[node name="PumpkinDropZone" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 95.5021, -9.53674e-07, 94.0414)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PumpkinDropZone"]
+transform = Transform3D(0.826776, 0, -0.562531, 0, 1, 0, 0.562531, 0, 0.826776, 0, 0, 0)
+shape = SubResource("BoxShape3D_uo5g4")
+
+[node name="Highlite" type="MeshInstance3D" parent="PumpkinDropZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.234589, -0.41732, -0.240273)
+visible = false
+mesh = SubResource("SphereMesh_5m0gm")
+
+[node name="Label3D" type="Label3D" parent="PumpkinDropZone/Highlite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14784, 0)
+billboard = 1
+text = "Press E to Drop"
+
+[node name="PumpkinPile" parent="PumpkinDropZone" instance=ExtResource("40_gn86w")]
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 0.0442276, -0.436738, -0.29998)
+
 [connection signal="call_ended" from="." to="." method="_on_call_ended"]
 [connection signal="game_over" from="." to="." method="_on_game_over"]
 [connection signal="pumpkin_gathered" from="." to="." method="_on_pumpkin_gathered"]
+[connection signal="villain_sighting" from="." to="." method="_on_villain_sighting"]
+[connection signal="body_entered" from="PumpkinDropZone" to="." method="_on_pumpkin_drop_zone_body_entered"]
+[connection signal="body_exited" from="PumpkinDropZone" to="." method="_on_pumpkin_drop_zone_body_exited"]

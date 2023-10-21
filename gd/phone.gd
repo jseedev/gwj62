@@ -1,5 +1,5 @@
 extends MeshInstance3D
-var ringing = true
+var ringing = false
 var con_timer=0
 var on_call = null
 var call_playing = false
@@ -38,12 +38,17 @@ func outgoing_call(to_name,call_name):
 func incoming_call(from_name,call_name):
 	$PhoneIcon.show()
 	$CallFrom.text="Call From"
+	$CallFrom.show()
 	$Name.text=from_name
 	$AnimationPlayer.play("NewCall")
 	$ConnectedTime.hide()
 	ringing=true
 	on_call=call_name
-	
+	await get_tree().create_timer(7.0).timeout
+	if visible:
+		answer()
+		play_call(on_call)
+		
 func hang_up():
 	$PhoneIcon.hide()
 	$ConnectedTime.hide()
@@ -60,6 +65,20 @@ func answer():
 	$ConnectedTime.show()
 	ringing=false
 	call_playing=true
+	
+func voicemail(to_name,call_name):
+	ringing=true
+	$CallFrom.text="New\nVoicemail"
+	$CallFrom.show()
+	$PhoneIcon.hide()
+	$Name.text=to_name
+	on_call=call_name
+	$AnimationPlayer.play("NewVoicemail")
+	$ConnectedTime.hide()
+	await get_tree().create_timer(4.0).timeout
+	if visible:
+		answer()
+		play_call(on_call)
 
 func connected():
 	con_timer+=1

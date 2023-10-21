@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://fwmj8tk62fyv"]
+[gd_scene load_steps=16 format=3 uid="uid://fwmj8tk62fyv"]
 
 [ext_resource type="Material" uid="uid://ccwgv76ja6evf" path="res://Art/Materials/Shabahan.tres" id="1_wweux"]
 
@@ -176,9 +176,48 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
+[sub_resource type="Animation" id="Animation_dbk43"]
+resource_name = "Float"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.05, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_u2rev"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xb8ro"]
+_data = {
+"Float": SubResource("Animation_dbk43"),
+"RESET": SubResource("Animation_u2rev")
+}
+
 [node name="Shabahan" type="Node3D"]
 
 [node name="Skeleton3D" type="Skeleton3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 bones/0/name = "Spine.001"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.0268946, 0)
@@ -365,3 +404,8 @@ surface_material_override/0 = ExtResource("1_wweux")
 mesh = SubResource("ArrayMesh_46wu0")
 skin = SubResource("Skin_ubies")
 surface_material_override/0 = ExtResource("1_wweux")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xb8ro")
+}

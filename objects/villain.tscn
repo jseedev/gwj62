@@ -2,24 +2,25 @@
 
 [ext_resource type="Script" path="res://gd/Villain.gd" id="1_d2nk1"]
 [ext_resource type="AudioStream" uid="uid://cymalssqr6jtm" path="res://audio/sfx/enemy/sfx_enemyfloat_loop.wav" id="2_1ct51"]
+[ext_resource type="PackedScene" uid="uid://fwmj8tk62fyv" path="res://Art/3D Assets/Shabahan.tscn" id="3_s36bs"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yrd17"]
 radius = 0.25
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_pamfm"]
+height = 1.0889
 
 [node name="Villain" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975243, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.538766, 0)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_d2nk1")
 SPEED = 200.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_yrd17")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_pamfm")
-
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+target_desired_distance = 3.0
+path_max_distance = 3.01
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
@@ -29,5 +30,8 @@ autostart = true
 stream = ExtResource("2_1ct51")
 autoplay = true
 bus = &"ambiance"
+
+[node name="Shabahan" parent="." instance=ExtResource("3_s36bs")]
+transform = Transform3D(1.425, 0, 0, 0, 1.425, 0, 0, 0, 1.425, 0, 0, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

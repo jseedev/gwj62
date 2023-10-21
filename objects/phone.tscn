@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cy3fthxtphvcv"]
+[gd_scene load_steps=24 format=3 uid="uid://cy3fthxtphvcv"]
 
 [ext_resource type="Script" path="res://gd/phone.gd" id="1_hm8qm"]
 [ext_resource type="AudioStream" uid="uid://dmyh7t52rdmby" path="res://audio/sfx/sfx_phonering.wav" id="1_w1p8m"]
@@ -348,11 +348,67 @@ tracks/2/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_ipoyj"]
+resource_name = "NewVoicemail"
+length = 3.3485
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PhoneSounds")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 2.09219,
+"start_offset": 0.0,
+"stream": ExtResource("1_w1p8m")
+}],
+"times": PackedFloat32Array(1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation:z")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.3, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.087, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:position:y")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.5, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7sq5p"]
 _data = {
 "Connected": SubResource("Animation_iqgsw"),
 "HangUp": SubResource("Animation_ow02j"),
 "NewCall": SubResource("Animation_txq26"),
+"NewVoicemail": SubResource("Animation_ipoyj"),
 "OutgoingCall": SubResource("Animation_llp76"),
 "RESET": SubResource("Animation_tq2hs")
 }

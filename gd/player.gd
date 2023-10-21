@@ -14,6 +14,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var Camera = $Camera3D
 @onready var cameraTarget = $Camera_Target
 @onready var phone = $Camera3D/PhoneHolder/Phone
+@onready var player_sounds = $PlayerSounds/AnimationPlayer
+@onready var caster = $Camera3D/ShapeCast3D
 
 var holding_item = false : set = _set_holding_pumpkin
 
@@ -90,8 +92,17 @@ func _process(delta):
 		if just_stepping:
 			just_stepping = false
 			play_step_sound()
-
+var run_timer = 0.0
 func _physics_process(delta):
+	if caster.enabled:
+		var bodies = $Camera3D/LineOfSight.get_overlapping_bodies()
+		if bodies.size() > 0:
+			if bodies[0].global_position.distance_to(global_position) > 20.0:
+				get_tree().current_scene.emit_signal("villain_sighting",bodies[0])
+			elif caster.is_colliding():
+				var fc = caster.get_collider(0) #colliding object
+				if fc is Villain:
+					get_tree().current_scene.emit_signal("villain_sighting",fc)
 	if position.y <= -2.0:
 		position.y = 6.0
 	# Add the gravity.
@@ -105,6 +116,8 @@ func _physics_process(delta):
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "up", "down")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	if Input.is_action_just_pressed("run"):
+		run_timer=0.0
 	if Input.is_action_pressed("run") and input_dir.y<0:
 		if not running:
 			just_running = true
@@ -134,6 +147,12 @@ func _physics_process(delta):
 	if walking:
 		move = 1.0
 	if running:
+		run_timer+=delta
+		if !player_sounds.is_playing():
+			if run_timer >= 3.0:
+				player_sounds.play("breathing_heavy")
+			elif run_timer >=0.5:
+				player_sounds.play("breathing_light")
 		move = 1.75
 		timeScale = 2.0
 	
@@ -162,3 +181,7 @@ func _input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		cameraTarget.rotate_x(-event.relative.y * mouse_sensitivity)
 		cameraTarget.rotation.x = clampf(cameraTarget.rotation.x, -deg_to_rad(70), deg_to_rad(70))
+
+
+func _on_line_of_sight_body_entered(body):
+	pass # Replace with function body.

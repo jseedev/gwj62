@@ -5,11 +5,16 @@ var player = null #filled by the player itself.
 var ended = false
 
 signal call_ended(call)
-signal pumpkin_gathered(player)
-signal game_over(player)
+signal pumpkin_gathered()
+signal game_over()
+signal villain_sighting()
 
 @onready var clouds = $Game/Clouds
 func _process(_delta):
+	if Input.is_action_just_pressed("interact") and in_pumpkin_zone and player.holding_item:
+		player.holding_item = false
+		$PumpkinDropZone/PumpkinPile.add_pumpkin()
+		$PumpkinDropZone/Highlite.hide()
 	clouds.global_position.x=player.global_position.x
 	clouds.global_position.z=player.global_position.z
 
@@ -32,6 +37,8 @@ var environments = {
 
 func _ready():
 	lerp_environment(0.0)
+	player.caster.add_exception($Level/NavigationRegion3D/Field/Field/StaticBody3D)
+	player.caster.add_exception(player)
 
 @onready var env:Environment = $WorldEnvironment.environment
 @onready var anim_light = $AnimatedLight
@@ -81,23 +88,73 @@ func spawn_villain():
 	else:
 		print("villain already spawned")
 
-func _on_pumpkin_gathered(tplayer):
+func _on_pumpkin_gathered():
 	pumpkins_picked+=1
 	if pumpkins_picked == 1:
 		await get_tree().create_timer(1.0).timeout
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+		#player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","call2")
+		tween_sky(0.30)
+		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+	elif pumpkins_picked == 2:
+		await get_tree().create_timer(1.0).timeout
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
+		tween_sky(0.45)
+		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
+	elif pumpkins_picked == 3:
+		await get_tree().create_timer(1.0).timeout
+		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo","call4")
+		tween_sky(0.55)
+		change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
+	elif pumpkins_picked == 4:
+		await get_tree().create_timer(1.0).timeout
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call5")
+		tween_sky(0.75)
+		#change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"))
+
+var env_current = 0.0
+func tween_sky(amount):
+	var sky_tween = get_tree().create_tween()
+	sky_tween.tween_method(get_tree().current_scene.lerp_environment,env_current,amount,4.0)
+	env_current=amount
+	sky_tween.play()
 
 @onready var music_player = $Level/Music
 func _on_call_ended(callid):
-	if callid == "call2":
+	if callid == "holo_voicemail":
 		#change music to new tune
 		change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"))
 		#tween the environment
-		var sky_tween = get_tree().create_tween()
-		sky_tween.tween_method(get_tree().current_scene.lerp_environment,0.0,1.0,6.0)
-		sky_tween.play()
+		tween_sky(1.0)
 		spawn_villain()
 
 
-func _on_game_over(_player):
+func _on_game_over():
 	print("Game over .. player was caught.")
+
+var seen_times = 0
+func _on_villain_sighting(villain):
+	if villain.global_position.distance_to(player.global_position) >= 20:
+		if seen_times == 0:
+			print("seen by player")
+			player.player_sounds.play("gasp2")
+			seen_times+=1
+	else:
+		if seen_times <= 1:
+			print("seen by player")
+			player.player_sounds.play("gasp3")
+			seen_times=2
+			player.caster.enabled=false
+	pass # Replace with function body.
+
+var in_pumpkin_zone=false
+func _on_pumpkin_drop_zone_body_entered(body):
+	if body is PlayerBody and body.holding_item:
+		in_pumpkin_zone=true
+		$PumpkinDropZone/Highlite.show()
+
+
+func _on_pumpkin_drop_zone_body_exited(body):
+	if body is PlayerBody:
+		in_pumpkin_zone=false
+		$PumpkinDropZone/Highlite.hide()
