@@ -663,6 +663,7 @@ _data = {
 [node name="calls" type="Node"]
 
 [node name="Errol" type="AudioStreamPlayer" parent="."]
+volume_db = 5.0
 bus = &"dialogue"
 
 [node name="Caller" type="AudioStreamPlayer" parent="."]

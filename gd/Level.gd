@@ -8,6 +8,11 @@ signal call_ended(call)
 signal pumpkin_gathered(player)
 signal game_over(player)
 
+@onready var clouds = $Game/Clouds
+func _process(_delta):
+	clouds.global_position.x=player.global_position.x
+	clouds.global_position.z=player.global_position.z
+
 var environments = {
 	day = {
 		sun_angle_max = 30.0,
@@ -79,19 +84,19 @@ func spawn_villain():
 func _on_pumpkin_gathered(tplayer):
 	pumpkins_picked+=1
 	if pumpkins_picked == 1:
-		#tween the environment
-		var sky_tween = get_tree().create_tween()
-		sky_tween.tween_method(get_tree().current_scene.lerp_environment,0.0,0.25,6.0)
-		sky_tween.play()
 		await get_tree().create_timer(1.0).timeout
-		tplayer.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-		spawn_villain()
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
 
 @onready var music_player = $Level/Music
 func _on_call_ended(callid):
 	if callid == "call2":
 		#change music to new tune
-		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+		change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"))
+		#tween the environment
+		var sky_tween = get_tree().create_tween()
+		sky_tween.tween_method(get_tree().current_scene.lerp_environment,0.0,1.0,6.0)
+		sky_tween.play()
+		spawn_villain()
 
 
 func _on_game_over(_player):

@@ -156,6 +156,8 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _input(event):
+	if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
+		Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		cameraTarget.rotate_x(-event.relative.y * mouse_sensitivity)
