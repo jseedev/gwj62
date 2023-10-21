@@ -633,25 +633,6 @@ tracks/0/keys = {
 }
 tracks/0/use_blend = true
 
-[sub_resource type="Animation" id="Animation_qy5ve"]
-resource_name = "holo_voicemail"
-length = 46.0
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Caller")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("11_qjxf0")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
-
 [sub_resource type="Animation" id="Animation_ypdml"]
 resource_name = "errol_voicemail2"
 length = 41.193
@@ -671,6 +652,25 @@ tracks/0/keys = {
 }
 tracks/0/use_blend = true
 
+[sub_resource type="Animation" id="Animation_qy5ve"]
+resource_name = "holo_voicemail"
+length = 46.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Caller")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("11_qjxf0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ns8kx"]
 _data = {
 "call1": SubResource("Animation_q3uxb"),
@@ -683,9 +683,9 @@ _data = {
 "holo_voicemail": SubResource("Animation_qy5ve")
 }
 
-[sub_resource type="Animation" id="Animation_dp8pc"]
-resource_name = "vm1"
-length = 3.1385
+[sub_resource type="Animation" id="Animation_kxsji"]
+resource_name = "missing_cabin"
+length = 4.1675
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -694,47 +694,9 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 12.3466,
-"start_offset": 0.0,
-"stream": ExtResource("14_p1fvt")
-}],
-"times": PackedFloat32Array(-0.1)
-}
-tracks/0/use_blend = true
-
-[sub_resource type="Animation" id="Animation_5rg5i"]
-resource_name = "vm2"
-length = 5.648
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Errol")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 4.42349,
-"start_offset": 5.69139,
-"stream": ExtResource("14_p1fvt")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
-
-[sub_resource type="Animation" id="Animation_w4hc8"]
-resource_name = "vm3"
-length = 3.3
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Errol")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0398512,
-"start_offset": 12.486,
-"stream": ExtResource("14_p1fvt")
+"end_offset": 0.438364,
+"start_offset": 12.055,
+"stream": ExtResource("15_egiwg")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -797,9 +759,9 @@ tracks/0/keys = {
 }
 tracks/0/use_blend = true
 
-[sub_resource type="Animation" id="Animation_kxsji"]
-resource_name = "missing_cabin"
-length = 4.1675
+[sub_resource type="Animation" id="Animation_dp8pc"]
+resource_name = "vm1"
+length = 3.1385
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -808,9 +770,47 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": [{
-"end_offset": 0.438364,
-"start_offset": 12.055,
-"stream": ExtResource("15_egiwg")
+"end_offset": 12.3466,
+"start_offset": 0.0,
+"stream": ExtResource("14_p1fvt")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_5rg5i"]
+resource_name = "vm2"
+length = 5.648
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 4.42349,
+"start_offset": 5.69139,
+"stream": ExtResource("14_p1fvt")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
+[sub_resource type="Animation" id="Animation_w4hc8"]
+resource_name = "vm3"
+length = 3.3
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Errol")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0398512,
+"start_offset": 12.486,
+"stream": ExtResource("14_p1fvt")
 }],
 "times": PackedFloat32Array(0)
 }
