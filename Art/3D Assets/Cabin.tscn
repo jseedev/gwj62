@@ -339,6 +339,8 @@ shape = SubResource("ConcavePolygonShape3D_glrhp")
 
 [node name="SoundsArea" type="Area3D" parent="."]
 script = ExtResource("9_xoc0f")
+volume_dampening = -4.0
+reverb_amount = 0.9
 ground_type = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoundsArea"]
