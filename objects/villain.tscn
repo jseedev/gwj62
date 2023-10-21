@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cex7vm6iw2oi0"]
+[gd_scene load_steps=5 format=3 uid="uid://cex7vm6iw2oi0"]
 
 [ext_resource type="Script" path="res://gd/Villain.gd" id="1_d2nk1"]
+[ext_resource type="PackedScene" uid="uid://fwmj8tk62fyv" path="res://Art/3D Assets/Shabahan.tscn" id="2_ijqc5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yrd17"]
 radius = 0.25
@@ -16,6 +17,7 @@ SPEED = 200.0
 shape = SubResource("CapsuleShape3D_yrd17")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("CapsuleMesh_pamfm")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
@@ -23,5 +25,8 @@ mesh = SubResource("CapsuleMesh_pamfm")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
+
+[node name="Shabahan" parent="." instance=ExtResource("2_ijqc5")]
+transform = Transform3D(-2.04073, 0, -1.78406e-07, 0, 2.04073, 0, 1.78406e-07, 0, -2.04073, 0, 0, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

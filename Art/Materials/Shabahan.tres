@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://ccwgv76ja6evf"]
+
+[ext_resource type="Texture2D" uid="uid://ca30fe2eg5bsa" path="res://Art/Textures/Shabahan/Shabahan_Color.png" id="1_w3ugl"]
+[ext_resource type="Texture2D" uid="uid://csllgnr86wnun" path="res://Art/Textures/Shabahan/Shabahan_Emissive.png" id="2_3a3bl"]
+[ext_resource type="Texture2D" uid="uid://bewisd3q853d3" path="res://Art/Textures/Shabahan/Shabahan_Metallic.png" id="3_h3oqd"]
+[ext_resource type="Texture2D" uid="uid://dgnl8r4l4mu3s" path="res://Art/Textures/Shabahan/Shabahan_Normal_DirectX.png" id="4_rimew"]
+
+[resource]
+transparency = 4
+cull_mode = 2
+albedo_texture = ExtResource("1_w3ugl")
+metallic = 1.0
+metallic_texture = ExtResource("3_h3oqd")
+emission_enabled = true
+emission_texture = ExtResource("2_3a3bl")
+normal_enabled = true
+normal_texture = ExtResource("4_rimew")
