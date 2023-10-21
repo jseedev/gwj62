@@ -3,16 +3,19 @@ class_name Villain
 
 @export var SPEED = 50.0
 @onready var nav_agent = $NavigationAgent3D
+@onready var animations = $Shabahan/AnimationPlayer
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var target = Vector3.ZERO
 var player = null
 
+var previous_velocity = Vector3.ZERO
+
 func _ready():
 	target = player.global_position
 	nav_agent.set_target_position(player.global_position)
-	$Shabahan/AnimationPlayer.play("Float")
+	animations.play("Idle")
 	
 func _physics_process(delta):
 	# Move to player
@@ -38,6 +41,15 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y = -gravity
+		
+	if previous_velocity != velocity:
+		if Vector2(velocity.x, velocity.z) == Vector2.ZERO:
+			animations.play("Idle", 0.5)
+		else:
+			animations.play("Move", 0.5)
+	
+	previous_velocity = velocity
+	
 	move_and_slide()
 
 func get_nearest_hiding_spot():

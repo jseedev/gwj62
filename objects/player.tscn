@@ -280,6 +280,59 @@ _data = {
 "walk": SubResource("Animation_mru3d")
 }
 
+[sub_resource type="Animation" id="Animation_3ft2a"]
+resource_name = "breathing_heavy"
+length = 2.5785
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.478215,
+"start_offset": 0.0996282,
+"stream": ExtResource("45_tqow2")
+}],
+"times": PackedFloat32Array(-0.1)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 2.74974,
+"start_offset": 0.0,
+"stream": ExtResource("43_echou")
+}],
+"times": PackedFloat32Array(1.4)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_qboja"]
+resource_name = "breathing_light"
+length = 3.5945
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.338736,
+"start_offset": 0.0,
+"stream": ExtResource("43_echou")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+
 [sub_resource type="Animation" id="Animation_8myd8"]
 resource_name = "gasp1"
 tracks/0/type = "audio"
@@ -347,59 +400,6 @@ tracks/1/keys = {
 "stream": ExtResource("43_8lcfv")
 }],
 "times": PackedFloat32Array(0.5)
-}
-tracks/1/use_blend = true
-
-[sub_resource type="Animation" id="Animation_qboja"]
-resource_name = "breathing_light"
-length = 3.5945
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.338736,
-"start_offset": 0.0,
-"stream": ExtResource("43_echou")
-}],
-"times": PackedFloat32Array(0)
-}
-tracks/0/use_blend = true
-
-[sub_resource type="Animation" id="Animation_3ft2a"]
-resource_name = "breathing_heavy"
-length = 2.5785
-tracks/0/type = "audio"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": [{
-"end_offset": 0.478215,
-"start_offset": 0.0996282,
-"stream": ExtResource("45_tqow2")
-}],
-"times": PackedFloat32Array(-0.1)
-}
-tracks/0/use_blend = true
-tracks/1/type = "audio"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"clips": [{
-"end_offset": 2.74974,
-"start_offset": 0.0,
-"stream": ExtResource("43_echou")
-}],
-"times": PackedFloat32Array(1.4)
 }
 tracks/1/use_blend = true
 
