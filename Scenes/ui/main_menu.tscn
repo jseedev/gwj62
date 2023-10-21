@@ -1,7 +1,737 @@
-[gd_scene load_steps=3 format=3 uid="uid://bk162gdkpqxvo"]
+[gd_scene load_steps=41 format=3 uid="uid://bk162gdkpqxvo"]
 
 [ext_resource type="Script" path="res://gd/main_menu.gd" id="1_0tj6m"]
 [ext_resource type="PackedScene" uid="uid://c3kcvcvfe5xil" path="res://objects/2DLeaves.tscn" id="2_1ngt8"]
+[ext_resource type="FontFile" uid="uid://cqnxdb5ww4jsh" path="res://Scenes/ui/ui_fonts/Papyrus.TTF" id="4_3c8fq"]
+[ext_resource type="Theme" uid="uid://c5ksu5pk26364" path="res://Scenes/ui/ui_styles/main_menu_label_style.tres" id="4_hxpxf"]
+[ext_resource type="Theme" uid="uid://dxry5iertt7hy" path="res://Scenes/ui/ui_styles/main_menu_button_style.tres" id="5_yfuvy"]
+[ext_resource type="Texture2D" uid="uid://cnwlxxpwdnpj7" path="res://Scenes/ui/ui_assets/symbol_close.png" id="7_1gkdd"]
+[ext_resource type="Texture2D" uid="uid://bbk1wthbx5fk3" path="res://Scenes/ui/ui_assets/symbol_return.png" id="8_cab1n"]
+[ext_resource type="Texture2D" uid="uid://gm04jyxrbchc" path="res://Scenes/ui/ui_assets/symbol_settings.png" id="9_k3nm3"]
+[ext_resource type="Texture2D" uid="uid://kymalcgs48rt" path="res://Scenes/ui/ui_assets/symbol_keyboard.png" id="9_m5okk"]
+[ext_resource type="Texture2D" uid="uid://cwnqy1urgb23e" path="res://Scenes/ui/ui_assets/symbol_handwave.png" id="10_hmfu5"]
+[ext_resource type="Texture2D" uid="uid://dpj7seocrrttd" path="res://Scenes/ui/ui_assets/familyphoto.png" id="10_trgjp"]
+[ext_resource type="Theme" uid="uid://csyyanposb0k2" path="res://Scenes/ui/ui_styles/settings_horizontal_slider.tres" id="11_ftg7s"]
+[ext_resource type="Texture2D" uid="uid://b258b8w62vr0d" path="res://Scenes/ui/ui_assets/symbol_wasd.png" id="12_uwa3l"]
+[ext_resource type="Texture2D" uid="uid://cye22dmjalhc3" path="res://Scenes/ui/ui_assets/symbol_shiftkey.png" id="13_7fydm"]
+[ext_resource type="AudioStream" uid="uid://bu11gqp2acsrd" path="res://audio/sfx/ui/sfx_ui_start.wav" id="13_sufau"]
+[ext_resource type="AudioStream" uid="uid://cjxey0i3xp35e" path="res://audio/sfx/ui/sfx_ui_back.wav" id="14_4jvnq"]
+[ext_resource type="Texture2D" uid="uid://3wc74xj5ejer" path="res://Scenes/ui/ui_assets/symbol_rkey.png" id="14_7gibv"]
+[ext_resource type="Texture2D" uid="uid://diag61amrimtl" path="res://Scenes/ui/ui_assets/symbol_ekey.png" id="14_ryn4n"]
+[ext_resource type="AudioStream" uid="uid://f0sei8w4ppwq" path="res://audio/sfx/ui/sfx_ui_hover.wav" id="15_ly84d"]
+[ext_resource type="Texture2D" uid="uid://dcodc26t1rjk2" path="res://Scenes/ui/ui_assets/symbol_escapekey.png" id="16_6ru8e"]
+[ext_resource type="AudioStream" uid="uid://bxqqmjfrxj1q8" path="res://audio/sfx/ui/sfx_ui_enter.wav" id="16_exjna"]
+[ext_resource type="Texture2D" uid="uid://critspqe5gwko" path="res://Scenes/ui/ui_assets/soldierspolaroid.png" id="16_tusfa"]
+[ext_resource type="Texture2D" uid="uid://duehag15wobo" path="res://Scenes/ui/ui_assets/woodpiece.png" id="17_kfkdy"]
+[ext_resource type="Theme" uid="uid://d3bm7b2530f03" path="res://Scenes/ui/ui_styles/credits_label_style.tres" id="18_735lp"]
+[ext_resource type="AudioStream" uid="uid://6srjtliecny1" path="res://audio/music/music_menu_92bpm_loop.ogg" id="23_n5thb"]
+
+[sub_resource type="Curve2D" id="Curve2D_0q4k3"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 640, 360, -94.0236, -22.3216, 94.0236, 22.3216, 817, 433, 85.8693, -11.6462, -85.8693, 11.6462, 308, 555, 0, 0, 0, 0, 640, 654)
+}
+point_count = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e8jiy"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tutkj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q3d0t"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g5ey1"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y5rk4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_mr1gc"]
+Button/colors/font_color = Color(0.941176, 0.611765, 0.447059, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(0.931639, 0.690505, 0.251883, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(0.853268, 0.27941, 0.310272, 1)
+Button/constants/h_separation = 2
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 48
+Button/fonts/font = ExtResource("4_3c8fq")
+Button/styles/disabled = SubResource("StyleBoxFlat_e8jiy")
+Button/styles/focus = SubResource("StyleBoxFlat_tutkj")
+Button/styles/hover = SubResource("StyleBoxFlat_q3d0t")
+Button/styles/normal = SubResource("StyleBoxFlat_g5ey1")
+Button/styles/pressed = SubResource("StyleBoxFlat_y5rk4")
+
+[sub_resource type="LabelSettings" id="LabelSettings_oaao3"]
+font = ExtResource("4_3c8fq")
+font_size = 24
+
+[sub_resource type="Animation" id="Animation_wh35j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front/Credits/WoodBackground:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1014, -1494)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front/Credits/AdditionalCredits:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1277, 125)]
+}
+
+[sub_resource type="Animation" id="Animation_l5eak"]
+resource_name = "startup"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Behind/RedBackground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front/Path2D/PathFollow2D/LifeOfAFallenLeafLogo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.9, 4.1, 5.2, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(0.516075, 0.791136, 0.372207, 1), Color(0.933333, 0.690196, 0.25098, 1), Color(0.701961, 0.439216, 0.215686, 1), Color(0.854902, 0.278431, 0.309804, 1), Color(0.384314, 0.160784, 0.0666667, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Front/Path2D/PathFollow2D/LifeOfAFallenLeafLogo:theme_override_constants/outline_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 20, 18, 16, 14, 12, 10, 8, 6, 4, 2, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Front/Path2D/PathFollow2D/LifeOfAFallenLeafLogo:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.8, 2.9, 7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.629, 0.6), Vector2(0.25, 0.1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Front/Path2D/PathFollow2D:progress_ratio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.8, 3, 4.8, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.2, 0.6, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Front/Path2D/PathFollow2D/LifeOfAFallenLeafLogo:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Front/Path2D/PathFollow2D/LifeOfAFallenLeafLogo:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.8, 2.9, 5.2, 7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -0.0523599, 0.139626, 0.0349066]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Front/Main/BeginButton:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 4, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(466, -150), Vector2(466, -50), Vector2(466, 30)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Front/Main/ExitButton:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(7, 7.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 30), Vector2(1178, 30)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Front/Main/SettingsButton:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(7.2, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 118), Vector2(1178, 118)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Front/Main/ExitButton:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(7, 7.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Front/Main/SettingsButton:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(7.2, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Front/Main/ControlsButton:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(7.4, 7.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 206), Vector2(1178, 206)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Front/Main/ControlsButton:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(7.4, 7.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Front/Main/CreditsButton:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(7.6, 7.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1280, 294), Vector2(1178, 294)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Front/Main/CreditsButton:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(7.6, 7.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Front/Main/BeginButton:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(4, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_512gb"]
+resource_name = "settings"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front/Settings/VolumeVertical/MusicHorizontal/MusicLabel:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front/Settings/VolumeVertical/SFXHorizontal/SFXLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Front/Settings/VolumeVertical/DialogueHorizontal/DialogueLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Front/Settings/VolumeVertical/MusicHorizontal/MusicSlider:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.5, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Front/Settings/VolumeVertical/SFXHorizontal/SFXSlider:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.7, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Front/Settings/VolumeVertical/DialogueHorizontal/DialogueSlider:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.9, 2.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Front/Settings/FamilyTexture:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 2.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+}
+
+[sub_resource type="Animation" id="Animation_y38yu"]
+resource_name = "controls"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front/Controls/WASDTexture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front/Controls/ShiftKeyTexture:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Front/Controls/EKeyTexture:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 1.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Front/Controls/RKeyTexture:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Front/Controls/EscapeKeyTexture:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Front/Controls/MoveLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.8, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Front/Controls/RunLabel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.6, 3.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Front/Controls/InteractHarvestLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.2, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Front/Controls/ReceivePhoneCallLabel:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.4, 2.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Front/Controls/EndPhoneCallLabel:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(3, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Front/Controls/SolidersTexture:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_kxrf8"]
+resource_name = "credits"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Front/Credits/WoodBackground:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(-1014, -1494), Vector2(26, -486)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Front/Credits/LeadDeveloperContainer/LeadDeveloperLabel:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Front/Credits/3DArtistContainer/3DArtistLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.3, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Front/Credits/SoundDesignerContainer/SoundDesignerLabel:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.6, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Front/Credits/ProducerUIWriterContainer/ProducerUIWriterLabel:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.9, 2.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Front/Credits/ConceptArtistContainer/ConceptArtistLabel:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.2, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Front/Credits/LeadDeveloperContainer/JoeCloutierLabel:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(3.2, 4.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Front/Credits/3DArtistContainer/NickBaizLabel:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.5, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Front/Credits/SoundDesignerContainer/TaylorBrookLabel:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.8, 4.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Front/Credits/ProducerUIWriterContainer/RickyLeoneLabel:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.1, 5.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Front/Credits/ConceptArtistContainer/SilivarLabel:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(4.4, 5.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Front/Credits/AdditionalCredits:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(4.7, 5.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Front/Credits/AdditionalCredits:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(4.7, 5.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1277, 125), Vector2(613, 125)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gclc6"]
+_data = {
+"RESET": SubResource("Animation_wh35j"),
+"controls": SubResource("Animation_y38yu"),
+"credits": SubResource("Animation_kxrf8"),
+"settings": SubResource("Animation_512gb"),
+"startup": SubResource("Animation_l5eak")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bexs3"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -27,6 +757,499 @@ color = Color(0.215686, 0, 0, 1)
 [node name="Front" type="CanvasLayer" parent="."]
 layer = 2
 
+[node name="Path2D" type="Path2D" parent="Front"]
+curve = SubResource("Curve2D_0q4k3")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Front/Path2D"]
+position = Vector2(640, 360)
+rotates = false
+loop = false
+
+[node name="LifeOfAFallenLeafLogo" type="Label" parent="Front/Path2D/PathFollow2D"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -444.5
+offset_top = -81.0033
+offset_right = 444.5
+offset_bottom = 81.0033
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(444, 81)
+theme = ExtResource("4_hxpxf")
+theme_override_colors/font_outline_color = Color(0.516075, 0.791136, 0.372207, 1)
+theme_override_constants/outline_size = 20
+theme_override_font_sizes/font_size = 100
+text = "Life of a Fallen Leaf"
+
+[node name="Main" type="Control" parent="Front"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BeginButton" type="Button" parent="Front/Main"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 466.0
+offset_top = -150.0
+offset_right = 814.0
+offset_bottom = -73.0
+pivot_offset = Vector2(174, 0)
+focus_mode = 0
+theme = ExtResource("5_yfuvy")
+text = "Begin the Story"
+
+[node name="ExitButton" type="Button" parent="Front/Main"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 1280.0
+offset_top = 30.0
+offset_right = 1344.0
+offset_bottom = 94.0
+focus_mode = 0
+theme = SubResource("Theme_mr1gc")
+icon = ExtResource("7_1gkdd")
+
+[node name="SettingsButton" type="Button" parent="Front/Main"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 1280.0
+offset_top = 118.0
+offset_right = 1344.0
+offset_bottom = 182.0
+focus_mode = 0
+theme = SubResource("Theme_mr1gc")
+icon = ExtResource("9_k3nm3")
+
+[node name="ControlsButton" type="Button" parent="Front/Main"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 1280.0
+offset_top = 206.0
+offset_right = 1344.0
+offset_bottom = 270.0
+focus_mode = 0
+theme = SubResource("Theme_mr1gc")
+icon = ExtResource("9_m5okk")
+
+[node name="CreditsButton" type="Button" parent="Front/Main"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 1280.0
+offset_top = 294.0
+offset_right = 1344.0
+offset_bottom = 358.0
+focus_mode = 0
+theme = SubResource("Theme_mr1gc")
+icon = ExtResource("10_hmfu5")
+
+[node name="Settings" type="Control" parent="Front"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="FamilyTexture" type="TextureRect" parent="Front/Settings"]
+modulate = Color(1, 1, 1, 0.392157)
+layout_mode = 0
+offset_left = 57.0
+offset_right = 1221.0
+offset_bottom = 724.0
+texture = ExtResource("10_trgjp")
+
+[node name="VolumeVertical" type="VBoxContainer" parent="Front/Settings"]
+layout_mode = 1
+offset_left = 197.0
+offset_top = 232.0
+offset_right = 1026.0
+offset_bottom = 494.0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="MusicHorizontal" type="HBoxContainer" parent="Front/Settings/VolumeVertical"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 100
+
+[node name="MusicLabel" type="Label" parent="Front/Settings/VolumeVertical/MusicHorizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_hxpxf")
+text = "Music"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Front/Settings/VolumeVertical/MusicHorizontal"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("11_ftg7s")
+min_value = -40.0
+max_value = 10.0
+value = -5.0
+
+[node name="SFXHorizontal" type="HBoxContainer" parent="Front/Settings/VolumeVertical"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 100
+
+[node name="SFXLabel" type="Label" parent="Front/Settings/VolumeVertical/SFXHorizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_hxpxf")
+text = "SFX"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="Front/Settings/VolumeVertical/SFXHorizontal"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("11_ftg7s")
+min_value = -40.0
+max_value = 10.0
+value = -5.0
+
+[node name="DialogueHorizontal" type="HBoxContainer" parent="Front/Settings/VolumeVertical"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_constants/separation = 100
+
+[node name="DialogueLabel" type="Label" parent="Front/Settings/VolumeVertical/DialogueHorizontal"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("4_hxpxf")
+text = "Dialogue"
+horizontal_alignment = 1
+
+[node name="DialogueSlider" type="HSlider" parent="Front/Settings/VolumeVertical/DialogueHorizontal"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("11_ftg7s")
+min_value = -40.0
+max_value = 10.0
+value = -5.0
+
+[node name="Controls" type="Control" parent="Front"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WASDTexture" type="TextureRect" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 431.0
+offset_top = 114.0
+offset_right = 647.0
+offset_bottom = 330.0
+texture = ExtResource("12_uwa3l")
+expand_mode = 1
+
+[node name="MoveLabel" type="Label" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 499.0
+offset_top = 346.0
+offset_right = 579.0
+offset_bottom = 400.0
+theme = ExtResource("4_hxpxf")
+text = "Move"
+
+[node name="ShiftKeyTexture" type="TextureRect" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 492.0
+offset_top = 481.0
+offset_right = 792.0
+offset_bottom = 600.0
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("13_7fydm")
+
+[node name="RunLabel" type="Label" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 463.0
+offset_top = 554.0
+offset_right = 622.0
+offset_bottom = 608.0
+theme = ExtResource("4_hxpxf")
+text = "(Hold) Run"
+
+[node name="EKeyTexture" type="TextureRect" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 772.0
+offset_top = 201.0
+offset_right = 812.0
+offset_bottom = 241.0
+texture = ExtResource("14_ryn4n")
+expand_mode = 1
+
+[node name="InteractHarvestLabel" type="Label" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 894.0
+offset_top = 196.0
+offset_right = 1163.0
+offset_bottom = 250.0
+theme = ExtResource("4_hxpxf")
+text = "Interact / Harvest"
+
+[node name="RKeyTexture" type="TextureRect" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 772.0
+offset_top = 337.0
+offset_right = 812.0
+offset_bottom = 377.0
+texture = ExtResource("14_7gibv")
+expand_mode = 1
+
+[node name="ReceivePhoneCallLabel" type="Label" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 894.0
+offset_top = 332.0
+offset_right = 1163.0
+offset_bottom = 386.0
+theme = ExtResource("4_hxpxf")
+text = "Receive Phone Call"
+
+[node name="EscapeKeyTexture" type="TextureRect" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 760.0
+offset_top = 481.0
+offset_right = 964.0
+offset_bottom = 600.0
+scale = Vector2(0.33, 0.33)
+texture = ExtResource("16_6ru8e")
+
+[node name="EndPhoneCallLabel" type="Label" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 894.0
+offset_top = 476.0
+offset_right = 1121.0
+offset_bottom = 530.0
+theme = ExtResource("4_hxpxf")
+text = "End Phone Call"
+
+[node name="SolidersTexture" type="TextureRect" parent="Front/Controls"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 47.0
+offset_top = 179.0
+offset_right = 389.0
+offset_bottom = 524.0
+texture = ExtResource("16_tusfa")
+expand_mode = 1
+
+[node name="Credits" type="Control" parent="Front"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="WoodBackground" type="TextureRect" parent="Front/Credits"]
+modulate = Color(0.647059, 0.282353, 0, 1)
+layout_mode = 0
+offset_left = -1014.0
+offset_top = -1494.0
+offset_right = -414.0
+offset_bottom = -1294.0
+rotation = 0.761281
+scale = Vector2(3.15489, 3.15489)
+texture = ExtResource("17_kfkdy")
+
+[node name="LeadDeveloperContainer" type="VBoxContainer" parent="Front/Credits"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 436.0
+offset_bottom = 149.0
+
+[node name="LeadDeveloperLabel" type="Label" parent="Front/Credits/LeadDeveloperContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("18_735lp")
+theme_override_font_sizes/font_size = 40
+text = "Lead Developer"
+
+[node name="JoeCloutierLabel" type="Label" parent="Front/Credits/LeadDeveloperContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("4_hxpxf")
+text = "Joe Cloutier"
+horizontal_alignment = 2
+
+[node name="3DArtistContainer" type="VBoxContainer" parent="Front/Credits"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 160.0
+offset_right = 645.0
+offset_bottom = 285.0
+
+[node name="3DArtistLabel" type="Label" parent="Front/Credits/3DArtistContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("18_735lp")
+theme_override_font_sizes/font_size = 40
+text = "3D Artist / Level Designer"
+
+[node name="NickBaizLabel" type="Label" parent="Front/Credits/3DArtistContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("4_hxpxf")
+text = "Nick Baiz"
+horizontal_alignment = 2
+
+[node name="SoundDesignerContainer" type="VBoxContainer" parent="Front/Credits"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 296.0
+offset_right = 783.0
+offset_bottom = 421.0
+
+[node name="SoundDesignerLabel" type="Label" parent="Front/Credits/SoundDesignerContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("18_735lp")
+theme_override_font_sizes/font_size = 40
+text = "Sound Designer / Composer"
+
+[node name="TaylorBrookLabel" type="Label" parent="Front/Credits/SoundDesignerContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("4_hxpxf")
+text = "Taylor Brook"
+horizontal_alignment = 2
+
+[node name="ProducerUIWriterContainer" type="VBoxContainer" parent="Front/Credits"]
+layout_mode = 2
+offset_left = 248.0
+offset_top = 433.0
+offset_right = 917.0
+offset_bottom = 558.0
+
+[node name="ProducerUIWriterLabel" type="Label" parent="Front/Credits/ProducerUIWriterContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("18_735lp")
+theme_override_font_sizes/font_size = 40
+text = "Producer / UI Designer / Writer"
+
+[node name="RickyLeoneLabel" type="Label" parent="Front/Credits/ProducerUIWriterContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("4_hxpxf")
+text = "Ricky Leone"
+horizontal_alignment = 2
+
+[node name="ConceptArtistContainer" type="VBoxContainer" parent="Front/Credits"]
+layout_mode = 0
+offset_left = 696.0
+offset_top = 568.0
+offset_right = 1045.0
+offset_bottom = 693.0
+
+[node name="ConceptArtistLabel" type="Label" parent="Front/Credits/ConceptArtistContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("18_735lp")
+theme_override_font_sizes/font_size = 40
+text = "Concept Artist"
+
+[node name="SilivarLabel" type="Label" parent="Front/Credits/ConceptArtistContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme = ExtResource("4_hxpxf")
+text = "Silivar"
+horizontal_alignment = 2
+
+[node name="AdditionalCredits" type="Label" parent="Front/Credits"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 1277.0
+offset_top = 125.0
+offset_right = 1880.0
+offset_bottom = 335.0
+text = "Joe Cloutier as Errol Sapher
+        Wendy Kash as Candice \"Candy\" Sapher
+                 Roy Gnann as Bartholomew \"Holo\" Simpson
+
+                                 Additional Programming by Yoad Levanda "
+label_settings = SubResource("LabelSettings_oaao3")
+
+[node name="BackButton" type="Button" parent="Front"]
+visible = false
+offset_left = 1178.0
+offset_top = 30.0
+offset_right = 1242.0
+offset_bottom = 94.0
+focus_mode = 0
+theme = SubResource("Theme_mr1gc")
+icon = ExtResource("8_cab1n")
+
 [node name="MainMenuAnimPlayer" type="AnimationPlayer" parent="."]
+autoplay = "startup"
+libraries = {
+"": SubResource("AnimationLibrary_gclc6")
+}
 
 [node name="TransitionAnimPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bexs3")
+}
+
+[node name="SoundUIBeginGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_sufau")
+volume_db = 10.0
+bus = &"sfx"
+
+[node name="SoundUIBack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_4jvnq")
+volume_db = 10.0
+bus = &"sfx"
+
+[node name="SoundUIHover" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_ly84d")
+volume_db = 10.0
+bus = &"sfx"
+
+[node name="SoundUISelect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_exjna")
+volume_db = 10.0
+bus = &"sfx"
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("23_n5thb")
+autoplay = true
+bus = &"music"
+
+[connection signal="mouse_entered" from="Front/Main/BeginButton" to="." method="_on_begin_button_mouse_entered"]
+[connection signal="pressed" from="Front/Main/BeginButton" to="." method="_on_begin_button_pressed"]
+[connection signal="mouse_entered" from="Front/Main/ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="pressed" from="Front/Main/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="mouse_entered" from="Front/Main/SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="pressed" from="Front/Main/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="mouse_entered" from="Front/Main/ControlsButton" to="." method="_on_controls_button_mouse_entered"]
+[connection signal="pressed" from="Front/Main/ControlsButton" to="." method="_on_controls_button_pressed"]
+[connection signal="mouse_entered" from="Front/Main/CreditsButton" to="." method="_on_credits_button_mouse_entered"]
+[connection signal="pressed" from="Front/Main/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="value_changed" from="Front/Settings/VolumeVertical/MusicHorizontal/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Front/Settings/VolumeVertical/SFXHorizontal/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Front/Settings/VolumeVertical/DialogueHorizontal/DialogueSlider" to="." method="_on_dialogue_slider_value_changed"]
+[connection signal="pressed" from="Front/BackButton" to="." method="_on_back_button_pressed"]
