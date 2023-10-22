@@ -168,10 +168,10 @@ func _physics_process(delta):
 	if not villainOverrideVignette and can_update_vignette:
 		var num = stamina / max_stamina
 		vignette.weight = 0.1
-		vignette.softness = 1 + (num * 2)
+		vignette.softness = 0.75 + (clamp(num, 0.2, 10) * 2)
 		vignette.multiplier = 0.2
-		vignette.pulse_speed = (1 - num) * 0.4
-		vignette.pulse_strength = (1 - num)
+		vignette.pulse_speed = 0.3
+		vignette.pulse_strength = (1 - num) * 0.35
 	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_just_pressed("run"):
