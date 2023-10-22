@@ -626,13 +626,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.516, -1.52588e-05, -114.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.6859, -3.8147e-06, 38.3533)
 
 [node name="CabinHiding" type="Marker3D" parent="Game/HidingSpots"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.072, -1.14441e-05, 103.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.139, -1.14441e-05, 101.628)
 
 [node name="Hiding2" type="Marker3D" parent="Game/HidingSpots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.002, -3.8147e-06, 120.084)
 
 [node name="Hiding3" type="Marker3D" parent="Game/HidingSpots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.03, -3.8147e-06, -98.4361)
+
+[node name="Hiding6" type="Marker3D" parent="Game/HidingSpots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.73812, -3.8147e-06, -46.0818)
+
+[node name="Hiding7" type="Marker3D" parent="Game/HidingSpots"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66.0113, -3.8147e-06, -53.6264)
 
 [node name="Hiding4" type="Marker3D" parent="Game/HidingSpots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.1924, -3.8147e-06, 22.1989)
@@ -3307,6 +3313,7 @@ editor_only = true
 
 [node name="MorningSun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.394006, -0.307831, 0, -0.615661, 0.788011, -0.5, 0.682437, 0.533178, 2.8583, 6.96954, 2.2441)
+visible = false
 light_color = Color(0.760784, 0.921569, 0.972549, 1)
 light_energy = 1.75
 shadow_enabled = true

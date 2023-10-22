@@ -29,6 +29,7 @@ emission_enabled = true
 emission_energy_multiplier = 0.65
 emission_texture = SubResource("GradientTexture1D_qtfrs")
 uv1_scale = Vector3(2.81, 2.81, 2.81)
+disable_receive_shadows = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_71f42"]
 resource_name = "PhoneLens"
@@ -426,6 +427,7 @@ material = SubResource("StandardMaterial3D_bwarr")
 [node name="Phone" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 visible = false
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_gokvc")
 skeleton = NodePath("")
 script = ExtResource("1_hm8qm")
@@ -471,14 +473,3 @@ mesh = SubResource("PlaneMesh_g4q0q")
 bus = &"sfx"
 
 [node name="calls" parent="." instance=ExtResource("4_117jq")]
-
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0

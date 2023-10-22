@@ -7,6 +7,8 @@ const RUN_MULT = 2.0
 
 const mouse_sensitivity = .005
 
+const max_stamina = 7.0
+var stamina = max_stamina
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -16,7 +18,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var phone = $Camera3D/PhoneHolder/Phone
 @onready var player_sounds = $PlayerSounds/AnimationPlayer
 @onready var caster = $Camera3D/ShapeCast3D
-
+@onready var stamina_bar = $Control/ProgressBar
 var holding_item = false : set = _set_holding_pumpkin
 
 func _set_holding_pumpkin(ibool):
@@ -51,6 +53,7 @@ var tilt = 0.0
 # animation junk
 @onready var Viewmodel = $Viewmodel
 @onready var Animations = $Viewmodel/AnimationPlayer
+@onready var waypoint = get_tree().current_scene.get_node("Game/PumpkinZones")
 
 #this function can be replaced with lerp()
 #func interpolate(from, to, by):
@@ -66,7 +69,9 @@ func _ready():
 	init = Time.get_unix_time_from_system()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	await get_tree().create_timer(2.0).timeout
-	$Camera3D/PhoneHolder/Phone.outgoing_call("Candy","call1")
+	$PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
+	$PlayerSounds.play()
+	$Control/ProgressBar.max_value=max_stamina
 
 func play_step_sound():
 	get_node("footsteps_" + ground_type).play()
@@ -108,9 +113,11 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-	# Handle Jump.
-	#if Input.is_action_just_pressed("jump") and is_on_floor():
-	#	velocity.y = JUMP_VELOCITY
+	var arrow = $Camera3D/Arrow
+	if waypoint != null:
+		arrow.look_at(waypoint.global_position)
+		arrow.rotation_degrees.x=88.0
+		arrow.rotation_degrees.z=0.0
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -118,12 +125,13 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_just_pressed("run"):
 		run_timer=0.0
-	if Input.is_action_pressed("run") and input_dir.y<0:
+	if Input.is_action_pressed("run") and input_dir.y<0 and stamina > 0.0:
 		if not running:
 			just_running = true
 		
 		running = true
 		walking = false
+		stamina-=delta
 		velocity.x = direction.x * SPEED * RUN_MULT
 		velocity.z = direction.z * SPEED * RUN_MULT
 	elif direction:
@@ -132,6 +140,8 @@ func _physics_process(delta):
 		
 		walking = true
 		running = false
+		stamina+=delta
+		stamina=clamp(stamina,0.0,max_stamina)
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
@@ -146,9 +156,9 @@ func _physics_process(delta):
 	var timeScale = 1.0
 	if walking:
 		move = 1.0
-	if running:
+	if running and stamina > 0.0:
 		run_timer+=delta
-		if !player_sounds.is_playing():
+		if !$PlayerSounds.playing and !player_sounds.is_playing() and !$Camera3D/PhoneHolder/Phone/calls/AnimationPlayer.is_playing():
 			if run_timer >= 3.0:
 				player_sounds.play("breathing_heavy")
 			elif run_timer >=0.5:
@@ -171,7 +181,14 @@ func _physics_process(delta):
 		
 	tilt = lerp(tilt, -input_dir.x / 15, 0.1)
 	Camera.rotation = cameraTarget.rotation + Vector3(-abs(bob) / 2.5, (bob / 5), tilt)
-	
+	if velocity==Vector3.ZERO:
+		stamina+=delta
+		stamina=clamp(stamina,0.0,max_stamina)
+	stamina_bar.value=stamina
+	if stamina < max_stamina:
+		stamina_bar.show()
+	else:
+		stamina_bar.hide()
 	move_and_slide()
 
 func _input(event):

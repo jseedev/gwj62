@@ -1,5 +1,6 @@
-[gd_scene load_steps=33 format=3 uid="uid://b76j03ldohgh2"]
+[gd_scene load_steps=35 format=3 uid="uid://b76j03ldohgh2"]
 
+[ext_resource type="Script" path="res://gd/Captions.gd" id="1_0rw7s"]
 [ext_resource type="AudioStream" uid="uid://b7j131cxihav0" path="res://audio/voice/errol_candy_call1.ogg" id="1_j8b0w"]
 [ext_resource type="AudioStream" uid="uid://csuduel1766st" path="res://audio/voice/candy_call1.ogg" id="2_b1gyp"]
 [ext_resource type="AudioStream" uid="uid://cqic2lpsbm317" path="res://audio/voice/errol_holo_call1.ogg" id="4_es1i4"]
@@ -201,6 +202,131 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.3, 2.6, 4.5, 8.1, 16.4, 25.3, 33.4, 40.5, 52.8, 58.1, 62.3, 64.1, 68.5, 72.2, 81, 102.4, 122.33, 140.1, 150.09, 169.9, 182)
 }
 tracks/1/use_blend = false
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 1.7, 2.9, 4.6, 6.2, 8.2, 15, 16.5, 22.5, 25.5, 33.4, 36.5, 40.6, 49.1, 52.9, 54.9, 58.2, 61.6, 63.2, 64.8, 68.6, 71, 72.4, 80.1, 81.2, 81.9, 93.8, 102.5, 106, 122.4, 123.2, 140.2, 141, 150.3, 165.7, 170, 178.9, 182.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_gdurx"]
 resource_name = "call2"
@@ -311,10 +437,78 @@ tracks/1/keys = {
 "times": PackedFloat32Array(1.7, 6.5, 9.1, 12.92, 14.7, 28.19, 32, 37.9, 52.5, 57.71)
 }
 tracks/1/use_blend = false
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 2.2, 3.5, 6.9, 8, 9.5, 10.8, 13.2, 19.5, 28.5, 29.7, 32.4, 34.8, 38.1, 38.7, 53, 53.9, 57.8, 60.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_3n3vg"]
 resource_name = "call3"
-length = 18.0
+length = 16.4995
 tracks/0/type = "audio"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -357,6 +551,32 @@ tracks/1/keys = {
 "times": PackedFloat32Array(3.3, 9.3)
 }
 tracks/1/use_blend = false
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 3.4, 7.3, 9.7, 12.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_w3c5h"]
 resource_name = "call4"
@@ -491,6 +711,101 @@ tracks/1/keys = {
 "times": PackedFloat32Array(7.1, 20, 23.9, 26.6, 37.6, 55.8, 66.2, 72.2, 75.4, 97.2, 99.9, 126.7, 141.2)
 }
 tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 7.2, 9.1, 20.2, 23, 24.2, 26, 26.8, 35.7, 38, 49.5, 56.1, 57.6, 66.8, 68, 72.5, 73.3, 75.6, 79.7, 97.4, 98.8, 100.1, 104.9, 111.6, 126.9, 128.5, 141.5, 144.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_hab38"]
 resource_name = "call5"
@@ -613,6 +928,86 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 5.6, 14.1, 29.2, 40.7, 49.7, 51.6, 54, 81.2, 87.3963, 90.3, 99.5, 119.1)
 }
 tracks/1/use_blend = true
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 2, 6, 11.9, 14.6, 17.1, 29.4, 36.1, 41.3, 45.8, 49.8, 52.5477, 54.1, 79.3, 81.4, 87.5, 89.5, 90.5, 91.4, 99.6, 103, 119.2, 122.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}, {
+"args": [],
+"method": &"next_caption"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_yhtlo"]
 resource_name = "errol_voicemail1"
@@ -827,7 +1222,13 @@ _data = {
 "vm3": SubResource("Animation_w4hc8")
 }
 
+[sub_resource type="LabelSettings" id="LabelSettings_x0ewh"]
+font_size = 20
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
+
 [node name="calls" type="Node"]
+script = ExtResource("1_0rw7s")
 
 [node name="Errol" type="AudioStreamPlayer" parent="."]
 volume_db = 5.0
@@ -852,3 +1253,25 @@ bus = &"music"
 libraries = {
 "": SubResource("AnimationLibrary_1rsm8")
 }
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Captions" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -125.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_x0ewh")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

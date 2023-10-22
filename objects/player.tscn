@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://yw75bmw7w4o6"]
+[gd_scene load_steps=69 format=3 uid="uid://yw75bmw7w4o6"]
 
 [ext_resource type="Script" path="res://gd/player.gd" id="1_twiyk"]
 [ext_resource type="Environment" uid="uid://cw374elg52t6d" path="res://Art/Environment/MorningSky.tres" id="2_2yxsw"]
@@ -41,6 +41,7 @@
 [ext_resource type="AudioStream" uid="uid://osd2v68g1v6x" path="res://audio/sfx/footsteps/footstep_stone6.wav" id="37_njnjg"]
 [ext_resource type="AudioStream" uid="uid://cotbexju707pr" path="res://audio/sfx/footsteps/footstep_stone7.wav" id="38_n40lf"]
 [ext_resource type="PackedScene" uid="uid://gl8cgqb4sok2" path="res://Art/3D Assets/Viewmodel_Arms_2.tscn" id="41_srr5f"]
+[ext_resource type="AudioStream" uid="uid://b4tjsjgaace8p" path="res://audio/voice/errol_pumpkins.ogg" id="42_hhwsx"]
 [ext_resource type="AudioStream" uid="uid://iqrq1d4j7swd" path="res://audio/voice/errol_gasps.ogg" id="42_ib2is"]
 [ext_resource type="AudioStream" uid="uid://d3xrtqofvcdsb" path="res://audio/stingers/stinger_jumpscare_noleadin.wav" id="43_8lcfv"]
 [ext_resource type="AudioStream" uid="uid://cwtv7gbk5macx" path="res://audio/voice/breathing2.ogg" id="43_echou"]
@@ -61,6 +62,15 @@ radial_segments = 16
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ds6x5"]
 points = PackedVector3Array(-15, -40, -9.53674e-07, -13.8606, -40, -5.74099, -13.8606, -40, 5.73806, -12.0018, -24.0016, -9.53674e-07, -6.36648, -8.00313, -6.36648, -10.6069, -40, -10.6069, -6.00235, 7.9953, -9.53674e-07, -9.53674e-07, 40, -9.53674e-07, -2.12314, 23.9937, -2.12314, -10.6069, -40, 10.604, -6.36648, -8.00313, 6.36355, -5.74099, -40, -13.8606, 15, -40, -9.53674e-07, 13.8577, -40, -5.74099, 6.36355, -8.00313, -6.36648, 5.73806, -40, -13.8606, -9.53674e-07, 7.9953, -6.00235, -5.74099, -40, 13.8577, -9.53674e-07, -40, 15, 5.73806, -40, 13.8577, 6.36355, -8.00313, 6.36355, 13.8577, -40, 5.73806, -9.53674e-07, -24.0016, -12.0018, -9.53674e-07, -40, -15, 10.604, -40, -10.6069, 10.604, -40, 10.604)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xemwm"]
+albedo_color = Color(0.109804, 0.705882, 0, 1)
+roughness = 0.2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y0hjt"]
+material = SubResource("StandardMaterial3D_xemwm")
+top_radius = 0.32
+bottom_radius = 0.0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qx3bh"]
 streams_count = 8
@@ -412,6 +422,13 @@ _data = {
 "gasp3": SubResource("Animation_fmxch")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj737"]
+bg_color = Color(0.317647, 0.639216, 0.823529, 0.733333)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 script = ExtResource("1_twiyk")
@@ -455,6 +472,11 @@ mesh = SubResource("CylinderMesh_rp0wo")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.165353, -40.3182)
 shape = SubResource("ConvexPolygonShape3D_ds6x5")
 
+[node name="Arrow" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.187, 0, 0, 0, 0.00652621, -0.186886, 0, 0.186886, 0.00652621, 0, 0.69, -1.555)
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_y0hjt")
+
 [node name="footsteps_woodcreak" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_qx3bh")
 volume_db = -3.0
@@ -493,6 +515,7 @@ libraries = {
 [node name="Camera_Target" type="Node3D" parent="."]
 
 [node name="PlayerSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("42_hhwsx")
 volume_db = 3.0
 bus = &"dialogue"
 
@@ -504,5 +527,30 @@ libraries = {
 [node name="PlayerSFX" type="AudioStreamPlayer" parent="."]
 volume_db = -3.0
 bus = &"sfx"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -173.0
+offset_top = 107.0
+offset_right = 177.0
+offset_bottom = 134.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_tj737")
+max_value = 7.0
+show_percentage = false
 
 [connection signal="body_entered" from="Camera3D/LineOfSight" to="." method="_on_line_of_sight_body_entered"]

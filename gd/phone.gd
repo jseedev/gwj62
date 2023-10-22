@@ -4,21 +4,27 @@ var con_timer=0
 var on_call = null
 var call_playing = false
 @onready var call_player = $calls/AnimationPlayer
+@onready var evoice = $calls/Errol
+@onready var cvoice = $calls/Caller
+
+var lplay = null
 func _physics_process(_delta):
-	if ringing and Input.is_action_just_released("answer_phone"):
-		answer()
-		play_call(on_call)
+#	if ringing and Input.is_action_just_released("answer_phone"):
+#		answer()
+#		play_call(on_call)
 	if visible and Input.is_action_just_pressed("ui_cancel"):
 		hang_up()
 	if call_playing and !call_player.is_playing():
 		call_playing=false
 		var current_level = get_tree().current_scene
 		current_level.emit_signal("call_ended",on_call)
+		$calls/Control/Captions.text=""
 		hang_up()
 		
 
 func play_call(call_name):
 	call_player.play(call_name)
+	$calls.on_caption = 0
 
 func outgoing_call(to_name,call_name):
 	$CallFrom.text="Calling"
@@ -27,6 +33,7 @@ func outgoing_call(to_name,call_name):
 	$PhoneIcon.transparency=0.0
 	$Name.text=to_name
 	on_call=call_name
+	ringing=true
 	$AnimationPlayer.play("OutgoingCall")
 	$ConnectedTime.hide()
 	await get_tree().create_timer(7.0).timeout
@@ -59,6 +66,8 @@ func hang_up():
 	
 func answer():
 	con_timer=0
+	$ConnectedTime.text="00:00"
+	$PhoneIcon.transparency=0.0
 	$PhoneIcon.show()
 	$CallFrom.text="Connected"
 	$AnimationPlayer.play("Connected")

@@ -15,6 +15,7 @@ func _process(_delta):
 		player.holding_item = false
 		$PumpkinDropZone/PumpkinPile.add_pumpkin()
 		$PumpkinDropZone/Highlite.hide()
+		player.waypoint=$Game/PumpkinZones
 	clouds.global_position.x=player.global_position.x
 	clouds.global_position.z=player.global_position.z
 
@@ -85,7 +86,7 @@ var environments = {
 }
 
 func _ready():
-	lerp_environment(0.0)
+	#lerp_environment(0.0)
 	player.caster.add_exception($Level/NavigationRegion3D/Field/Field/StaticBody3D)
 	player.caster.add_exception(player)
 
@@ -193,25 +194,23 @@ func _on_pumpkin_gathered():
 	pumpkins_picked+=1
 	await get_tree().create_timer(1.0).timeout
 	skyChange()
-	
-	#if pumpkins_picked == 1:
-	#	await get_tree().create_timer(1.0).timeout
-	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-	#	change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-	#elif pumpkins_picked == 2:
-	#	await get_tree().create_timer(1.0).timeout
-	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
-	#	change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
-	#elif pumpkins_picked == 3:
-	#	await get_tree().create_timer(1.0).timeout
-	#	player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo","call4")
-	#	change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
-	#elif pumpkins_picked == 4:
-	#	await get_tree().create_timer(1.0).timeout
-	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call5")
-	#elif pumpkins_picked == 5:
-	#	await get_tree().create_timer(1.0).timeout
-	#	player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
+	player.waypoint=$PumpkinDropZone
+	if pumpkins_picked == 1:
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
+		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+	elif pumpkins_picked == 2:
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+	elif pumpkins_picked == 3:
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
+		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
+	elif pumpkins_picked == 4:
+		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo","call4")
+		change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
+	elif pumpkins_picked == 5:
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call5")
+	elif pumpkins_picked == 6:
+		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
 
 var env_current = 0.0
 var env_target = 0.0
