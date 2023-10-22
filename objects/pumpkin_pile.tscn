@@ -1,12 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://dfrifan71ggdm"]
+[gd_scene load_steps=21 format=3 uid="uid://dfrifan71ggdm"]
 
 [ext_resource type="Script" path="res://gd/pumpkin_pile.gd" id="1_dm2ei"]
 [ext_resource type="PackedScene" uid="uid://bambv1en5ke5g" path="res://Art/3D Assets/Pumpkin.tscn" id="1_g0iji"]
 [ext_resource type="Texture2D" uid="uid://7vlkeuc0fweo" path="res://Art/Textures/Pumpkin/PumpkinPaint.png" id="2_dqbg2"]
 [ext_resource type="Texture2D" uid="uid://ducr0256rxool" path="res://Art/Textures/Pumpkin/Pumpkin_Normal_2.png" id="3_8k730"]
 [ext_resource type="Texture2D" uid="uid://dspw2na8xkos" path="res://Art/Textures/Pumpkin/Pumpkin_Roughness.png" id="4_jgss6"]
+[ext_resource type="PackedScene" uid="uid://d0jt4qsrk1ib3" path="res://Art/3D Assets/WheelBarrow.tscn" id="6_rkhl0"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fdch2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nbde"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -14,7 +15,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jme1l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tu61x"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -22,7 +23,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_beu6v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_by6df"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -30,7 +31,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jnly2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25ago"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -38,7 +39,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qg4na"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8swk0"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -46,7 +47,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_muj0g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikdox"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -54,7 +55,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8dw5x"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uh6lj"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -62,7 +63,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3rqt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jopvn"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -70,7 +71,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2a1mu"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmgob"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -78,7 +79,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4d60"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrfw4"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -86,7 +87,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pqfno"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bn651"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -94,7 +95,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_05wuw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dnu3w"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -102,7 +103,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jptmp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mcc2e"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -110,7 +111,7 @@ emission = Color(0.294118, 0.360784, 0.172549, 1)
 normal_enabled = true
 normal_texture = ExtResource("3_8k730")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ck17a"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bhsty"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("2_dqbg2")
 roughness_texture = ExtResource("4_jgss6")
@@ -123,70 +124,74 @@ transform = Transform3D(2.525, 0, 0, 0, 2.525, 0, 0, 0, 2.525, 0, 0, 0)
 script = ExtResource("1_dm2ei")
 
 [node name="Pumpkin" parent="." instance=ExtResource("1_g0iji")]
+transform = Transform3D(1, 0, 0, 0, 0.976216, -0.216797, 0, 0.216797, 0.976216, 0.0642635, 0.0515136, -0.175169)
 visible = false
-material_override = SubResource("StandardMaterial3D_fdch2")
+material_override = SubResource("StandardMaterial3D_2nbde")
 
 [node name="Pumpkin2" parent="." instance=ExtResource("1_g0iji")]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -0.224047, 0, 0.155863)
+transform = Transform3D(0.258819, 0, -0.965926, -0.104453, 0.994136, -0.0279882, 0.960262, 0.108138, 0.257301, -0.164178, 0.033866, -0.148725)
 visible = false
-material_override = SubResource("StandardMaterial3D_jme1l")
+material_override = SubResource("StandardMaterial3D_tu61x")
 
 [node name="Pumpkin3" parent="." instance=ExtResource("1_g0iji")]
-transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0.155572, 0, 0.135568)
+transform = Transform3D(0.707107, 0, -0.707107, -0.0764652, 0.994136, -0.0764652, 0.70296, 0.108138, 0.70296, 0.155572, 0.00426184, 0.00840796)
 visible = false
-material_override = SubResource("StandardMaterial3D_beu6v")
+material_override = SubResource("StandardMaterial3D_by6df")
 
 [node name="Pumpkin4" parent="." instance=ExtResource("1_g0iji")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -0.0282209, 0, 0.334212)
 visible = false
-material_override = SubResource("StandardMaterial3D_jnly2")
+material_override = SubResource("StandardMaterial3D_25ago")
 
 [node name="Pumpkin6" parent="." instance=ExtResource("1_g0iji")]
-transform = Transform3D(0.470519, 0, -0.88239, 0, 1, 0, 0.88239, 0, 0.470519, 0.25168, 0, 0.3631)
+transform = Transform3D(0.470519, 0, -0.88239, 0, 1, 0, 0.88239, 0, 0.470519, 0.142166, 0.0694424, 0.678845)
 visible = false
-material_override = SubResource("StandardMaterial3D_qg4na")
+material_override = SubResource("StandardMaterial3D_8swk0")
 
 [node name="Pumpkin7" parent="." instance=ExtResource("1_g0iji")]
-transform = Transform3D(0.470519, 0, -0.88239, 0, 1, 0, 0.88239, 0, 0.470519, -0.287381, 0, 0.404396)
+transform = Transform3D(0.347871, -0.25295, -0.902775, 0.0997449, 0.967436, -0.232633, 0.932222, -0.00912096, 0.361773, -0.151017, 0.108896, 0.286074)
 visible = false
-material_override = SubResource("StandardMaterial3D_muj0g")
+material_override = SubResource("StandardMaterial3D_ikdox")
 
 [node name="Pumpkin8" parent="." instance=ExtResource("1_g0iji")]
-transform = Transform3D(-0.528912, 0, -0.848676, 0, 1, 0, 0.848676, 0, -0.528912, 0.380607, 0, 0.16409)
+transform = Transform3D(-0.528912, 0, -0.848676, 0, 1, 0, 0.848676, 0, -0.528912, 0.136158, 0, 0.232351)
 visible = false
-material_override = SubResource("StandardMaterial3D_8dw5x")
+material_override = SubResource("StandardMaterial3D_uh6lj")
 
 [node name="Pumpkin9" parent="." instance=ExtResource("1_g0iji")]
 transform = Transform3D(-0.0337135, 0, -0.999431, 0, 1, 0, 0.999431, 0, -0.0337135, 0.101386, 5.96046e-08, 0.583204)
 visible = false
-material_override = SubResource("StandardMaterial3D_e3rqt")
+material_override = SubResource("StandardMaterial3D_jopvn")
 
 [node name="Pumpkin11" parent="." instance=ExtResource("1_g0iji")]
 transform = Transform3D(-0.88239, 0, -0.470519, 0, 1, 0, 0.470519, 0, -0.88239, -0.129439, 1.19209e-07, 0.562611)
 visible = false
-material_override = SubResource("StandardMaterial3D_2a1mu")
+material_override = SubResource("StandardMaterial3D_fmgob")
 
 [node name="Pumpkin10" parent="." instance=ExtResource("1_g0iji")]
 transform = Transform3D(-0.528698, 0.104867, -0.842307, 0.00408236, 0.992642, 0.121021, 0.8488, 0.0605449, -0.525235, 0.157455, 0.165133, 0.438494)
 visible = false
-material_override = SubResource("StandardMaterial3D_s4d60")
+material_override = SubResource("StandardMaterial3D_rrfw4")
 
 [node name="Pumpkin12" parent="." instance=ExtResource("1_g0iji")]
-transform = Transform3D(-0.511739, -0.155621, -0.844929, -0.132894, 0.98596, -0.101108, 0.8488, 0.0605449, -0.525235, -0.100059, 0.165133, 0.460612)
+transform = Transform3D(-0.511739, -0.155621, -0.844929, -0.132894, 0.98596, -0.101108, 0.8488, 0.0605449, -0.525235, -0.115755, 0.0724264, 0.717901)
 visible = false
-material_override = SubResource("StandardMaterial3D_pqfno")
+material_override = SubResource("StandardMaterial3D_bn651")
 
 [node name="Pumpkin13" parent="." instance=ExtResource("1_g0iji")]
-transform = Transform3D(-0.952326, -0.0987595, 0.288655, -0.132894, 0.98596, -0.101108, -0.274616, -0.134648, -0.952079, -0.132395, 0.165133, 0.23315)
+transform = Transform3D(-0.952326, -0.0987595, 0.288655, -0.132894, 0.98596, -0.101108, -0.274616, -0.134648, -0.952079, -0.109803, -0.00471748, 0.13415)
 visible = false
-material_override = SubResource("StandardMaterial3D_05wuw")
+material_override = SubResource("StandardMaterial3D_dnu3w")
 
 [node name="Pumpkin14" parent="." instance=ExtResource("1_g0iji")]
-transform = Transform3D(-0.698402, 0.237601, 0.675115, 0.0495545, 0.957076, -0.285571, -0.713988, -0.165989, -0.680198, 0.270474, 0.165133, 0.25371)
+transform = Transform3D(-0.698402, 0.237601, 0.675115, 0.0495545, 0.957076, -0.285571, -0.713988, -0.165989, -0.680198, 0.191289, 0.190366, -0.0133608)
 visible = false
-material_override = SubResource("StandardMaterial3D_jptmp")
+material_override = SubResource("StandardMaterial3D_mcc2e")
 
 [node name="Pumpkin5" parent="." instance=ExtResource("1_g0iji")]
 transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, 0.0342672, 0.122607, 0.160407)
 visible = false
-material_override = SubResource("StandardMaterial3D_ck17a")
+material_override = SubResource("StandardMaterial3D_bhsty")
+
+[node name="Node3D" parent="." instance=ExtResource("6_rkhl0")]
+transform = Transform3D(0.719308, 0, 0, 0, 0.719308, 0, 0, 0, 0.719308, 0, -0.124058, 0.146564)
