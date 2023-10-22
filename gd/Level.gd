@@ -1,6 +1,6 @@
 extends Node
 
-var pumpkins_picked = 5
+var pumpkins_picked = 0
 var player = null #filled by the player itself.
 var ended = false
 
