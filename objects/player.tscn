@@ -435,6 +435,7 @@ corner_radius_bottom_left = 5
 
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+safe_margin = 0.25
 script = ExtResource("1_twiyk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
