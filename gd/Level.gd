@@ -1,13 +1,13 @@
 extends Node
 
-var pumpkins_picked = 0
+var pumpkins_picked = 5
 var player = null #filled by the player itself.
 var ended = false
 
 @onready var cabin = $Level/NavigationRegion3D/Cabin
 @onready var cabinator = $Level/NavigationRegion3D/Cabin/AnimationPlayer
 @onready var creak = $Level/NavigationRegion3D/Cabin/Door/DoorCreak
-@onready var vignette = $Game/Vignette
+@onready var vignette = $Game/player/Vignette
 
 signal call_ended(call)
 signal pumpkin_gathered()
@@ -108,6 +108,7 @@ func _ready():
 	vignette.multiplier = 0.2
 	
 	await get_tree().create_timer(3.0).timeout
+	player.can_update_vignette = true
 	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
 	await get_tree().create_timer(100).timeout
 	change_music(load("res://audio/music/music_1_theme_92bpm_loop.ogg"))
@@ -151,6 +152,7 @@ func spawn_villain():
 	if villain == null:
 		villain = villain_scene.instantiate()
 		villain.player=player
+		player.villain = villain
 		$Game.add_child(villain)
 		var point = $Game/SpawnPoints.get_children().pick_random()
 		villain.global_position = point.global_position
@@ -161,6 +163,7 @@ func spawn_villain():
 		
 func despawn_villain():
 	if villain != null:
+		player.villain = null
 		villain.queue_free()
 		villain=null
 
@@ -270,6 +273,8 @@ func _on_call_ended(callid):
 
 
 func _on_game_over():
+	player.look_at_villain = true
+	villain.animations.play("Catch", 0.3)
 	print("Game over .. player was caught.")
 
 var seen_times = 0

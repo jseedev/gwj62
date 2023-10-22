@@ -9,6 +9,7 @@ class_name Villain
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var target = Vector3.ZERO
 var player = null
+var gameover = false
 
 var previous_velocity = Vector3.ZERO
 
@@ -19,7 +20,7 @@ func _ready():
 	
 func _physics_process(delta):
 	# Move to player
-	if target != Vector3.ZERO and !nav_agent.is_target_reached():
+	if target != Vector3.ZERO and !nav_agent.is_target_reached() and not gameover:
 		var next_point = nav_agent.get_next_path_position()
 		next_point.y=global_position.y
 		#next_point.z+=0.0001
@@ -30,10 +31,14 @@ func _physics_process(delta):
 		velocity=(next_point-global_position).normalized()
 		velocity*=SPEED
 		velocity*=delta
-	elif nav_agent.is_target_reached():
+	elif nav_agent.is_target_reached() or (player.global_position - global_position).length() <= 3.0:
 		#reached the player
 		target = Vector3.ZERO
-		if player.global_position.distance_to(global_position) <= 5.0:
+		velocity=Vector3.ZERO
+		if player.global_position.distance_to(global_position) <= 5.0 and not gameover:
+			gameover = true
+			
+			animations.play("Catch", 0.3)
 			get_tree().current_scene.emit_signal("game_over")
 	else:
 		target=Vector3.ZERO
@@ -42,7 +47,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y = -gravity
 		
-	if previous_velocity != velocity:
+	if previous_velocity != velocity and not gameover:
 		if Vector2(velocity.x, velocity.z) == Vector2.ZERO:
 			animations.play("Idle", 0.5)
 		else:

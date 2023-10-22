@@ -20,6 +20,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var player_sounds = $PlayerSounds/AnimationPlayer
 @onready var caster = $Camera3D/ShapeCast3D
 @onready var stamina_bar = $Control/ProgressBar
+@onready var vignette = $Vignette
+
 var holding_item = false : set = _set_holding_pumpkin
 
 func _set_holding_pumpkin(ibool):
@@ -43,6 +45,9 @@ var walking = false
 var just_walking = false
 var running = false
 var just_running = false
+var look_at_villain = false
+var villain = null
+@onready var can_update_vignette = false
 
 # procedural headbob junk
 var init = 0
@@ -126,6 +131,48 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "up", "down")
+	
+	var villainOverrideVignette = false
+	if villain != null:
+		if look_at_villain:
+			villainOverrideVignette = true
+			input_dir = Vector2.ZERO
+			arrow.visible = false
+			vignette.weight = 0.1
+			vignette.multiplier = 0.2
+			vignette.softness = 1.0
+			look_at(villain.global_position)
+			rotation_degrees.x = 0.0
+			rotation_degrees.z = 0.0
+			Camera.look_at(villain.global_position)
+			Camera.rotation_degrees.y = 0.0
+			Camera.rotation_degrees.x = 0.0
+			await get_tree().create_timer(2).timeout
+			vignette.color = Color.WEB_MAROON
+			vignette.softness = 0.1
+			vignette.multiplier = 0.0
+			await get_tree().create_timer(0.25).timeout
+			vignette.color = Color.BLACK
+			vignette.softness = 0.05
+			vignette.multiplier = 0.0
+		else:
+			if (villain.global_position - global_position).length() <= 30.0:
+				villainOverrideVignette = true
+				var num = 1.0 - ((villain.global_position - global_position).length() / 30.0)
+				vignette.softness = 1 + (num * 2)
+				vignette.weight = 0.1
+				vignette.multiplier = 0.05 + (num * 0.6)
+				vignette.pulse_speed = num
+				vignette.pulse_strength = num * 0.6
+	
+	if not villainOverrideVignette and can_update_vignette:
+		var num = stamina / max_stamina
+		vignette.weight = 0.1
+		vignette.softness = 1 + (num * 2)
+		vignette.multiplier = 0.2
+		vignette.pulse_speed = (1 - num) * 0.4
+		vignette.pulse_strength = (1 - num)
+	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_just_pressed("run"):
 		run_timer=0.0
@@ -182,7 +229,7 @@ func _physics_process(delta):
 	else:
 		stepping = false
 		just_stepping = false
-		
+	
 	tilt = lerp(tilt, -input_dir.x / 15, 0.1)
 	Camera.rotation = cameraTarget.rotation + Vector3(-abs(bob) / 2.5, (bob / 5), tilt)
 	if velocity==Vector3.ZERO:
@@ -198,7 +245,7 @@ func _physics_process(delta):
 func _input(event):
 	if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
 		Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
-	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
+	if event is InputEventMouseMotion and not look_at_villain and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		cameraTarget.rotate_x(-event.relative.y * mouse_sensitivity)
 		cameraTarget.rotation.x = clampf(cameraTarget.rotation.x, -deg_to_rad(70), deg_to_rad(70))

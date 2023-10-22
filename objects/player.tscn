@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://yw75bmw7w4o6"]
+[gd_scene load_steps=70 format=3 uid="uid://yw75bmw7w4o6"]
 
 [ext_resource type="Script" path="res://gd/player.gd" id="1_twiyk"]
 [ext_resource type="Environment" uid="uid://cw374elg52t6d" path="res://Art/Environment/MorningSky.tres" id="2_2yxsw"]
@@ -46,6 +46,7 @@
 [ext_resource type="AudioStream" uid="uid://d3xrtqofvcdsb" path="res://audio/stingers/stinger_jumpscare_noleadin.wav" id="43_8lcfv"]
 [ext_resource type="AudioStream" uid="uid://cwtv7gbk5macx" path="res://audio/voice/breathing2.ogg" id="43_echou"]
 [ext_resource type="AudioStream" uid="uid://clv5h5300u57q" path="res://audio/voice/breathing1.ogg" id="45_tqow2"]
+[ext_resource type="PackedScene" uid="uid://drv1aoy6x6g3i" path="res://Art/2D Assets/Vignette.tscn" id="47_kcoh8"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ex6vp"]
 radius = 0.2
@@ -555,5 +556,7 @@ grow_vertical = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_tj737")
 max_value = 7.0
 show_percentage = false
+
+[node name="Vignette" parent="." instance=ExtResource("47_kcoh8")]
 
 [connection signal="body_entered" from="Camera3D/LineOfSight" to="." method="_on_line_of_sight_body_entered"]

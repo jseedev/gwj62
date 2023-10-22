@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=100 format=3 uid="uid://dlpnyn1b5v37v"]
 
 [ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://byrk8hub4byox" path="res://Art/3D Assets/Tree_1.tscn" id="3_j1oc4"]
 [ext_resource type="PackedScene" uid="uid://ltttlncdshvw" path="res://Art/3D Assets/Tree_2.tscn" id="4_0bwet"]
 [ext_resource type="Shader" uid="uid://bns4uwtyb40yw" path="res://Art/Environment/clouds.res" id="6_vtae4"]
-[ext_resource type="PackedScene" uid="uid://drv1aoy6x6g3i" path="res://Art/2D Assets/Vignette.tscn" id="7_kl217"]
 [ext_resource type="CameraAttributesPractical" uid="uid://bmuur8ftv5oj3" path="res://Art/Environment/CameraAttributes.tres" id="8_gek8w"]
 [ext_resource type="Material" uid="uid://lld50bx6ioqd" path="res://Art/Materials/Grass_Test.tres" id="9_c8ft5"]
 [ext_resource type="Material" uid="uid://kn2dd8upk5ns" path="res://Art/Materials/Wheat.tres" id="10_0iq21"]
@@ -707,8 +706,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3781, -3.8147e-06, -32.43
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08661, 0)
 cast_shadow = 0
 mesh = SubResource("SphereMesh_klikl")
-
-[node name="Vignette" parent="Game" instance=ExtResource("7_kl217")]
 
 [node name="Level" type="Node" parent="."]
 
