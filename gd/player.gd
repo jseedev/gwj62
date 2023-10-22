@@ -68,9 +68,9 @@ func _ready():
 	Animations.play("Idle", 0.5)
 	init = Time.get_unix_time_from_system()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	await get_tree().create_timer(2.0).timeout
-	$PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
-	$PlayerSounds.play()
+	#await get_tree().create_timer(2.0).timeout
+	#$PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
+	#$PlayerSounds.play()
 	$Control/ProgressBar.max_value=max_stamina
 
 func play_step_sound():

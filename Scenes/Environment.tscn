@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=102 format=3 uid="uid://dlpnyn1b5v37v"]
 
 [ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
@@ -6,7 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://byrk8hub4byox" path="res://Art/3D Assets/Tree_1.tscn" id="3_j1oc4"]
 [ext_resource type="PackedScene" uid="uid://ltttlncdshvw" path="res://Art/3D Assets/Tree_2.tscn" id="4_0bwet"]
 [ext_resource type="Shader" uid="uid://bns4uwtyb40yw" path="res://Art/Environment/clouds.res" id="6_vtae4"]
+[ext_resource type="PackedScene" uid="uid://drv1aoy6x6g3i" path="res://Art/2D Assets/Vignette.tscn" id="7_kl217"]
 [ext_resource type="CameraAttributesPractical" uid="uid://bmuur8ftv5oj3" path="res://Art/Environment/CameraAttributes.tres" id="8_gek8w"]
+[ext_resource type="Script" path="res://gd/Vignette.gd" id="8_lbfr8"]
 [ext_resource type="Material" uid="uid://lld50bx6ioqd" path="res://Art/Materials/Grass_Test.tres" id="9_c8ft5"]
 [ext_resource type="Material" uid="uid://kn2dd8upk5ns" path="res://Art/Materials/Wheat.tres" id="10_0iq21"]
 [ext_resource type="PackedScene" uid="uid://dts1nex87uiu5" path="res://Art/3D Assets/Grass.tscn" id="10_hg11y"]
@@ -706,6 +708,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3781, -3.8147e-06, -32.43
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.08661, 0)
 cast_shadow = 0
 mesh = SubResource("SphereMesh_klikl")
+
+[node name="Vignette" parent="Game" instance=ExtResource("7_kl217")]
+script = ExtResource("8_lbfr8")
 
 [node name="Level" type="Node" parent="."]
 
@@ -1502,6 +1507,1236 @@ transform = Transform3D(-0.999105, 0.0397313, 0.014487, 0.0397223, 0.999211, -0.
 [node name="Fence302" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
 transform = Transform3D(-0.999036, 0.0286212, 0.0332647, 0.0285649, 0.99959, -0.00216665, -0.0333129, -0.00121443, -0.999443, -91.6057, 0.640541, -124.436)
 
+[node name="Fence303" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999978, -0.000998195, -0.0063646, -0.0010019, 1, 0.000571953, 0.00636394, 0.000578271, -0.99998, -93.3791, 0.648101, -124.485)
+
+[node name="Fence304" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999835, 0.0170415, -0.00612449, 0.0170461, 0.999855, -0.000706345, 0.00611148, -0.000810675, -0.999981, -95.3731, 0.658624, -124.503)
+
+[node name="Fence305" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999835, 0.0170415, -0.00612449, 0.0170461, 0.999855, -0.000706345, 0.00611148, -0.000810675, -0.999981, -97.3511, 0.690246, -124.511)
+
+[node name="Fence306" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.99958, 0.0281564, -0.00675403, 0.0281563, 0.999604, 0.000116393, 0.00675455, -7.38693e-05, -0.999977, -99.3455, 0.727471, -124.52)
+
+[node name="Fence307" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999891, -0.00887355, 0.0117715, -0.00889239, 0.99996, -0.0015539, -0.0117573, -0.00165846, -0.999929, -101.292, 0.737715, -124.529)
+
+[node name="Fence308" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999236, -0.0376072, 0.0106245, -0.0376023, 0.999293, 0.000656177, -0.0106417, 0.000256118, -0.999943, -103.285, 0.667135, -124.58)
+
+[node name="Fence309" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999214, -0.0388496, -0.00786143, -0.0388615, 0.999244, 0.00136856, 0.00780222, 0.00167295, -0.999968, -105.286, 0.628376, -124.627)
+
+[node name="Fence310" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.99995, -0.00696329, -0.00704191, -0.0069644, 0.999976, 0.000142656, 0.00704066, 0.000191649, -0.999975, -107.292, 0.596594, -124.629)
+
+[node name="Fence311" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999766, -0.0180955, 0.0117799, -0.0180996, 0.999837, -0.000241885, -0.0117737, -0.000455089, -0.999931, -109.24, 0.568515, -124.635)
+
+[node name="Fence312" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999621, -0.0248161, 0.0119147, -0.0248146, 0.999692, 0.000263388, -0.0119177, -3.24103e-05, -0.999929, -111.165, 0.524536, -124.683)
+
+[node name="Fence313" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999893, 0.00171102, 0.0145109, 0.00170605, 0.999999, -0.000352684, -0.0145112, -0.000327943, -0.999895, -113.178, 0.512153, -124.716)
+
+[node name="Fence314" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.9994, -0.00940546, 0.033323, -0.00944066, 0.999955, -0.000900307, -0.0333129, -0.00121443, -0.999443, -115.125, 0.506731, -124.763)
+
+[node name="Fence315" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999621, -0.0248161, 0.0119147, -0.0248146, 0.999692, 0.000263388, -0.0119177, -3.24103e-05, -0.999929, -117.076, 0.524536, -124.815)
+
+[node name="Fence316" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999893, 0.00171102, 0.0145109, 0.00170605, 0.999999, -0.000352684, -0.0145112, -0.000327943, -0.999895, -119.088, 0.512153, -124.848)
+
+[node name="Fence317" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.9994, -0.00940546, 0.033323, -0.00944066, 0.999955, -0.000900307, -0.0333129, -0.00121443, -0.999443, -121.035, 0.506731, -124.895)
+
+[node name="Fence322" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0362519, 0.00161194, -0.999342, 0.0376597, 0.999287, 0.00297802, 0.998632, -0.037743, 0.036165, -125.01, 0.628745, -117.686)
+
+[node name="Fence323" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0174268, 0.00129063, -0.999846, 0.026575, 0.999646, 0.00175361, 0.999494, -0.0266015, 0.0173861, -124.959, 0.69341, -115.74)
+
+[node name="Fence324" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0387745, 0.00325262, -0.999243, 0.0111366, 0.999932, 0.00368703, 0.999186, -0.011271, 0.0387357, -124.911, 0.78146, -113.79)
+
+[node name="Fence325" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0362519, 0.00161194, -0.999342, 0.0376597, 0.999287, 0.00297802, 0.998632, -0.037743, 0.036165, -124.842, 0.841463, -111.78)
+
+[node name="Fence326" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0174268, 0.00129063, -0.999846, 0.026575, 0.999646, 0.00175361, 0.999494, -0.0266015, 0.0173861, -124.79, 0.906128, -109.834)
+
+[node name="Fence327" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0229678, 0.00211374, -0.999734, 0.0376597, 0.999287, 0.00297802, 0.999026, -0.0377182, 0.0228716, -124.779, 1.02434, -107.839)
+
+[node name="Fence328" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.004133, 0.00164429, -0.999989, 0.026575, 0.999646, 0.00175361, 0.999638, -0.026582, 0.00408763, -124.753, 1.08901, -105.893)
+
+[node name="Fence329" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0254829, 0.00340223, -0.999669, 0.0111366, 0.999932, 0.00368703, 0.999613, -0.0112268, 0.0254433, -124.732, 1.17706, -103.943)
+
+[node name="Fence330" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0229678, 0.00211374, -0.999734, 0.0376597, 0.999287, 0.00297802, 0.999026, -0.0377182, 0.0228716, -124.689, 1.23706, -101.931)
+
+[node name="Fence331" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.004133, 0.00164429, -0.999989, 0.026575, 0.999646, 0.00175361, 0.999638, -0.026582, 0.00408763, -124.663, 1.30173, -99.9851)
+
+[node name="Fence332" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0229678, 0.00211374, -0.999734, 0.0376597, 0.999287, 0.00297802, 0.999026, -0.0377182, 0.0228716, -124.706, 1.32761, -97.8754)
+
+[node name="Fence333" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.004133, 0.00164429, -0.999989, 0.026575, 0.999646, 0.00175361, 0.999638, -0.026582, 0.00408763, -124.68, 1.39228, -95.929)
+
+[node name="Fence334" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0254829, 0.00340223, -0.999669, 0.0111366, 0.999932, 0.00368703, 0.999613, -0.0112268, 0.0254433, -124.659, 1.48033, -93.9791)
+
+[node name="Fence335" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0229678, 0.00211374, -0.999734, 0.0376597, 0.999287, 0.00297802, 0.999026, -0.0377182, 0.0228716, -124.616, 1.54033, -91.9677)
+
+[node name="Fence336" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.004133, 0.00164429, -0.999989, 0.026575, 0.999646, 0.00175361, 0.999638, -0.026582, 0.00408763, -124.59, 1.60499, -90.0214)
+
+[node name="Fence337" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0229678, 0.00211374, -0.999734, 0.0376597, 0.999287, 0.00297802, 0.999026, -0.0377182, 0.0228716, -124.569, 1.70054, -88.0783)
+
+[node name="Fence338" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.004133, 0.00164429, -0.999989, 0.026575, 0.999646, 0.00175361, 0.999638, -0.026582, 0.00408763, -124.543, 1.7652, -86.132)
+
+[node name="Fence339" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0254829, 0.00340223, -0.999669, 0.0111366, 0.999932, 0.00368703, 0.999613, -0.0112268, 0.0254433, -124.522, 1.85325, -84.182)
+
+[node name="Fence340" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0229678, 0.00211374, -0.999734, 0.0376597, 0.999287, 0.00297802, 0.999026, -0.0377182, 0.0228716, -124.479, 1.91326, -82.1706)
+
+[node name="Fence341" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.004133, 0.00164429, -0.999989, 0.026575, 0.999646, 0.00175361, 0.999638, -0.026582, 0.00408763, -124.453, 1.97792, -80.2243)
+
+[node name="Fence342" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.0188494, 0.999815, 0.00400021, 0.999807, -0.0188709, 0.00538979, -124.507, 1.97272, -78.3409)
+
+[node name="Fence343" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, 0.00778256, 0.999965, 0.0031293, 0.99988, -0.0077399, -0.0134154, -124.515, 2.00077, -76.3935)
+
+[node name="Fence344" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.00768363, 0.99996, 0.00466068, 0.999939, 0.00764643, 0.00797518, -124.528, 2.05213, -74.4421)
+
+[node name="Fence345" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.0188494, 0.999815, 0.00400021, 0.999807, -0.0188709, 0.00538979, -124.521, 2.07427, -72.4296)
+
+[node name="Fence346" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, 0.00778256, 0.999965, 0.0031293, 0.99988, -0.0077399, -0.0134154, -124.529, 2.10232, -70.4822)
+
+[node name="Fence347" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.0188494, 0.999815, 0.00400021, 0.999807, -0.0188709, 0.00538979, -124.507, 2.12269, -68.6533)
+
+[node name="Fence348" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, 0.00778256, 0.999965, 0.0031293, 0.99988, -0.0077399, -0.0134154, -124.515, 2.15074, -66.7059)
+
+[node name="Fence349" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.00768363, 0.99996, 0.00466068, 0.999939, 0.00764643, 0.00797518, -124.528, 2.2021, -64.7546)
+
+[node name="Fence350" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.0188494, 0.999815, 0.00400021, 0.999807, -0.0188709, 0.00538979, -124.521, 2.22424, -62.742)
+
+[node name="Fence351" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, 0.00778256, 0.999965, 0.0031293, 0.99988, -0.0077399, -0.0134154, -124.529, 2.25229, -60.7946)
+
+[node name="Fence352" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.0188494, 0.999815, 0.00400021, 0.999807, -0.0188709, 0.00538979, -124.606, 2.27509, -58.8159)
+
+[node name="Fence353" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, 0.00778256, 0.999965, 0.0031293, 0.99988, -0.0077399, -0.0134154, -124.614, 2.30313, -56.8685)
+
+[node name="Fence354" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.00768363, 0.99996, 0.00466068, 0.999939, 0.00764643, 0.00797518, -124.627, 2.30444, -54.9171)
+
+[node name="Fence355" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.0188494, 0.999815, 0.00400021, 0.999807, -0.0188709, 0.00538979, -124.62, 2.30084, -52.9046)
+
+[node name="Fence356" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, 0.00778256, 0.999965, 0.0031293, 0.99988, -0.0077399, -0.0134154, -124.628, 2.33134, -50.9572)
+
+[node name="Fence357" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.00673811, 0.99997, 0.00393463, 0.999962, -0.0067595, 0.00543785, -124.606, 2.25903, -48.9657)
+
+[node name="Fence358" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, -0.00432884, 0.999986, 0.00329156, 0.999901, 0.00437254, -0.0133766, -124.614, 2.22319, -47.0181)
+
+[node name="Fence359" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.0197946, 0.999794, 0.00456374, 0.999773, 0.0197577, 0.00803104, -124.627, 2.1858, -45.0662)
+
+[node name="Fence360" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.00673811, 0.99997, 0.00393463, 0.999962, -0.0067595, 0.00543785, -124.62, 2.22528, -43.0536)
+
+[node name="Fence361" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, -0.00432884, 0.999986, 0.00329156, 0.999901, 0.00437254, -0.0133766, -124.628, 2.20932, -41.106)
+
+[node name="Fence362" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.0188494, 0.999815, 0.00400021, 0.999807, -0.0188709, 0.00538979, -124.606, 2.23131, -39.2414)
+
+[node name="Fence363" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0128484, 0.00676575, -0.999894, -0.0265197, 0.999624, 0.00710474, 0.999565, 0.0266082, -0.0126643, -124.613, 2.17721, -37.2942)
+
+[node name="Fence364" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00828577, 0.00679887, -0.999942, -0.030812, 0.999504, 0.0065406, 0.999491, 0.0307562, 0.00849128, -124.621, 2.08923, -35.3088)
+
+[node name="Fence365" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00612171, 0.00516749, -0.999968, -2.17818e-05, 0.999987, 0.0051675, 0.999981, -9.88878e-06, 0.00612149, -124.615, 2.07946, -33.3483)
+
+[node name="Fence366" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, 0.00778256, 0.999965, 0.0031293, 0.99988, -0.0077399, -0.0134154, -124.62, 2.0478, -31.3831)
+
+[node name="Fence367" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546454, 0.00389779, -0.999978, 0.00673811, 0.99997, 0.00393463, 0.999962, -0.0067595, 0.00543785, -124.598, 1.97549, -29.3916)
+
+[node name="Fence368" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0133906, 0.00323328, -0.999904, -0.00432884, 0.999986, 0.00329156, 0.999901, 0.00437254, -0.0133766, -124.606, 1.93965, -27.444)
+
+[node name="Fence369" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.0197946, 0.999794, 0.00456374, 0.999773, 0.0197577, 0.00803104, -124.626, 1.87942, -25.4919)
+
+[node name="Fence370" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00504028, 0.00457702, -0.999977, -0.0367253, 0.999316, 0.00438894, 0.999312, 0.0367024, 0.00520467, -124.62, 1.82291, -23.5112)
+
+[node name="Fence371" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0167352, 0.000970901, -0.999858, -0.0448072, 0.998995, 0.0017201, 0.998855, 0.0448298, -0.016675, -124.638, 1.76472, -21.5477)
+
+[node name="Fence372" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.0197946, 0.999794, 0.00456374, 0.999773, 0.0197577, 0.00803104, -124.624, 1.76262, -19.6038)
+
+[node name="Fence373" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00504028, 0.00457702, -0.999977, -0.0367253, 0.999316, 0.00438894, 0.999312, 0.0367024, 0.00520467, -124.618, 1.70612, -17.6231)
+
+[node name="Fence374" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0167352, 0.000970901, -0.999858, -0.0448072, 0.998995, 0.0017201, 0.998855, 0.0448298, -0.016675, -124.636, 1.64792, -15.6596)
+
+[node name="Fence375" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.0197946, 0.999794, 0.00456374, 0.999773, 0.0197577, 0.00803104, -124.628, 1.58807, -13.7271)
+
+[node name="Fence376" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00504028, 0.00457702, -0.999977, -0.0367253, 0.999316, 0.00438894, 0.999312, 0.0367024, 0.00520467, -124.622, 1.53156, -11.7464)
+
+[node name="Fence377" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0167352, 0.000970901, -0.999858, -0.0448072, 0.998995, 0.0017201, 0.998855, 0.0448298, -0.016675, -124.639, 1.47337, -9.78285)
+
+[node name="Fence378" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.0197946, 0.999794, 0.00456374, 0.999773, 0.0197577, 0.00803104, -124.723, 1.29882, -7.84437)
+
+[node name="Fence379" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00504028, 0.00457702, -0.999977, -0.0367253, 0.999316, 0.00438894, 0.999312, 0.0367024, 0.00520467, -124.718, 1.24231, -5.86367)
+
+[node name="Fence380" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0167352, 0.000970901, -0.999858, -0.0448072, 0.998995, 0.0017201, 0.998855, 0.0448298, -0.016675, -124.735, 1.18412, -3.90015)
+
+[node name="Fence381" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00793908, 0.00472164, -0.999957, -0.0197946, 0.999794, 0.00456374, 0.999773, 0.0197577, 0.00803104, -124.713, 1.11199, -1.93971)
+
+[node name="Fence382" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00504028, 0.00457702, -0.999977, -0.0367253, 0.999316, 0.00438894, 0.999312, 0.0367024, 0.00520467, -124.707, 1.05548, 0.0409889)
+
+[node name="Fence383" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0167352, 0.000970901, -0.999858, -0.0448072, 0.998995, 0.0017201, 0.998855, 0.0448298, -0.016675, -124.724, 0.997292, 2.00451)
+
+[node name="Fence384" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00870107, 0.00491832, -0.99995, -0.0153063, 0.999872, 0.00478476, 0.999845, 0.015264, 0.00877537, -124.734, 0.932016, 3.84396)
+
+[node name="Fence385" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00579885, 0.00478659, -0.999972, -0.0322383, 0.99947, 0.00459728, 0.999463, 0.0322108, 0.00594983, -124.727, 0.884403, 5.82488)
+
+[node name="Fence386" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0159784, 0.00118663, -0.999871, -0.0403182, 0.999186, 0.00183018, 0.999059, 0.0403423, -0.0159177, -124.743, 0.835032, 7.78865)
+
+[node name="Fence387" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00870107, 0.00491832, -0.99995, -0.0153063, 0.999872, 0.00478476, 0.999845, 0.015264, 0.00877537, -124.801, 0.711355, 9.6322)
+
+[node name="Fence388" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00579885, 0.00478659, -0.999972, -0.0322383, 0.99947, 0.00459728, 0.999463, 0.0322108, 0.00594983, -124.794, 0.663742, 11.6131)
+
+[node name="Fence389" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0159784, 0.00118663, -0.999871, -0.0403182, 0.999186, 0.00183018, 0.999059, 0.0403423, -0.0159177, -124.81, 0.614371, 13.5769)
+
+[node name="Fence390" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00494458, 0.00600039, -0.99997, -0.0316916, 0.999481, 0.00584078, 0.999486, 0.0316619, 0.00513232, -124.866, 0.540708, 15.5494)
+
+[node name="Fence391" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00202452, 0.00580483, -0.999981, -0.0486116, 0.998802, 0.00569963, 0.998815, 0.0485992, 0.00230402, -124.866, 0.460646, 17.5292)
+
+[node name="Fence392" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0197603, 0.00217417, -0.999802, -0.0566576, 0.998389, 0.00329097, 0.998198, 0.0567116, -0.0196054, -124.889, 0.379135, 19.4919)
+
+[node name="Fence393" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00523814, 0.00603712, -0.999968, -0.0186793, 0.999808, 0.00593833, 0.999812, 0.0186478, 0.00535004, -124.953, 0.356949, 21.4541)
+
+[node name="Fence394" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00231741, 0.00584653, -0.99998, -0.0356066, 0.99935, 0.00576038, 0.999363, 0.0355925, 0.00252383, -124.952, 0.302665, 23.4349)
+
+[node name="Fence395" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0194678, 0.00221825, -0.999807, -0.0436592, 0.999042, 0.00306673, 0.998856, 0.0437107, -0.0193525, -124.975, 0.246708, 25.3984)
+
+[node name="Fence396" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00523814, 0.00603712, -0.999968, -0.0186793, 0.999808, 0.00593833, 0.999812, 0.0186478, 0.00535004, -125.012, 0.213014, 27.397)
+
+[node name="Fence397" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00231741, 0.00584653, -0.99998, -0.0356066, 0.99935, 0.00576038, 0.999363, 0.0355925, 0.00252383, -125.012, 0.15873, 29.3778)
+
+[node name="Fence398" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0194678, 0.00221825, -0.999807, -0.0436592, 0.999042, 0.00306673, 0.998856, 0.0437107, -0.0193525, -125.035, 0.102773, 31.3413)
+
+[node name="Fence399" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00423286, 0.00193126, -0.999989, -0.025135, 0.999683, 0.00182435, 0.999675, 0.0251271, 0.00427988, -125.053, 0.118801, 33.2979)
+
+[node name="Fence400" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0250961, 0.00629503, -0.999665, -0.0203383, 0.999777, 0.00578518, 0.999479, 0.0201864, 0.0252187, -125.082, 0.0416236, 35.2924)
+
+[node name="Fence401" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0221689, 0.00644106, -0.999734, -0.0372652, 0.99929, 0.00561192, 0.999059, 0.0371308, 0.022393, -125.042, -0.0159483, 37.2726)
+
+[node name="Fence402" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000370492, 0.00256872, -0.999996, -0.0255068, 0.999672, 0.00257741, 0.999674, 0.0255078, -0.000305034, -125.03, -0.024128, 39.1389)
+
+[node name="Fence403" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0243371, 0.00590795, -0.999686, -0.000510272, 0.999983, 0.00589732, 0.999704, 0.000366729, 0.0243398, -125.029, -0.0215091, 41.1382)
+
+[node name="Fence404" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0214165, 0.00604118, -0.999752, -0.0174433, 0.999832, 0.00566805, 0.999618, 0.0173176, 0.021518, -124.991, -0.039796, 43.1193)
+
+[node name="Fence405" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000370492, 0.00256872, -0.999996, -0.0255068, 0.999672, 0.00257741, 0.999674, 0.0255078, -0.000305034, -124.976, -0.0600722, 45.0836)
+
+[node name="Fence406" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.993, -0.133523, 47.0706)
+
+[node name="Fence407" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0249737, 0.00535932, -0.999673, 0.00671272, 0.999962, 0.0055286, 0.999666, -0.00684845, 0.0249369, -124.991, -0.116485, 49.0698)
+
+[node name="Fence408" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0220624, 0.00550341, -0.999741, -0.0102221, 0.999934, 0.00527894, 0.999704, 0.0101029, 0.022117, -124.952, -0.120464, 51.0509)
+
+[node name="Fence409" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.936, -0.126565, 53.0153)
+
+[node name="Fence410" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.974, -0.11281, 54.7912)
+
+[node name="Fence411" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0249737, 0.00535932, -0.999673, 0.00671272, 0.999962, 0.0055286, 0.999666, -0.00684845, 0.0249369, -124.972, -0.0957723, 56.7903)
+
+[node name="Fence412" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0220624, 0.00550341, -0.999741, -0.0102221, 0.999934, 0.00527894, 0.999704, 0.0101029, 0.022117, -124.932, -0.0997509, 58.7715)
+
+[node name="Fence413" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.916, -0.105852, 60.7358)
+
+[node name="Fence414" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.991, -0.14794, 62.79)
+
+[node name="Fence415" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0249737, 0.00535932, -0.999673, 0.00671272, 0.999962, 0.0055286, 0.999666, -0.00684845, 0.0249369, -124.989, -0.130902, 64.7892)
+
+[node name="Fence416" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0220624, 0.00550341, -0.999741, -0.0102221, 0.999934, 0.00527894, 0.999704, 0.0101029, 0.022117, -124.95, -0.13488, 66.7703)
+
+[node name="Fence417" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.934, -0.140982, 68.7347)
+
+[node name="Fence418" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.933, -0.112865, 70.5894)
+
+[node name="Fence419" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0249737, 0.00535932, -0.999673, 0.00671272, 0.999962, 0.0055286, 0.999666, -0.00684845, 0.0249369, -124.931, -0.0958276, 72.5886)
+
+[node name="Fence420" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0220624, 0.00550341, -0.999741, -0.0102221, 0.999934, 0.00527894, 0.999704, 0.0101029, 0.022117, -124.891, -0.0998062, 74.5697)
+
+[node name="Fence421" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.875, -0.105908, 76.5341)
+
+[node name="Fence422" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.86, -0.106915, 78.3449)
+
+[node name="Fence423" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0249737, 0.00535932, -0.999673, 0.00671272, 0.999962, 0.0055286, 0.999666, -0.00684845, 0.0249369, -124.858, -0.0898767, 80.3441)
+
+[node name="Fence424" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0220624, 0.00550341, -0.999741, -0.0102221, 0.999934, 0.00527894, 0.999704, 0.0101029, 0.022117, -124.818, -0.0938553, 82.3252)
+
+[node name="Fence425" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.802, -0.0999566, 84.2896)
+
+[node name="Fence426" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.817, -0.101201, 85.9668)
+
+[node name="Fence427" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0249737, 0.00535932, -0.999673, 0.00671272, 0.999962, 0.0055286, 0.999666, -0.00684845, 0.0249369, -124.815, -0.0841632, 87.966)
+
+[node name="Fence428" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0220624, 0.00550341, -0.999741, -0.0102221, 0.999934, 0.00527894, 0.999704, 0.0101029, 0.022117, -124.776, -0.0881418, 89.9471)
+
+[node name="Fence429" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.76, -0.0942431, 91.9115)
+
+[node name="Fence430" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.824, -0.132154, 93.8059)
+
+[node name="Fence431" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0249737, 0.00535932, -0.999673, 0.00671272, 0.999962, 0.0055286, 0.999666, -0.00684845, 0.0249369, -124.821, -0.115116, 95.8051)
+
+[node name="Fence432" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0220624, 0.00550341, -0.999741, -0.0102221, 0.999934, 0.00527894, 0.999704, 0.0101029, 0.022117, -124.782, -0.119094, 97.7862)
+
+[node name="Fence433" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.766, -0.125196, 99.7506)
+
+[node name="Fence434" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.803, -0.22702, 101.708)
+
+[node name="Fence435" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0249737, 0.00535932, -0.999673, 0.00671272, 0.999962, 0.0055286, 0.999666, -0.00684845, 0.0249369, -124.801, -0.168775, 103.707)
+
+[node name="Fence436" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0220624, 0.00550341, -0.999741, -0.0102221, 0.999934, 0.00527894, 0.999704, 0.0101029, 0.022117, -124.761, -0.219125, 105.688)
+
+[node name="Fence437" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.000279887, 0.00203626, -0.999997, -0.0182968, 0.999831, 0.00203087, 0.999832, 0.0182963, 0.00031691, -124.745, -0.222433, 107.653)
+
+[node name="Fence438" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(6.39126e-05, 0.00171651, -0.999998, -0.0218707, 0.99976, 0.00171478, 0.999761, 0.0218706, 0.000101258, -124.869, -0.19885, 109.537)
+
+[node name="Fence439" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0247499, 0.00504511, -0.999681, 0.00314709, 0.999982, 0.00512458, 0.999689, -0.00327278, 0.0247337, -124.867, -0.188958, 111.537)
+
+[node name="Fence440" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0218439, 0.00518545, -0.999748, -0.0137886, 0.999893, 0.00488499, 0.999666, 0.0136784, 0.0219128, -124.828, -0.200006, 113.518)
+
+[node name="Fence441" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(6.39126e-05, 0.00171651, -0.999998, -0.0218707, 0.99976, 0.00171478, 0.999761, 0.0218706, 0.000101258, -124.812, -0.213124, 115.482)
+
+[node name="Fence442" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(6.39126e-05, 0.00171651, -0.999998, -0.0218707, 0.99976, 0.00171478, 0.999761, 0.0218706, 0.000101258, -124.869, -0.19885, 117.363)
+
+[node name="Fence443" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0247499, 0.00504511, -0.999681, 0.00314709, 0.999982, 0.00512458, 0.999689, -0.00327278, 0.0247337, -124.867, -0.258481, 119.362)
+
+[node name="Fence444" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0218439, 0.00518545, -0.999748, -0.0137886, 0.999893, 0.00488499, 0.999666, 0.0136784, 0.0219128, -124.828, -0.319067, 121.343)
+
+[node name="Fence445" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(6.39126e-05, 0.00171651, -0.999998, -0.0218707, 0.99976, 0.00171478, 0.999761, 0.0218706, 0.000101258, -124.812, -0.332308, 123.308)
+
+[node name="Fence446" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -123.826, -0.345249, 124.363)
+
+[node name="Fence447" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, -0.0172381, 0.00123389, 0.0172301, 0.999832, 0.00631822, -0.00134247, -0.00629598, 0.999979, -121.828, -0.307153, 124.408)
+
+[node name="Fence448" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999998, -0.000288635, -0.00158415, 0.000298158, 0.999982, 0.00603891, 0.00158208, -0.00603932, 0.99998, -119.846, -0.290282, 124.416)
+
+[node name="Fence449" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -117.882, -0.275698, 124.446)
+
+[node name="Fence450" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -115.968, -0.307897, 124.573)
+
+[node name="Fence451" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, -0.0172381, 0.00123389, 0.0172301, 0.999832, 0.00631822, -0.00134247, -0.00629598, 0.999979, -113.969, -0.269801, 124.618)
+
+[node name="Fence452" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999998, -0.000288635, -0.00158415, 0.000298158, 0.999982, 0.00603891, 0.00158208, -0.00603932, 0.99998, -111.988, -0.252931, 124.626)
+
+[node name="Fence453" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -110.024, -0.238346, 124.656)
+
+[node name="Fence454" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -108.077, -0.298711, 124.71)
+
+[node name="Fence455" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, -0.0172381, 0.00123389, 0.0172301, 0.999832, 0.00631822, -0.00134247, -0.00629598, 0.999979, -106.079, -0.260615, 124.755)
+
+[node name="Fence456" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999998, -0.000288635, -0.00158415, 0.000298158, 0.999982, 0.00603891, 0.00158208, -0.00603932, 0.99998, -104.097, -0.243745, 124.763)
+
+[node name="Fence457" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -102.133, -0.22916, 124.793)
+
+[node name="Fence458" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -100.219, -0.26136, 124.92)
+
+[node name="Fence459" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, -0.0172381, 0.00123389, 0.0172301, 0.999832, 0.00631822, -0.00134247, -0.00629598, 0.999979, -98.2205, -0.223264, 124.965)
+
+[node name="Fence460" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999998, -0.000288635, -0.00158415, 0.000298158, 0.999982, 0.00603891, 0.00158208, -0.00603932, 0.99998, -96.2391, -0.206393, 124.973)
+
+[node name="Fence461" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -94.2749, -0.191809, 125.003)
+
+[node name="Fence462" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -92.3469, -0.166878, 125.009)
+
+[node name="Fence463" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, -0.0172381, 0.00123389, 0.0172301, 0.999832, 0.00631822, -0.00134247, -0.00629598, 0.999979, -90.3485, -0.128782, 125.054)
+
+[node name="Fence464" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999998, -0.000288635, -0.00158415, 0.000298158, 0.999982, 0.00603891, 0.00158208, -0.00603932, 0.99998, -88.3671, -0.111912, 125.061)
+
+[node name="Fence465" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -86.4029, -0.0973273, 125.092)
+
+[node name="Fence466" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -84.4885, -0.129527, 125.219)
+
+[node name="Fence467" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, -0.0172381, 0.00123389, 0.0172301, 0.999832, 0.00631822, -0.00134247, -0.00629598, 0.999979, -82.4901, -0.0914307, 125.264)
+
+[node name="Fence468" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999998, -0.000288635, -0.00158415, 0.000298158, 0.999982, 0.00603891, 0.00158208, -0.00603932, 0.99998, -80.5087, -0.0745601, 125.271)
+
+[node name="Fence469" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999697, 0.00782109, -0.0233488, -0.0077633, 0.999967, 0.0025615, 0.0233678, -0.00237939, 0.999724, -78.5445, -0.0599759, 125.302)
+
+[node name="Fence470" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999612, 0.0276531, -0.00314072, -0.0276427, 0.999613, 0.00329307, 0.00323038, -0.0032049, 0.999989, -76.7416, -0.097408, 125.195)
+
+[node name="Fence471" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999766, 0.00252238, 0.0215119, -0.00266392, 0.999975, 0.00656009, -0.0214947, -0.00661582, 0.999747, -74.7423, -0.0990621, 125.2)
+
+[node name="Fence472" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999635, 0.0194732, 0.0186895, -0.0195946, 0.999788, 0.00633689, -0.0185624, -0.00670074, 0.999805, -72.7612, -0.121609, 125.167)
+
+[node name="Fence473" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999612, 0.0276531, -0.00314072, -0.0276427, 0.999613, 0.00329307, 0.00323038, -0.0032049, 0.999989, -70.7969, -0.146094, 125.158)
+
+[node name="Fence474" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999612, 0.0276531, -0.00314072, -0.0276427, 0.999613, 0.00329307, 0.00323038, -0.0032049, 0.999989, -68.8814, -0.216336, 125.247)
+
+[node name="Fence475" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999766, 0.00252238, 0.0215119, -0.00266392, 0.999975, 0.00656009, -0.0214947, -0.00661582, 0.999747, -66.8821, -0.21799, 125.251)
+
+[node name="Fence476" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999635, 0.0194732, 0.0186895, -0.0195946, 0.999788, 0.00633689, -0.0185624, -0.00670074, 0.999805, -64.901, -0.240538, 125.219)
+
+[node name="Fence477" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999612, 0.0276531, -0.00314072, -0.0276427, 0.999613, 0.00329307, 0.00323038, -0.0032049, 0.999989, -62.9367, -0.265022, 125.21)
+
+[node name="Fence478" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999357, 0.024815, 0.0258762, -0.0249021, 0.999686, 0.00305316, -0.0257925, -0.00369548, 0.99966, -60.9974, -0.24284, 125.089)
+
+[node name="Fence479" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.998724, -0.000405036, 0.0505024, 8.26692e-05, 0.99998, 0.00638783, -0.0505039, -0.00637544, 0.998703, -58.9989, -0.239012, 125.036)
+
+[node name="Fence480" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.998725, 0.0165366, 0.0476835, -0.016849, 0.999839, 0.00615688, -0.0475743, -0.00695237, 0.998844, -57.0195, -0.256119, 124.946)
+
+[node name="Fence481" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999357, 0.024815, 0.0258762, -0.0249021, 0.999686, 0.00305316, -0.0257925, -0.00369548, 0.99966, -55.0562, -0.275215, 124.88)
+
+[node name="Fence482" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999357, 0.024815, 0.0258762, -0.0249021, 0.999686, 0.00305316, -0.0257925, -0.00369548, 0.99966, -53.1387, -0.340224, 124.913)
+
+[node name="Fence483" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.998724, -0.000405036, 0.0505024, 8.26692e-05, 0.99998, 0.00638783, -0.0505039, -0.00637544, 0.998703, -51.1402, -0.336397, 124.859)
+
+[node name="Fence484" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.998725, 0.0165366, 0.0476835, -0.016849, 0.999839, 0.00615688, -0.0475743, -0.00695237, 0.998844, -49.1608, -0.353504, 124.769)
+
+[node name="Fence485" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999357, 0.024815, 0.0258762, -0.0249021, 0.999686, 0.00305316, -0.0257925, -0.00369548, 0.99966, -47.1975, -0.3726, 124.703)
+
+[node name="Fence486" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, 0.017242, -0.000497092, -0.0172402, 0.999846, 0.00333195, 0.000554279, -0.00332279, 0.999994, -45.4005, -0.37886, 124.642)
+
+[node name="Fence487" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999678, -0.00790015, 0.0241195, 0.00773701, 0.999946, 0.00685528, -0.0241722, -0.00666639, 0.999685, -43.4013, -0.359711, 124.641)
+
+[node name="Fence488" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999732, 0.00905139, 0.0212997, -0.00919392, 0.999936, 0.00660273, -0.0212389, -0.00679671, 0.999752, -41.4201, -0.361647, 124.604)
+
+[node name="Fence489" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, 0.017242, -0.000497092, -0.0172402, 0.999846, 0.00333195, 0.000554279, -0.00332279, 0.999994, -39.4557, -0.365692, 124.589)
+
+[node name="Fence490" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, 0.017242, -0.000497092, -0.0172402, 0.999846, 0.00333195, 0.000554279, -0.00332279, 0.999994, -37.5393, -0.415994, 124.673)
+
+[node name="Fence491" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999678, -0.00790015, 0.0241195, 0.00773701, 0.999946, 0.00685528, -0.0241722, -0.00666639, 0.999685, -35.5401, -0.396845, 124.672)
+
+[node name="Fence492" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999732, 0.00905139, 0.0212997, -0.00919392, 0.999936, 0.00660273, -0.0212389, -0.00679671, 0.999752, -33.559, -0.398781, 124.634)
+
+[node name="Fence493" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, 0.017242, -0.000497092, -0.0172402, 0.999846, 0.00333195, 0.000554279, -0.00332279, 0.999994, -31.5946, -0.402827, 124.62)
+
+[node name="Fence494" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, 0.017242, -0.000497092, -0.0172402, 0.999846, 0.00333195, 0.000554279, -0.00332279, 0.999994, -29.6806, -0.421429, 124.612)
+
+[node name="Fence495" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999678, -0.00790015, 0.0241195, 0.00773701, 0.999946, 0.00685528, -0.0241722, -0.00666639, 0.999685, -27.6813, -0.402281, 124.611)
+
+[node name="Fence496" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999732, 0.00905139, 0.0212997, -0.00919392, 0.999936, 0.00660273, -0.0212389, -0.00679671, 0.999752, -25.7002, -0.404216, 124.574)
+
+[node name="Fence497" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, 0.017242, -0.000497092, -0.0172402, 0.999846, 0.00333195, 0.000554279, -0.00332279, 0.999994, -23.7358, -0.408262, 124.559)
+
+[node name="Fence498" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, 0.017242, -0.000497092, -0.0172402, 0.999846, 0.00333195, 0.000554279, -0.00332279, 0.999994, -21.8194, -0.458564, 124.643)
+
+[node name="Fence499" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999678, -0.00790015, 0.0241195, 0.00773701, 0.999946, 0.00685528, -0.0241722, -0.00666639, 0.999685, -19.8202, -0.439415, 124.642)
+
+[node name="Fence500" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999732, 0.00905139, 0.0212997, -0.00919392, 0.999936, 0.00660273, -0.0212389, -0.00679671, 0.999752, -17.8391, -0.441351, 124.604)
+
+[node name="Fence501" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999851, 0.017242, -0.000497092, -0.0172402, 0.999846, 0.00333195, 0.000554279, -0.00332279, 0.999994, -15.8747, -0.445396, 124.59)
+
+[node name="Fence502" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999989, 0.00449749, 0.00143536, -0.00450158, 0.999986, 0.00291475, -0.00142242, -0.00292109, 0.999994, -13.9045, -0.335364, 124.602)
+
+[node name="Fence503" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999449, -0.0206505, 0.0260044, 0.0204815, 0.999767, 0.00675152, -0.0261377, -0.00621513, 0.999639, -11.9057, -0.290748, 124.598)
+
+[node name="Fence504" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999724, -0.00370048, 0.0231882, 0.00355147, 0.999973, 0.00646304, -0.0232118, -0.00637884, 0.99971, -9.92476, -0.267429, 124.556)
+
+[node name="Fence505" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999989, 0.00449749, 0.00143536, -0.00450158, 0.999986, 0.00291475, -0.00142242, -0.00292109, 0.999994, -7.96049, -0.246444, 124.538)
+
+[node name="Fence506" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999989, 0.00449749, 0.00143536, -0.00450158, 0.999986, 0.00291475, -0.00142242, -0.00292109, 0.999994, -6.04345, -0.272362, 124.617)
+
+[node name="Fence507" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999449, -0.0206505, 0.0260044, 0.0204815, 0.999767, 0.00675152, -0.0261377, -0.00621513, 0.999639, -4.04468, -0.335837, 124.613)
+
+[node name="Fence508" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999724, -0.00370048, 0.0231882, 0.00355147, 0.999973, 0.00646304, -0.0232118, -0.00637884, 0.99971, -2.06376, -0.319478, 124.571)
+
+[node name="Fence509" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999989, 0.00449749, 0.00143536, -0.00450158, 0.999986, 0.00291475, -0.00142242, -0.00292109, 0.999994, -0.0994802, -0.279293, 124.553)
+
+[node name="Fence510" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999989, 0.00449749, 0.00143536, -0.00450158, 0.999986, 0.00291475, -0.00142242, -0.00292109, 0.999994, 1.87852, -0.277278, 124.574)
+
+[node name="Fence511" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999449, -0.0206505, 0.0260044, 0.0204815, 0.999767, 0.00675152, -0.0261377, -0.00621513, 0.999639, 3.87718, -0.315505, 124.568)
+
+[node name="Fence512" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999724, -0.00370048, 0.0231882, 0.00355147, 0.999973, 0.00646304, -0.0232118, -0.00637884, 0.99971, 5.8483, -0.355444, 124.526)
+
+[node name="Fence513" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999989, 0.00449749, 0.00143536, -0.00450158, 0.999986, 0.00291475, -0.00142242, -0.00292109, 0.999994, 7.84228, -0.370185, 124.501)
+
+[node name="Fence514" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999989, 0.00449749, 0.00143536, -0.00450158, 0.999986, 0.00291475, -0.00142242, -0.00292109, 0.999994, 9.75781, -0.357817, 124.582)
+
+[node name="Fence515" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999449, -0.0206505, 0.0260044, 0.0204815, 0.999767, 0.00675152, -0.0261377, -0.00621513, 0.999639, 11.7091, -0.3217, 124.579)
+
+[node name="Fence516" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999724, -0.00370048, 0.0231882, 0.00355147, 0.999973, 0.00646304, -0.0232118, -0.00637884, 0.99971, 13.6998, -0.322459, 124.535)
+
+[node name="Fence517" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999989, 0.00449749, 0.00143536, -0.00450158, 0.999986, 0.00291475, -0.00142242, -0.00292109, 0.999994, 15.6835, -0.316674, 124.524)
+
+[node name="Fence518" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 17.6809, -0.338457, 124.578)
+
+[node name="Fence519" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 19.6801, -0.317062, 124.572)
+
+[node name="Fence520" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 21.6611, -0.316766, 124.529)
+
+[node name="Fence521" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 23.6255, -0.318602, 124.509)
+
+[node name="Fence522" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 25.5421, -0.366763, 124.588)
+
+[node name="Fence523" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 27.5413, -0.345368, 124.582)
+
+[node name="Fence524" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 29.5223, -0.345072, 124.539)
+
+[node name="Fence525" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 31.4867, -0.346908, 124.519)
+
+[node name="Fence526" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 33.4778, -0.392841, 124.568)
+
+[node name="Fence527" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 35.477, -0.371447, 124.562)
+
+[node name="Fence528" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 37.458, -0.371151, 124.519)
+
+[node name="Fence529" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 39.4224, -0.372987, 124.5)
+
+[node name="Fence530" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 41.3391, -0.421147, 124.578)
+
+[node name="Fence531" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 43.3382, -0.399753, 124.572)
+
+[node name="Fence532" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 45.3193, -0.399457, 124.529)
+
+[node name="Fence533" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 47.2836, -0.401293, 124.509)
+
+[node name="Fence534" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 49.1872, -0.329163, 124.554)
+
+[node name="Fence535" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 51.1863, -0.307768, 124.548)
+
+[node name="Fence536" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 53.1674, -0.307472, 124.505)
+
+[node name="Fence537" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 55.1317, -0.309309, 124.485)
+
+[node name="Fence538" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 57.0484, -0.357469, 124.563)
+
+[node name="Fence539" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 59.0475, -0.336074, 124.557)
+
+[node name="Fence540" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 61.0286, -0.335778, 124.514)
+
+[node name="Fence541" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 62.9929, -0.337615, 124.495)
+
+[node name="Fence542" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 64.9512, -0.383642, 124.515)
+
+[node name="Fence543" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 66.9503, -0.362247, 124.509)
+
+[node name="Fence544" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 68.9314, -0.361951, 124.466)
+
+[node name="Fence545" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 70.8957, -0.363788, 124.446)
+
+[node name="Fence546" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 72.8124, -0.411948, 124.525)
+
+[node name="Fence547" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 74.8116, -0.390553, 124.518)
+
+[node name="Fence548" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 76.7926, -0.390257, 124.475)
+
+[node name="Fence549" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 78.757, -0.392094, 124.456)
+
+[node name="Fence550" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 80.5939, -0.383259, 124.538)
+
+[node name="Fence551" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 82.5931, -0.361864, 124.532)
+
+[node name="Fence552" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 84.5741, -0.361568, 124.488)
+
+[node name="Fence553" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 86.5385, -0.363404, 124.469)
+
+[node name="Fence554" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 88.4551, -0.411565, 124.547)
+
+[node name="Fence555" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 90.4543, -0.39017, 124.541)
+
+[node name="Fence556" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 92.4353, -0.389874, 124.498)
+
+[node name="Fence557" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 94.3997, -0.39171, 124.478)
+
+[node name="Fence558" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 96.3872, -0.383259, 124.538)
+
+[node name="Fence559" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 98.3863, -0.361864, 124.532)
+
+[node name="Fence560" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 100.367, -0.361568, 124.488)
+
+[node name="Fence561" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 102.332, -0.363404, 124.469)
+
+[node name="Fence562" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 104.248, -0.411565, 124.547)
+
+[node name="Fence563" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 106.248, -0.39017, 124.541)
+
+[node name="Fence564" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 108.229, -0.389874, 124.498)
+
+[node name="Fence565" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 110.193, -0.39171, 124.478)
+
+[node name="Fence566" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 112.229, -0.369648, 124.523)
+
+[node name="Fence567" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 114.228, -0.348254, 124.517)
+
+[node name="Fence568" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999681, 0.00790993, 0.0239831, -0.00806748, 0.999947, 0.00647915, -0.0239309, -0.0066705, 0.999692, 116.209, -0.347958, 124.474)
+
+[node name="Fence569" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 118.173, -0.349794, 124.455)
+
+[node name="Fence570" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.999868, 0.01611, 0.00219073, -0.0161168, 0.999865, 0.00318384, -0.00213933, -0.00321864, 0.999992, 120.09, -0.397954, 124.533)
+
+[node name="Fence571" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.9996, -0.0090412, 0.0268024, 0.00886381, 0.999938, 0.00673487, -0.0268615, -0.00649455, 0.999618, 122.089, -0.37656, 124.527)
+
+[node name="Fence574" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0408684, -0.00680358, 0.999142, -0.00806748, 0.999947, 0.00647915, -0.999132, -0.00779575, -0.0409208, 124.13, -0.42176, 119.68)
+
+[node name="Fence575" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190832, -0.00349119, 0.999812, -0.0161168, 0.999866, 0.00318384, -0.999688, -0.0160531, -0.0191367, 124.077, -0.423596, 117.716)
+
+[node name="Fence576" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190832, -0.00349119, 0.999812, -0.0161168, 0.999866, 0.00318384, -0.999688, -0.0160531, -0.0191367, 124.088, -0.401534, 115.68)
+
+[node name="Fence577" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0437973, -0.00634041, 0.99902, 0.00886381, 0.999938, 0.00673487, -0.999002, 0.00914996, -0.0437385, 124.048, -0.380139, 113.681)
+
+[node name="Fence578" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0408684, -0.00680358, 0.999142, -0.00806748, 0.999947, 0.00647915, -0.999132, -0.00779575, -0.0409208, 123.971, -0.379843, 111.701)
+
+[node name="Fence579" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190832, -0.00349119, 0.999812, -0.0161168, 0.999866, 0.00318384, -0.999688, -0.0160531, -0.0191367, 123.918, -0.38168, 109.738)
+
+[node name="Fence580" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190832, -0.00349119, 0.999812, -0.0161168, 0.999866, 0.00318384, -0.999688, -0.0160531, -0.0191367, 123.964, -0.42984, 107.82)
+
+[node name="Fence581" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0437973, -0.00634041, 0.99902, 0.00886381, 0.999938, 0.00673487, -0.999002, 0.00914996, -0.0437385, 123.924, -0.408445, 105.821)
+
+[node name="Fence582" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0408684, -0.00680358, 0.999142, -0.00806748, 0.999947, 0.00647915, -0.999132, -0.00779575, -0.0409208, 123.897, -0.266075, 103.869)
+
+[node name="Fence583" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190832, -0.00349119, 0.999812, -0.0161168, 0.999866, 0.00318384, -0.999688, -0.0160531, -0.0191367, 123.844, -0.267911, 101.906)
+
+[node name="Fence584" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190832, -0.00349119, 0.999812, -0.0161168, 0.999866, 0.00318384, -0.999688, -0.0160531, -0.0191367, 123.855, -0.24585, 99.8696)
+
+[node name="Fence585" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0437973, -0.00634041, 0.99902, 0.00886381, 0.999938, 0.00673487, -0.999002, 0.00914996, -0.0437385, 123.815, -0.224455, 97.8708)
+
+[node name="Fence586" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0408684, -0.00680358, 0.999142, -0.00806748, 0.999947, 0.00647915, -0.999132, -0.00779575, -0.0409208, 123.738, -0.224159, 95.8908)
+
+[node name="Fence587" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190832, -0.00349119, 0.999812, -0.0161168, 0.999866, 0.00318384, -0.999688, -0.0160531, -0.0191367, 123.685, -0.225995, 93.927)
+
+[node name="Fence588" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190832, -0.00349119, 0.999812, -0.0161168, 0.999866, 0.00318384, -0.999688, -0.0160531, -0.0191367, 123.731, -0.274156, 92.0093)
+
+[node name="Fence589" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0437973, -0.00634041, 0.99902, 0.00886381, 0.999938, 0.00673487, -0.999002, 0.00914996, -0.0437385, 123.691, -0.252761, 90.0105)
+
+[node name="Fence590" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.591, -0.324461, 88.0396)
+
+[node name="Fence591" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.574, -0.326297, 86.0752)
+
+[node name="Fence592" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.622, -0.304236, 84.0397)
+
+[node name="Fence593" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.619, -0.282841, 82.0405)
+
+[node name="Fence594" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.578, -0.282545, 80.0594)
+
+[node name="Fence595" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.562, -0.284381, 78.095)
+
+[node name="Fence596" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.643, -0.332541, 76.1785)
+
+[node name="Fence597" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.639, -0.311147, 74.1793)
+
+[node name="Fence598" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.668, -0.334785, 72.1696)
+
+[node name="Fence599" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.651, -0.336622, 70.2052)
+
+[node name="Fence600" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.699, -0.31456, 68.1696)
+
+[node name="Fence601" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.696, -0.293165, 66.1705)
+
+[node name="Fence602" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.655, -0.292869, 64.1894)
+
+[node name="Fence603" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.638, -0.294705, 62.225)
+
+[node name="Fence604" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.72, -0.342866, 60.3084)
+
+[node name="Fence605" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.716, -0.321471, 58.3092)
+
+[node name="Fence606" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.728, -0.334738, 56.2632)
+
+[node name="Fence607" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.711, -0.336574, 54.2988)
+
+[node name="Fence608" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.759, -0.314512, 52.2633)
+
+[node name="Fence609" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.756, -0.293118, 50.2641)
+
+[node name="Fence610" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.716, -0.292822, 48.283)
+
+[node name="Fence611" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.699, -0.294658, 46.3186)
+
+[node name="Fence612" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.78, -0.342818, 44.4021)
+
+[node name="Fence613" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.777, -0.321424, 42.4029)
+
+[node name="Fence614" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.765, -0.333863, 40.5079)
+
+[node name="Fence615" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.748, -0.335699, 38.5435)
+
+[node name="Fence616" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.796, -0.313638, 36.508)
+
+[node name="Fence617" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.793, -0.292243, 34.5088)
+
+[node name="Fence618" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.753, -0.291947, 32.5277)
+
+[node name="Fence619" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.736, -0.293783, 30.5633)
+
+[node name="Fence620" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.817, -0.341944, 28.6468)
+
+[node name="Fence621" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.814, -0.320549, 26.6476)
+
+[node name="Fence622" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.799, -0.333836, 24.6712)
+
+[node name="Fence623" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.782, -0.335672, 22.7067)
+
+[node name="Fence624" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.83, -0.31361, 20.6712)
+
+[node name="Fence625" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.827, -0.292216, 18.672)
+
+[node name="Fence626" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0225176, -0.00665931, 0.999725, -0.00806749, 0.999947, 0.00647915, -0.999714, -0.00791935, -0.0225699, 123.787, -0.29192, 16.691)
+
+[node name="Fence627" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.77, -0.293756, 14.7266)
+
+[node name="Fence628" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.000725845, -0.00319587, 0.999994, -0.0161168, 0.999865, 0.00318384, -0.99987, -0.0161145, -0.000777069, 123.851, -0.341916, 12.81)
+
+[node name="Fence629" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0254484, -0.00650733, 0.999655, 0.00886381, 0.999938, 0.00673487, -0.999637, 0.00903201, -0.0253892, 123.848, -0.320522, 10.8108)
+
+[node name="Fence630" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0242158, -0.00601556, 0.999689, 0.00518912, 0.999968, 0.006143, -0.999693, 0.00533629, -0.0241835, 123.811, -0.315434, 8.9365)
+
+[node name="Fence631" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.00242963, -0.00256606, 0.999994, -0.00287128, 0.999993, 0.00255916, -0.999993, -0.00286513, -0.00243679, 123.79, -0.29124, 6.97227)
+
+[node name="Fence632" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.00242963, -0.00256606, 0.999994, -0.00287128, 0.999993, 0.00255916, -0.999993, -0.00286513, -0.00243679, 123.835, -0.242249, 4.93714)
+
+[node name="Fence633" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0271353, -0.00583489, 0.999614, 0.0221198, 0.999734, 0.00643609, -0.999388, 0.0222858, -0.0269992, 123.828, -0.194375, 2.93843)
+
+[node name="Fence634" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0242158, -0.00601556, 0.999689, 0.00518912, 0.999968, 0.006143, -0.999693, 0.00533629, -0.0241835, 123.785, -0.167813, 0.957582)
+
+[node name="Fence635" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.00242963, -0.00256606, 0.999994, -0.00287128, 0.999993, 0.00255916, -0.999993, -0.00286513, -0.00243679, 123.765, -0.143619, -1.00663)
+
+[node name="Fence636" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.00242963, -0.00256606, 0.999994, -0.00287128, 0.999993, 0.00255916, -0.999993, -0.00286513, -0.00243679, 123.842, -0.166441, -2.92378)
+
+[node name="Fence637" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0271353, -0.00583489, 0.999614, 0.0221198, 0.999734, 0.00643609, -0.999388, 0.0222858, -0.0269992, 123.836, -0.118566, -4.9225)
+
+[node name="Fence638" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0259775, -0.00507187, 0.99965, 0.018126, 0.999821, 0.00554384, -0.999498, 0.0182637, -0.0258806, 123.812, -0.133709, -6.89727)
+
+[node name="Fence639" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.00419944, -0.00163684, 0.99999, 0.0100503, 0.999948, 0.00167907, -0.999941, 0.0100572, -0.00418258, 123.788, -0.0841225, -8.86099)
+
+[node name="Fence640" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.00419944, -0.00163684, 0.99999, 0.0100503, 0.999948, 0.00167907, -0.999941, 0.0100572, -0.00418258, 123.829, -0.0088848, -10.8954)
+
+[node name="Fence641" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0288807, -0.00486146, 0.999571, 0.035054, 0.999368, 0.00587335, -0.998969, 0.0352084, -0.0286921, 123.819, 0.064814, -12.8933)
+
+[node name="Fence642" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0259775, -0.00507187, 0.99965, 0.018126, 0.999821, 0.00554384, -0.999498, 0.0182637, -0.0258806, 123.772, 0.117005, -14.8736)
+
+[node name="Fence643" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.00419944, -0.00163684, 0.99999, 0.0100503, 0.999948, 0.00167907, -0.999941, 0.0100572, -0.00418258, 123.748, 0.166591, -16.8373)
+
+[node name="Fence644" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.00419944, -0.00163684, 0.99999, 0.0100503, 0.999948, 0.00167907, -0.999941, 0.0100572, -0.00418258, 123.823, 0.168468, -18.7547)
+
+[node name="Fence645" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0287083, -0.010161, 0.999536, -0.0107023, 0.999894, 0.00985728, -0.999531, -0.0104145, -0.0288141, 123.813, 0.137183, -20.7527)
+
+[node name="Fence646" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0172085, -0.00449688, 0.999842, 0.0198678, 0.999791, 0.00483866, -0.999654, 0.019948, -0.0171152, 123.768, 0.0702248, -22.6235)
+
+[node name="Fence647" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00456674, -0.000990009, 0.999989, 0.0117766, 0.999931, 0.000936249, -0.99992, 0.0117721, 0.00457827, 123.761, 0.123213, -24.5872)
+
+[node name="Fence648" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00456674, -0.000990009, 0.999989, 0.0117766, 0.999931, 0.000936249, -0.99992, 0.0117721, 0.00457827, 123.82, 0.201926, -26.621)
+
+[node name="Fence649" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0201037, -0.00443523, 0.999788, 0.036797, 0.999309, 0.00517307, -0.999121, 0.0368931, -0.0199267, 123.828, 0.279075, -28.6188)
+
+[node name="Fence650" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0172085, -0.00449688, 0.999842, 0.0198678, 0.999791, 0.00483866, -0.999654, 0.019948, -0.0171152, 123.798, 0.334713, -30.5993)
+
+[node name="Fence651" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00456674, -0.000990009, 0.999989, 0.0117766, 0.999931, 0.000936249, -0.99992, 0.0117721, 0.00457827, 123.792, 0.387701, -32.5631)
+
+[node name="Fence652" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00456674, -0.000990009, 0.999989, 0.0117766, 0.999931, 0.000936249, -0.99992, 0.0117721, 0.00457827, 123.883, 0.392826, -34.4798)
+
+[node name="Fence653" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0201037, -0.00443523, 0.999788, 0.036797, 0.999309, 0.00517307, -0.999121, 0.0368931, -0.0199267, 123.89, 0.469975, -36.4776)
+
+[node name="Fence654" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0169191, -0.0047079, 0.999846, 0.0147821, 0.999879, 0.00495826, -0.999747, 0.0148637, -0.0168472, 123.863, 0.473956, -38.3463)
+
+[node name="Fence655" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0048578, -0.00119866, 0.999987, 0.00669406, 0.999977, 0.00116621, -0.999966, 0.00668822, 0.0048659, 123.857, 0.516959, -40.3103)
+
+[node name="Fence656" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0048578, -0.00119866, 0.999987, 0.00669406, 0.999977, 0.00116621, -0.999966, 0.00668822, 0.0048659, 123.917, 0.585343, -42.3445)
+
+[node name="Fence657" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.019818, -0.00465113, 0.999792, 0.0317131, 0.999483, 0.00527836, -0.999301, 0.031811, -0.0196603, 123.925, 0.652336, -44.3427)
+
+[node name="Fence658" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0169191, -0.0047079, 0.999846, 0.0147821, 0.999879, 0.00495826, -0.999747, 0.0148637, -0.0168472, 123.895, 0.6979, -46.3234)
+
+[node name="Fence659" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0048578, -0.00119866, 0.999987, 0.00669406, 0.999977, 0.00116621, -0.999966, 0.00668822, 0.0048659, 123.89, 0.740902, -48.2874)
+
+[node name="Fence660" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0048578, -0.00119866, 0.999987, 0.00669406, 0.999977, 0.00116621, -0.999966, 0.00668822, 0.0048659, 123.981, 0.736302, -50.2041)
+
+[node name="Fence661" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.019818, -0.00465113, 0.999792, 0.0317131, 0.999483, 0.00527836, -0.999301, 0.031811, -0.0196603, 123.989, 0.803296, -52.2023)
+
+[node name="Fence662" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0169691, -0.00552659, 0.999841, 0.0098101, 0.999936, 0.00569367, -0.999808, 0.00990517, -0.0169135, 123.895, 0.796411, -54.0889)
+
+[node name="Fence663" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00481448, -0.00201774, 0.999986, 0.00173895, 0.999997, 0.00200947, -0.999987, 0.00172916, 0.00481816, 123.889, 0.829669, -56.0531)
+
+[node name="Fence664" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00481448, -0.00201774, 0.999986, 0.00173895, 0.999997, 0.00200947, -0.999987, 0.00172916, 0.00481816, 123.949, 0.888013, -58.0876)
+
+[node name="Fence665" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0198818, -0.00546885, 0.999787, 0.0267408, 0.999624, 0.00599977, -0.999445, 0.0268542, -0.0197282, 123.957, 0.945103, -60.086)
+
+[node name="Fence666" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0169691, -0.00552659, 0.999841, 0.0098101, 0.999936, 0.00569367, -0.999808, 0.00990517, -0.0169135, 123.927, 0.980819, -62.067)
+
+[node name="Fence667" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00481448, -0.00201774, 0.999986, 0.00173895, 0.999997, 0.00200947, -0.999987, 0.00172916, 0.00481816, 123.921, 1.01408, -64.0312)
+
+[node name="Fence668" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00481448, -0.00201774, 0.999986, 0.00173895, 0.999997, 0.00200947, -0.999987, 0.00172916, 0.00481816, 124.013, 1.00005, -65.9478)
+
+[node name="Fence669" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0208953, -0.00996475, 0.999732, -0.0116702, 0.999884, 0.0097224, -0.999714, -0.0114641, -0.0210093, 124.019, 1.00091, -67.9687)
+
+[node name="Fence670" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0169691, -0.00552659, 0.999841, 0.0098101, 0.999936, 0.00569367, -0.999808, 0.00990517, -0.0169135, 124.009, 0.913315, -69.9601)
+
+[node name="Fence671" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00481448, -0.00201774, 0.999986, 0.00173895, 0.999997, 0.00200947, -0.999987, 0.00172916, 0.00481816, 124.003, 0.946573, -71.9243)
+
+[node name="Fence672" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00481448, -0.00201774, 0.999986, 0.00173895, 0.999997, 0.00200947, -0.999987, 0.00172916, 0.00481816, 124.063, 1.00492, -73.9588)
+
+[node name="Fence673" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0198818, -0.00546885, 0.999787, 0.0267408, 0.999624, 0.00599977, -0.999445, 0.0268542, -0.0197282, 124.071, 1.06201, -75.9573)
+
+[node name="Fence674" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0169691, -0.00552659, 0.999841, 0.0098101, 0.999936, 0.00569367, -0.999808, 0.00990517, -0.0169135, 124.041, 1.09772, -77.9382)
+
+[node name="Fence675" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00481448, -0.00201774, 0.999986, 0.00173895, 0.999997, 0.00200947, -0.999987, 0.00172916, 0.00481816, 124.035, 1.13098, -79.9024)
+
+[node name="Fence676" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00481448, -0.00201774, 0.999986, 0.00173895, 0.999997, 0.00200947, -0.999987, 0.00172916, 0.00481816, 124.127, 1.11695, -81.819)
+
+[node name="Fence677" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0198818, -0.00546885, 0.999787, 0.0267408, 0.999624, 0.00599977, -0.999445, 0.0268542, -0.0197282, 124.135, 1.17404, -83.8175)
+
+[node name="Fence678" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0163279, -0.00634525, 0.999847, -0.0106292, 0.999925, 0.00617224, -0.99981, -0.0105267, -0.0163938, 124.146, 1.10954, -85.7079)
+
+[node name="Fence679" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546232, -0.00283114, 0.999981, -0.0186843, 0.999822, 0.00293283, -0.99981, -0.0187001, 0.00540863, 124.141, 1.10266, -87.6724)
+
+[node name="Fence680" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546232, -0.00283114, 0.999981, -0.0186843, 0.999822, 0.00293283, -0.99981, -0.0187001, 0.00540863, 124.202, 1.11948, -89.7076)
+
+[node name="Fence681" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0192546, -0.00629826, 0.999794, 0.00630301, 0.999959, 0.00642073, -0.999796, 0.00642521, -0.0192142, 124.211, 1.13575, -91.7068)
+
+[node name="Fence682" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0163279, -0.00634525, 0.999847, -0.0106292, 0.999925, 0.00617224, -0.99981, -0.0105267, -0.0163938, 124.183, 1.13096, -93.6881)
+
+[node name="Fence683" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546232, -0.00283114, 0.999981, -0.0186843, 0.999822, 0.00293283, -0.99981, -0.0187001, 0.00540863, 124.179, 1.12409, -95.6526)
+
+[node name="Fence684" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00546232, -0.00283114, 0.999981, -0.0186843, 0.999822, 0.00293283, -0.99981, -0.0187001, 0.00540863, 124.271, 1.07098, -97.5685)
+
+[node name="Fence685" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0192546, -0.00629826, 0.999794, 0.00630301, 0.999959, 0.00642073, -0.999796, 0.00642521, -0.0192142, 124.281, 1.08725, -99.5677)
+
+[node name="Fence686" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0161046, -0.00628617, 0.999851, -0.0156658, 0.999859, 0.00603397, -0.999747, -0.0155663, -0.0162006, 124.288, 1.01433, -101.305)
+
+[node name="Fence687" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00568511, -0.00277024, 0.99998, -0.0237221, 0.999715, 0.00290445, -0.999702, -0.0237382, 0.00561795, 124.284, 0.997558, -103.27)
+
+[node name="Fence688" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00568511, -0.00277024, 0.99998, -0.0237221, 0.999715, 0.00290445, -0.999702, -0.0237382, 0.00561795, 124.345, 1.00412, -105.305)
+
+[node name="Fence689" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190304, -0.00624298, 0.999799, 0.00126633, 0.999979, 0.00626825, -0.999819, 0.00138524, -0.0190222, 124.355, 1.01031, -107.304)
+
+[node name="Fence690" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0161046, -0.00628617, 0.999851, -0.0156658, 0.999859, 0.00603397, -0.999747, -0.0155663, -0.0162006, 124.327, 0.995547, -109.286)
+
+[node name="Fence691" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00568511, -0.00277024, 0.99998, -0.0237221, 0.999715, 0.00290445, -0.999702, -0.0237382, 0.00561795, 124.323, 0.978772, -111.25)
+
+[node name="Fence692" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00568511, -0.00277024, 0.99998, -0.0237221, 0.999715, 0.00290445, -0.999702, -0.0237382, 0.00561795, 124.416, 0.916012, -113.166)
+
+[node name="Fence693" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190304, -0.00624298, 0.999799, 0.00126633, 0.999979, 0.00626825, -0.999819, 0.00138524, -0.0190222, 124.426, 0.9222, -115.165)
+
+[node name="Fence698" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999972, -0.00383953, -0.00637373, -0.00384959, 0.999991, 0.00156474, 0.00636797, 0.00158917, -0.999978, 123.544, 0.748138, -123.924)
+
+[node name="Fence699" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.99981, -0.0119779, 0.0154066, -0.0120073, 0.999927, -0.00182134, -0.0153834, -0.00200606, -0.999879, 121.58, 0.754453, -123.939)
+
+[node name="Fence700" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.99981, -0.0119779, 0.0154066, -0.0120073, 0.999927, -0.00182134, -0.0153834, -0.00200606, -0.999879, 119.545, 0.784631, -124.02)
+
+[node name="Fence701" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999873, 0.0131119, -0.00919277, 0.0130957, 0.999912, 0.00183238, 0.0092159, 0.00171172, -0.999956, 117.547, 0.81425, -124.049)
+
+[node name="Fence702" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999972, -0.00383953, -0.00637373, -0.00384959, 0.999991, 0.00156474, 0.00636797, 0.00158917, -0.999978, 115.565, 0.822883, -124.041)
+
+[node name="Fence703" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.99981, -0.0119779, 0.0154066, -0.0120073, 0.999927, -0.00182134, -0.0153834, -0.00200606, -0.999879, 113.601, 0.829198, -124.056)
+
+[node name="Fence704" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.99981, -0.0119779, 0.0154066, -0.0120073, 0.999927, -0.00182134, -0.0153834, -0.00200606, -0.999879, 111.685, 0.788502, -124.168)
+
+[node name="Fence705" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999873, 0.0131119, -0.00919277, 0.0130957, 0.999912, 0.00183238, 0.0092159, 0.00171172, -0.999956, 109.687, 0.818121, -124.197)
+
+[node name="Fence706" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.998595, -0.00376149, -0.0528621, -0.00384959, 0.999992, 0.00156474, 0.052856, 0.00176598, -0.998601, 107.69, 0.871831, -124.201)
+
+[node name="Fence707" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999443, -0.0120582, -0.0311007, -0.0120073, 0.999927, -0.00182134, 0.0311206, -0.00144696, -0.999514, 105.727, 0.878146, -124.125)
+
+[node name="Fence708" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999443, -0.0120582, -0.0311007, -0.0120073, 0.999927, -0.00182134, 0.0311206, -0.00144696, -0.999514, 103.691, 0.908324, -124.111)
+
+[node name="Fence709" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.998363, 0.0131773, -0.055677, 0.0130957, 0.999912, 0.00183238, 0.0556963, 0.00110021, -0.998447, 101.693, 0.937943, -124.048)
+
+[node name="Fence710" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.998595, -0.00376149, -0.0528621, -0.00384959, 0.999992, 0.00156474, 0.052856, 0.00176598, -0.998601, 99.7138, 0.946576, -123.947)
+
+[node name="Fence711" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.999926, -0.0120103, -0.00160972, -0.0120073, 0.999927, -0.00182134, 0.0016317, -0.00180195, -0.999997, 97.8095, 0.95289, -123.903)
+
+[node name="Fence712" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.996422, -0.0118128, 0.0836911, -0.0120073, 0.999927, -0.00182134, -0.0836632, -0.00281981, -0.99649, 96.0776, 0.912194, -123.983)
+
+[node name="Fence694" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0161046, -0.00628617, 0.999851, -0.0156658, 0.999859, 0.00603397, -0.999747, -0.0155663, -0.0162006, 124.43, 0.829695, -117.083)
+
+[node name="Fence695" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00568511, -0.00277024, 0.99998, -0.0237221, 0.999715, 0.00290445, -0.999702, -0.0237382, 0.00561795, 124.426, 0.81292, -119.048)
+
+[node name="Fence696" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.00568511, -0.00277024, 0.99998, -0.0237221, 0.999715, 0.00290445, -0.999702, -0.0237382, 0.00561795, 124.519, 0.75016, -120.963)
+
+[node name="Fence697" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0190304, -0.00624298, 0.999799, 0.00126633, 0.999979, 0.00626825, -0.999819, 0.00138524, -0.0190222, 124.529, 0.756347, -122.962)
+
+[node name="Fence572" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.46994, 0.00509617, 0.882684, -0.00718904, 0.999972, -0.00194583, -0.882669, -0.00543118, 0.469964, 123.579, -0.407713, 123.585)
+
+[node name="Fence573" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(0.0345561, -0.00432493, 0.999393, -0.000381564, 0.999991, 0.00434079, -0.999402, -0.000531407, 0.0345543, 124.118, -0.406341, 121.695)
+
+[node name="Fence318" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.895863, -0.0221205, -0.44378, -0.0248146, 0.999692, 0.000263388, 0.443638, 0.0112482, -0.896136, -122.914, 0.524536, -124.467)
+
+[node name="Fence319" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.38543, 0.000332091, -0.922737, 0.00170605, 0.999999, -0.000352684, 0.922735, -0.00171022, -0.38543, -124.211, 0.512153, -123.136)
+
+[node name="Fence320" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.19469, -0.00272128, -0.98086, -0.00944066, 0.999955, -0.000900308, 0.980819, 0.00908472, -0.194707, -124.847, 0.506731, -121.258)
+
+[node name="Fence321" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
+transform = Transform3D(-0.0196176, -0.00108471, -0.999806, 0.0152322, 0.999884, -0.00138361, 0.999691, -0.0152564, -0.019599, -125.01, 0.551536, -119.523)
+
 [node name="Fence154" parent="Level/NavigationRegion3D/Fences" instance=ExtResource("18_12qgq")]
 transform = Transform3D(-0.370046, -0.00285761, 0.929008, -0.00644762, 0.999979, 0.000507676, -0.928991, -0.00580208, -0.370057, 98.8955, 1.15618, -99.1525)
 
@@ -2016,7 +3251,7 @@ transform = Transform3D(1.26492, -0.0144471, -1.10142, -0.00141574, 1.67714, -0.
 transform = Transform3D(-0.608711, -0.0695826, -1.47267, -0.0383277, 1.59346, -0.0594477, 1.47381, 0.0127004, -0.609784, -13.9504, 0.0663069, 10.3785)
 
 [node name="Tree28" parent="Level/NavigationRegion3D/Trees/Trees7" instance=ExtResource("4_0bwet")]
-transform = Transform3D(0.4338, 0.053537, -1.32633, -0.00702541, 1.39543, 0.0540285, 1.32739, -0.0101107, 0.433739, -12.7249, 0.124929, 21.9336)
+transform = Transform3D(0.4338, 0.053537, -1.32633, -0.00702541, 1.39543, 0.0540285, 1.32739, -0.0101107, 0.433739, -12.7057, -0.585161, 21.9308)
 
 [node name="Tree29" parent="Level/NavigationRegion3D/Trees/Trees7" instance=ExtResource("4_0bwet")]
 transform = Transform3D(-1.0726, 0.0184633, 0.616321, 0.0508995, 1.23508, 0.0515823, -0.614493, 0.0700757, -1.07152, -16.12, 5.126e-06, 16.3704)
@@ -2037,7 +3272,7 @@ transform = Transform3D(-1.40304, -0.0461704, -0.115032, -0.0389907, 1.40519, -0
 transform = Transform3D(0.243277, 0.045925, 1.59934, -0.0107974, 1.61773, -0.0448107, -1.59996, -0.00393434, 0.243484, 6.03647, 0.250367, 6.78302)
 
 [node name="Tree7" parent="Level/NavigationRegion3D/Trees/Trees8" instance=ExtResource("4_0bwet")]
-transform = Transform3D(-0.867496, 0.0224393, -0.876185, 0.0108423, 1.23296, 0.0208417, 0.876405, 0.00695779, -0.867536, 2.33081, 0.135065, 14.5486)
+transform = Transform3D(-0.867496, 0.0224393, -0.876185, 0.0108423, 1.23296, 0.0208417, 0.876405, 0.00695779, -0.867536, 2.34175, -0.489708, 14.5413)
 
 [node name="Tree8" parent="Level/NavigationRegion3D/Trees/Trees8" instance=ExtResource("4_0bwet")]
 transform = Transform3D(0.0495487, -0.0538798, 1.09007, 0.017789, 1.09109, 0.0531215, -1.09125, 0.0153398, 0.0503606, 5.44001, 0.0250208, 9.61489)
@@ -2049,13 +3284,13 @@ transform = Transform3D(-1.37969, -0.0590371, -0.00942962, -0.0583636, 1.37724, 
 transform = Transform3D(0.354218, 0.0220843, 1.54657, -0.00133932, 1.58661, -0.0223493, -1.54672, 0.00368372, 0.354201, 11.2928, 0.413503, 12.9737)
 
 [node name="Tree11" parent="Level/NavigationRegion3D/Trees/Trees8" instance=ExtResource("3_j1oc4")]
-transform = Transform3D(1.50101, 0.0416504, 0.148666, -0.0362589, 1.50745, -0.0562389, -0.150072, 0.0523713, 1.50054, 5.86304, 0.406544, 16.0458)
+transform = Transform3D(1.50101, 0.0416504, 0.148666, -0.0362589, 1.50745, -0.0562389, -0.150072, 0.0523713, 1.50054, 5.83851, -0.579009, 15.9479)
 
 [node name="Tree12" parent="Level/NavigationRegion3D/Trees/Trees8" instance=ExtResource("3_j1oc4")]
-transform = Transform3D(-0.232114, -0.0598413, -1.71713, 0.0300495, 1.73232, -0.0644327, 1.71791, -0.038387, -0.230881, 11.1959, 0.528862, 18.217)
+transform = Transform3D(-0.232114, -0.0598413, -1.71713, 0.0300495, 1.73232, -0.0644327, 1.71791, -0.038387, -0.230881, 11.2113, -0.463072, 18.1323)
 
 [node name="Tree13" parent="Level/NavigationRegion3D/Trees/Trees8" instance=ExtResource("4_0bwet")]
-transform = Transform3D(-1.56599, -0.0661045, 0.288008, -0.0681913, 1.59215, -0.00534022, -0.287521, -0.0175715, -1.56737, 7.55176, 0.413149, 20.7082)
+transform = Transform3D(-1.56599, -0.0661045, 0.288008, -0.0681913, 1.59215, -0.00534022, -0.287521, -0.0175715, -1.56737, 7.82746, -0.63052, 20.516)
 
 [node name="Tree14" parent="Level/NavigationRegion3D/Trees/Trees8" instance=ExtResource("4_0bwet")]
 transform = Transform3D(0.913576, -0.0323287, 0.953768, -0.00664619, 1.32011, 0.0511122, -0.954293, -0.0401433, 0.912718, 9.7465, 0.270249, 8.66652)
@@ -2100,6 +3335,87 @@ transform = Transform3D(-1.48536, 0.0656211, 1.07155, 0.031764, 1.83116, -0.0681
 transform = Transform3D(0.4338, 0.053537, -1.32633, -0.00702541, 1.39543, 0.0540285, 1.32739, -0.0101107, 0.433739, -12.6885, -1.04212, 21.9155)
 
 [node name="Tree29" parent="Level/NavigationRegion3D/Trees/Trees8" instance=ExtResource("4_0bwet")]
+transform = Transform3D(-1.0726, 0.0184633, 0.616321, 0.0508995, 1.23508, 0.0515823, -0.614493, 0.0700757, -1.07152, -16.3377, -1.58607, 16.1513)
+
+[node name="Trees16" type="Node3D" parent="Level/NavigationRegion3D/Trees"]
+transform = Transform3D(4.72056, 0.13327, -1.34307, -0.133064, 4.90787, 0.019309, 1.34309, 0.0178353, 4.7224, 110.225, -8.54381, 312.188)
+
+[node name="Tree" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(1.28818, 0.0463941, -0.0122609, -0.0467986, 1.28743, -0.0453493, 0.010613, 0.0457629, 1.28822, 1.5377, 0.278776, 9.34797)
+
+[node name="Tree2" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(-0.35472, -0.0290952, -1.43776, 0.0328793, 1.4803, -0.038068, 1.43768, -0.0410328, -0.353869, 5.8872, 0.334987, 11.687)
+
+[node name="Tree4" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(-1.40304, -0.0461704, -0.115032, -0.0389907, 1.40519, -0.0884308, 0.11766, -0.0849033, -1.40101, 17.3168, 0.268061, 0.338057)
+
+[node name="Tree5" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(0.243277, 0.045925, 1.59934, -0.0107974, 1.61773, -0.0448107, -1.59996, -0.00393434, 0.243484, 6.03647, 0.250367, 6.78302)
+
+[node name="Tree7" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(-0.867496, 0.0224393, -0.876185, 0.0108423, 1.23296, 0.0208417, 0.876405, 0.00695779, -0.867536, 2.33081, 0.135065, 14.5486)
+
+[node name="Tree8" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(0.0495487, -0.0538798, 1.09007, 0.017789, 1.09109, 0.0531215, -1.09125, 0.0153398, 0.0503606, 5.44001, 0.0250208, 9.61489)
+
+[node name="Tree9" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(-1.37969, -0.0590371, -0.00942962, -0.0583636, 1.37724, -0.0832057, 0.0129612, -0.0827292, -1.37844, 8.01188, 0.092152, 15.1179)
+
+[node name="Tree10" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(0.354218, 0.0220843, 1.54657, -0.00133932, 1.58661, -0.0223493, -1.54672, 0.00368372, 0.354201, 11.2928, 0.413503, 12.9737)
+
+[node name="Tree11" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(1.50101, 0.0416504, 0.148666, -0.0362589, 1.50745, -0.0562389, -0.150072, 0.0523713, 1.50054, 5.86304, 0.406544, 16.0458)
+
+[node name="Tree12" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(-0.232114, -0.0598413, -1.71713, 0.0300495, 1.73232, -0.0644327, 1.71791, -0.038387, -0.230881, 11.1959, 0.528862, 18.217)
+
+[node name="Tree13" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(-1.56599, -0.0661045, 0.288008, -0.0681913, 1.59215, -0.00534022, -0.287521, -0.0175715, -1.56737, 7.55176, 0.413149, 20.7082)
+
+[node name="Tree14" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(0.913576, -0.0323287, 0.953768, -0.00664619, 1.32011, 0.0511122, -0.954293, -0.0401433, 0.912718, 9.7465, 0.270249, 8.66652)
+
+[node name="Tree15" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(-0.0338235, 0.0502104, -1.16885, 0.048152, 1.16841, 0.048798, 1.16894, -0.0466774, -0.0358309, 11.8357, 0.416032, 15.1626)
+
+[node name="Tree16" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(-0.652329, -0.0657893, -1.19453, -0.0494688, 1.36088, -0.0479368, 1.19531, 0.0204173, -0.653883, -5.53254, -0.468179, 9.71265)
+
+[node name="Tree17" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(-1.16304, 0.0527535, 1.04685, 0.0347553, 1.56477, -0.0402401, -1.0476, -0.00665345, -1.16354, -9.92574, -0.517194, 12.5534)
+
+[node name="Tree18" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(0.59006, 0.102157, 1.36314, -0.0412155, 1.48536, -0.0934764, -1.36634, -0.000688837, 0.591497, -9.87771, -0.616924, 18.6353)
+
+[node name="Tree19" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(1.36986, -0.0192367, -1.02455, -0.0114135, 1.71004, -0.0473676, 1.02467, 0.044765, 1.36918, -5.22763, -0.373024, 15.0788)
+
+[node name="Tree20" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(-1.00093, -0.00774695, -1.2127, -0.0505971, 1.5713, 0.0317235, 1.21167, 0.0592151, -1.00045, -5.33018, -0.47855, 19.3963)
+
+[node name="Tree21" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(-0.383945, -0.0184923, 1.24559, 0.00221364, 1.30339, 0.0200328, -1.24573, 0.00801575, -0.383869, -10.8584, -0.497474, 7.87351)
+
+[node name="Tree22" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(0.992354, 0.0125738, -0.590572, 0.018804, 1.15334, 0.0561525, 0.590406, -0.057867, 0.990844, -7.73732, -0.277444, 13.1731)
+
+[node name="Tree23" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(0.675995, 0.106548, 1.28943, -0.0616937, 1.45582, -0.0879533, -1.29236, -0.0137651, 0.678664, -18.4153, -0.820079, 20.1242)
+
+[node name="Tree24" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(1.26492, -0.0144471, -1.10142, -0.00141575, 1.67714, -0.0236245, 1.10151, 0.0187458, 1.26478, -13.7733, -1.74989, 16.9772)
+
+[node name="Tree25" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(-0.608711, -0.0695826, -1.47267, -0.0383277, 1.59346, -0.0594477, 1.47381, 0.0127004, -0.609784, -13.9348, -0.433004, 10.3707)
+
+[node name="Tree26" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("3_j1oc4")]
+transform = Transform3D(-1.48536, 0.0656211, 1.07155, 0.031764, 1.83116, -0.0681091, -1.07308, -0.0366288, -1.48525, -18.6337, -0.834031, 14.2639)
+
+[node name="Tree28" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
+transform = Transform3D(0.4338, 0.053537, -1.32633, -0.00702541, 1.39543, 0.0540285, 1.32739, -0.0101107, 0.433739, -12.6885, -1.04212, 21.9155)
+
+[node name="Tree29" parent="Level/NavigationRegion3D/Trees/Trees16" instance=ExtResource("4_0bwet")]
 transform = Transform3D(-1.0726, 0.0184633, 0.616321, 0.0508995, 1.23508, 0.0515823, -0.614493, 0.0700757, -1.07152, -16.3377, -1.58607, 16.1513)
 
 [node name="Trees2" type="Node3D" parent="Level/NavigationRegion3D/Trees"]
@@ -3050,6 +4366,12 @@ panning_strength = 0.5
 bus = &"sfx"
 attenuation_filter_cutoff_hz = 8000.0
 attenuation_filter_db = -18.0
+
+[node name="DistantCabin" parent="Level/NavigationRegion3D" instance=ExtResource("36_fc0h5")]
+transform = Transform3D(-4.78317, 0, 1.04387, 0, 4.89574, 0, -1.04387, 0, -4.78317, -275.038, 3.67596, 287.29)
+
+[node name="DistantCabin2" parent="Level/NavigationRegion3D" instance=ExtResource("36_fc0h5")]
+transform = Transform3D(5.02636, 0, -4.91721, 0, 7.03157, 0, 4.91721, 0, 5.02636, -228.782, 1.94166, 355.974)
 
 [node name="Ground" parent="Level" instance=ExtResource("1_wnivx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
