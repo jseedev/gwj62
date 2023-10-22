@@ -1,4 +1,4 @@
-[gd_scene load_steps=101 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=102 format=3 uid="uid://dlpnyn1b5v37v"]
 
 [ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://dfrifan71ggdm" path="res://objects/pumpkin_pile.tscn" id="40_gn86w"]
 [ext_resource type="AudioStream" uid="uid://bdf2ijtjrpisy" path="res://audio/stingers/stinger_transition3.wav" id="40_ua573"]
 [ext_resource type="AudioStream" uid="uid://d22wxb0ncpivo" path="res://audio/stingers/stinger_transition4.wav" id="41_213kn"]
+[ext_resource type="FontFile" uid="uid://cqnxdb5ww4jsh" path="res://Scenes/ui/ui_fonts/Papyrus.TTF" id="44_fdtvc"]
 [ext_resource type="Script" path="res://gd/pumpkin_zones.gd" id="49_j67jk"]
 [ext_resource type="Script" path="res://gd/pumpkin_spawn.gd" id="50_u10re"]
 [ext_resource type="PackedScene" uid="uid://bgsdpi6h3lm5i" path="res://objects/pumpkin_patch.tscn" id="51_4vo7y"]
@@ -4741,6 +4742,7 @@ mesh = SubResource("SphereMesh_5m0gm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14784, 0)
 billboard = 1
 text = "Press E to Drop"
+font = ExtResource("44_fdtvc")
 
 [node name="PumpkinPile" parent="PumpkinDropZone" instance=ExtResource("40_gn86w")]
 transform = Transform3D(1.25, 0, 2.16506, 0, 2.5, 0, -2.16506, 0, 1.25, 0.0442276, -0.436738, -0.29998)

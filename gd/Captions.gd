@@ -1,5 +1,6 @@
 extends Node
 
+
 var captions = {
 	call1 = [
 		"Errol: Did you—\nCandy: Hello?",
@@ -92,7 +93,7 @@ var captions = {
 		"Holo: … okay, okay.", 
 		"Errol: Good… And by the way. Now that you brought it up, remember this. Those dogs got exactly what they deserved. We toughen brown goo from the kick of our shoe. Remember? And if the shoe was on the other foot, don’t you think they would’ve done it to us?", 
 		"Holo: They weren’t on our soil. We were on theirs!", 
-		"Errol: Enough Treachery! You’re a goddamn American with service stripes, start acting like one."
+		"Errol: Enough treachery! You’re a goddamn American with service stripes, start acting like one."
 	],
 	call5 = [
 		"Candy: So what did you want?", 

@@ -15,7 +15,7 @@ signal game_over()
 signal villain_sighting()
 
 func droppedOffPumpkin():
-	if pumpkins_picked == 3:
+	if pumpkins_picked == 4:
 		#it's kinda late but only a few minutes seem to have passed
 		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
 		await get_tree().create_timer(15.0).timeout
@@ -124,6 +124,8 @@ func _ready():
 	await get_tree().create_timer(5.0).timeout
 	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
 	
+#	spawn_villain() # Used to spawn villain immediately for testing purposes
+	
 @onready var env:Environment = $WorldEnvironment.environment
 @onready var anim_light = $AnimatedLight
 var fromSky = environments.morning
@@ -226,14 +228,17 @@ func skyChange(reset):
 		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Candy","call5")
 		await get_tree().create_timer(30.0).timeout
 		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
-	elif pumpkins_picked == 6:
+	elif pumpkins_picked == 7:
 		#holo crisis
 		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call4")
 		await get_tree().create_timer(9.0).timeout
 		change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
-	elif pumpkins_picked == 8:
+	elif pumpkins_picked == 9:
 		#oh boy it's gettin spicy
 		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
+	elif pumpkins_picked == 11:
+		await get_tree().create_timer(3.0).timeout
+		get_tree().change_scene_to_file("res://Scenes/ui/win_condition.tscn")
 		
 
 func _on_pumpkin_gathered():
@@ -287,6 +292,9 @@ func _on_call_ended(callid):
 func _on_game_over():
 	player.look_at_villain = true
 	villain.animations.play("Catch", 0.3)
+	villain.loss_condition_animation.play("caught")
+	await get_tree().create_timer(5.0).timeout
+	villain.animations.stop()
 	print("Game over .. player was caught.")
 
 var seen_times = 0

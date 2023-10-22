@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://c3kcvcvfe5xil"]
 
-[ext_resource type="Texture2D" uid="uid://f8d1w2loh1fe" path="res://images/LeafShape.png" id="1_iu1vh"]
+[ext_resource type="Texture2D" uid="uid://camvojb6m2aqu" path="res://Scenes/ui/ui_assets/leaf01.png" id="1_a51oa"]
 
 [sub_resource type="Curve" id="Curve_mo4hs"]
 min_value = -1.0
@@ -46,6 +46,6 @@ attractor_interaction_enabled = false
 position = Vector2(609, -98)
 amount = 15
 process_material = SubResource("ParticleProcessMaterial_hexrl")
-texture = ExtResource("1_iu1vh")
+texture = ExtResource("1_a51oa")
 lifetime = 30.0
 preprocess = 5.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://drv1aoy6x6g3i"]
 
 [ext_resource type="Script" path="res://gd/Vignette.gd" id="1_fkwvd"]
-[ext_resource type="Shader" uid="uid://bi8vx65p4alee" path="res://Art/Materials/VignetteShader.tres" id="1_hnjwt"]
+[ext_resource type="Shader" uid="uid://day6n8euip08e" path="res://Art/Materials/VignetteShader.tres" id="1_hnjwt"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h3c5n"]
 shader = ExtResource("1_hnjwt")
@@ -23,3 +23,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 1, 1, 0.392157)

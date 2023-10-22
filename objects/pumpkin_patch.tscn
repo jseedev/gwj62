@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgsdpi6h3lm5i"]
+[gd_scene load_steps=17 format=3 uid="uid://bgsdpi6h3lm5i"]
 
 [ext_resource type="PackedScene" uid="uid://bambv1en5ke5g" path="res://Art/3D Assets/Pumpkin.tscn" id="1_b6pku"]
 [ext_resource type="Script" path="res://gd/pumpkin_patch.gd" id="1_pk60f"]
+[ext_resource type="FontFile" uid="uid://cqnxdb5ww4jsh" path="res://Scenes/ui/ui_fonts/Papyrus.TTF" id="2_41nqn"]
 [ext_resource type="Texture2D" uid="uid://7vlkeuc0fweo" path="res://Art/Textures/Pumpkin/PumpkinPaint.png" id="3_tl2ax"]
 [ext_resource type="Texture2D" uid="uid://ducr0256rxool" path="res://Art/Textures/Pumpkin/Pumpkin_Normal_2.png" id="4_ec3wu"]
 [ext_resource type="Texture2D" uid="uid://dspw2na8xkos" path="res://Art/Textures/Pumpkin/Pumpkin_Roughness.png" id="5_808gi"]
@@ -21,11 +22,12 @@ height = 0.382
 is_hemisphere = true
 
 [sub_resource type="FontVariation" id="FontVariation_fq6ww"]
+base_font = ExtResource("2_41nqn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pnt6m"]
 size = Vector3(1, 0.281999, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcetw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pw8l1"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_tl2ax")
 roughness_texture = ExtResource("5_808gi")
@@ -91,7 +93,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.142148, 0)
 shape = SubResource("BoxShape3D_pnt6m")
 
 [node name="Pumpkin" parent="." instance=ExtResource("1_b6pku")]
-material_override = SubResource("StandardMaterial3D_xcetw")
+material_override = SubResource("StandardMaterial3D_pw8l1")
 
 [node name="pumpkin_pick" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_axts7")

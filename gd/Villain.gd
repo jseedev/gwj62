@@ -4,6 +4,7 @@ class_name Villain
 @export var SPEED = 50.0
 @onready var nav_agent = $NavigationAgent3D
 @onready var animations = $Shabahan/AnimationPlayer
+@onready var loss_condition_animation = $LossConditionAnimation
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -90,3 +91,10 @@ func _on_timer_timeout():
 	elif tdist > 20.0:
 		if $AudioStreamPlayer3D.playing:
 			$AudioStreamPlayer3D.stop()
+
+
+func player_is_caught():
+	loss_condition_animation.play("before_main_menu")
+	await get_tree().create_timer(3.0).timeout
+	get_tree().change_scene_to_file("res://Scenes/ui/main_menu.tscn")
+	

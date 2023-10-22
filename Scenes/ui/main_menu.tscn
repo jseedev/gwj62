@@ -1373,22 +1373,22 @@ libraries = {
 
 [node name="SoundUIBeginGame" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_sufau")
-volume_db = 10.0
+volume_db = 3.0
 bus = &"sfx"
 
 [node name="SoundUIBack" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_4jvnq")
-volume_db = 10.0
+volume_db = 3.0
 bus = &"sfx"
 
 [node name="SoundUIHover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("15_ly84d")
-volume_db = 10.0
+volume_db = 3.0
 bus = &"sfx"
 
 [node name="SoundUISelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_exjna")
-volume_db = 10.0
+volume_db = 3.0
 bus = &"sfx"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]

@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="GWJ62"
-run/main_scene="res://Scenes/Environment.tscn"
+config/name="Life of a Fallen Leaf"
+run/main_scene="res://Scenes/ui/splash.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Scenes/ui/ui_assets/icon.png"
 
 [display]
 
