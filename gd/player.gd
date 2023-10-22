@@ -123,7 +123,7 @@ func _physics_process(delta):
 	if waypoint != null:
 		arrow.visible = true
 		arrow.look_at(waypoint.global_position + (arrow.global_position - Camera.global_position))
-		arrow.rotation_degrees.x+=90
+		arrow.rotation_degrees.x=80
 		arrow.rotation_degrees.z=0.0
 	else:
 		arrow.visible = false
@@ -252,4 +252,5 @@ func _input(event):
 
 
 func _on_line_of_sight_body_entered(body):
+	get_tree().current_scene.change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
 	pass # Replace with function body.

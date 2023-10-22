@@ -8,6 +8,10 @@ var call_playing = false
 @onready var cvoice = $calls/Caller
 
 var lplay = null
+func _ready():
+	#voicemail("Holo","errol_voicemail1") #for testing
+	pass
+	
 func _physics_process(_delta):
 #	if ringing and Input.is_action_just_released("answer_phone"):
 #		answer()

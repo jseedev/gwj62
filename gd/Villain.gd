@@ -76,13 +76,11 @@ func _on_timer_timeout():
 	if tdist >= 50.0:
 		var nspot = get_nearest_hiding_spot()
 		if nspot != null and nspot != hiding_spot:
-			print("go to new hiding spot.")
 			hiding_spot=nspot
 			global_position=hiding_spot.global_position
 			target=Vector3.ZERO
 			hiding=true
 	if (tdist <= 20.0 and target == Vector3.ZERO) or !hiding:
-		print("go to player")
 		target = player.global_position
 		nav_agent.set_target_position(player.global_position)
 		hiding=false
@@ -92,23 +90,3 @@ func _on_timer_timeout():
 	elif tdist > 20.0:
 		if $AudioStreamPlayer3D.playing:
 			$AudioStreamPlayer3D.stop()
-#	if hiding and tdist < 30.0 and tdist < target.distance_to(global_position):
-#		#player is closer, go to them
-#		target=Vector3.ZERO
-#		hiding=false
-#	elif tdist >= 30.0:
-#		var nspot = get_nearest_hiding_spot()
-#		if nspot != null and nspot != hiding_spot:
-#			target=nspot.global_position
-#			hiding_spot=nspot
-#			print("go to hiding at "+nspot.name)
-#			hiding=true
-#	elif target != Vector3.ZERO or tdist > 10.0:
-#		if target.distance_to(global_position) <= 20.0 and !hiding:
-#			if not $AudioStreamPlayer3D.playing:
-#				$AudioStreamPlayer3D.play()
-#		else:
-#			$AudioStreamPlayer3D.stop()
-#		if not hiding:
-#			target = player.global_position
-#			nav_agent.set_target_position(player.global_position)

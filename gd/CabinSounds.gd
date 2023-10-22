@@ -4,12 +4,13 @@ extends GroundSound
 @export var reverb_amount = 0.5
 @export var tween_time = 0.5
 
-@onready var dvol = AudioServer.get_bus_volume_db(bus_id)
+var dvol = AudioServer.get_bus_volume_db(bus_id)
 @onready var reverb = AudioServer.get_bus_effect(bus_id,0)
 
 func _ready():
 	connect("body_entered",_cabin_entered)
 	connect("body_exited",_cabin_exit)
+	#print(dvol)
 
 var tween = null
 func _cabin_entered(body):
@@ -22,8 +23,10 @@ func _cabin_entered(body):
 			tween.tween_property(reverb,"wet",reverb_amount,0.5)
 			tween.play()
 		
+		
 func _cabin_exit(body):
 	if body is PlayerBody:
+		print(AudioServer.get_bus_volume_db(bus_id))
 		body.ground_type = string_types[step_materials.GRASS]
 		var cvol = AudioServer.get_bus_volume_db(bus_id)
 		if tween == null or !tween.is_running():

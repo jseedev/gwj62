@@ -15,7 +15,7 @@ signal game_over()
 signal villain_sighting()
 
 func droppedOffPumpkin():
-	if pumpkins_picked == 1:
+	if pumpkins_picked == 3:
 		#it's kinda late but only a few minutes seem to have passed
 		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
 		await get_tree().create_timer(15.0).timeout
@@ -27,10 +27,15 @@ func _process(_delta):
 		droppedOffPumpkin()
 		player.holding_item = false
 		$PumpkinDropZone/PumpkinPile.add_pumpkin()
+		$Game/PumpkinZones.spawn_pumpkins()
 		$PumpkinDropZone/Highlite.hide()
 		player.waypoint=$Game/PumpkinZones
 	clouds.global_position.x=player.global_position.x
 	clouds.global_position.z=player.global_position.z
+	if $ArrowHider.overlaps_body(player) and $Game/player/Camera3D/Arrow.visible:
+		$Game/player/Camera3D/Arrow.hide()
+	else:
+		$Game/player/Camera3D/Arrow.show()
 
 var environments = {
 	day = {
@@ -109,10 +114,16 @@ func _ready():
 	
 	await get_tree().create_timer(3.0).timeout
 	player.can_update_vignette = true
-	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
-	await get_tree().create_timer(100).timeout
+	await get_tree().create_timer(2.0).timeout
+	player.waypoint=$Game/PumpkinZones
+	player.PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
+	player.PlayerSounds.play()
+	cabinator.play("Door_Open", 0.5)
+	creak.play()
 	change_music(load("res://audio/music/music_1_theme_92bpm_loop.ogg"))
-
+	await get_tree().create_timer(5.0).timeout
+	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
+	
 @onready var env:Environment = $WorldEnvironment.environment
 @onready var anim_light = $AnimatedLight
 var fromSky = environments.morning
@@ -204,21 +215,23 @@ func skyChange(reset):
 		from_light = lights.night
 		target_light = lights.night
 	tween_sky()
-		
-	if pumpkins_picked == 2:
+#	if pumpkins_picked == 1:
+#		#first call with candy ... fix car.
+#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
+	if pumpkins_picked == 3:
 		#no monsanto, sad
 		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-	elif pumpkins_picked == 4:
+	elif pumpkins_picked == 5:
 		#candy calls back to ask what you wanted
 		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Candy","call5")
 		await get_tree().create_timer(30.0).timeout
 		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
-	elif pumpkins_picked == 5:
+	elif pumpkins_picked == 6:
 		#holo crisis
 		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call4")
 		await get_tree().create_timer(9.0).timeout
 		change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
-	elif pumpkins_picked == 6:
+	elif pumpkins_picked == 8:
 		#oh boy it's gettin spicy
 		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
 		
@@ -228,22 +241,22 @@ func _on_pumpkin_gathered():
 	await get_tree().create_timer(1.0).timeout
 	skyChange(false)
 	player.waypoint=$PumpkinDropZone
-	#if pumpkins_picked == 1:
-	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
-	#	change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-	#elif pumpkins_picked == 2:
-	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-	#	change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-	#elif pumpkins_picked == 3:
-	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
-	#	change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
-	#elif pumpkins_picked == 4:
-	#	player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo","call4")
-	#	change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
-	#elif pumpkins_picked == 5:
-	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call5")
-	#elif pumpkins_picked == 6:
-	#	player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
+#	if pumpkins_picked == 1:
+#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
+#		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+#	elif pumpkins_picked == 2:
+#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+#		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+#	elif pumpkins_picked == 3:
+#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
+#		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
+#	elif pumpkins_picked == 4:
+#		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo","call4")
+#		change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
+#	elif pumpkins_picked == 5:
+#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call5")
+#	elif pumpkins_picked == 6:
+#		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
 
 var env_current = 0.0
 var env_target = 0.0
@@ -255,19 +268,18 @@ func tween_sky():
 
 @onready var music_player = $Level/Music
 func _on_call_ended(callid):
-	if callid == "call1":
-		await get_tree().create_timer(2.0).timeout
-		if not music_player.playing:
-			change_music(load("res://audio/music/music_1_theme_92bpm_loop.ogg"))
-		
-		player.waypoint=$Game/PumpkinZones
-		player.PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
-		player.PlayerSounds.play()
-		cabinator.play("Door_Open", 0.5)
-		creak.play()
+#	if callid == "call1":
+#		await get_tree().create_timer(2.0).timeout
+#		if not music_player.playing:
+#			change_music(load("res://audio/music/music_1_theme_92bpm_loop.ogg"))
+#		player.waypoint=$Game/PumpkinZones
+#		player.PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
+#		player.PlayerSounds.play()
+#		cabinator.play("Door_Open", 0.5)
+#		creak.play()
 	if callid == "holo_voicemail":
 		#change music to new tune
-		change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
+		#change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
 		#tween the environment
 		spawn_villain()
 

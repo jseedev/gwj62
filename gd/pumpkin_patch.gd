@@ -8,7 +8,8 @@ extends Node3D
 var player = null
 
 func _physics_process(delta):
-	if Input.is_action_pressed("interact") and hilight.visible and !player.get_node("Camera3D/PhoneHolder/Phone/AnimationPlayer").is_playing():
+	var picked = get_tree().current_scene.pumpkins_picked
+	if Input.is_action_pressed("interact") and hilight.visible and (player.get_node("Camera3D/PhoneHolder/Phone/calls/AnimationPlayer").current_animation != "call1" or picked < 2):
 		if !$pumpkin_harvesting.playing:
 			$pumpkin_harvesting.play()
 		ui_part.show() #Show the ui piece for this pumpkin
@@ -33,6 +34,7 @@ func _on_harvest_area_body_entered(body):
 		if player == null:
 			player=body
 		hilight.show()
+		harvest_progress.value=0
 
 func _on_harvest_area_body_exited(body):
 	if body is PlayerBody and hilight.visible:
