@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://bi8vx65p4alee"]
+[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://day6n8euip08e"]
 
 [sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_idjq0"]
 function = 0

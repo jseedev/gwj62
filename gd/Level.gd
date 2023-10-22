@@ -15,7 +15,7 @@ signal game_over()
 signal villain_sighting()
 
 func droppedOffPumpkin():
-	if pumpkins_picked == 4:
+	if pumpkins_picked == 3:
 		#it's kinda late but only a few minutes seem to have passed
 		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
 		await get_tree().create_timer(15.0).timeout
