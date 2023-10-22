@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bjjjkm3b6sjtx"]
+[gd_scene load_steps=43 format=3 uid="uid://bjjjkm3b6sjtx"]
 
 [ext_resource type="Material" uid="uid://dh30ykdoo2d8o" path="res://Art/Materials/Cabin/Windows.tres" id="1_716qi"]
 [ext_resource type="Material" uid="uid://ccrjh7pgpy3ag" path="res://Art/Materials/Cabin/Cabin_Interior.tres" id="2_m2hln"]
@@ -8,6 +8,7 @@
 [ext_resource type="Material" uid="uid://h85pmp3dom2n" path="res://Art/Materials/Cabin/Firelog.tres" id="4_8ypjv"]
 [ext_resource type="Material" uid="uid://hudxlx3cwl8q" path="res://Art/Materials/Cabin/Cabinets.tres" id="5_g67eg"]
 [ext_resource type="Material" uid="uid://bckg1kbl7xnsu" path="res://Art/Materials/Cabin/DeckDecoration.tres" id="7_ish01"]
+[ext_resource type="AudioStream" uid="uid://b8yqaxejo7y3u" path="res://audio/sfx/footsteps/footstep_creakywood7.wav" id="9_4vkvp"]
 [ext_resource type="Script" path="res://gd/CabinSounds.gd" id="9_xoc0f"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wednt"]
@@ -276,6 +277,59 @@ data = PackedVector3Array(-0.270882, -0.433887, 0.0177482, -0.270882, 0.437564, 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6bvlr"]
 size = Vector3(4.039, 1, 3.07974)
 
+[sub_resource type="Animation" id="Animation_x8kyy"]
+resource_name = "Door_Closed"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ys86u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4pv8c"]
+resource_name = "Door_Open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.9635, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ksx7v"]
+_data = {
+"Door_Closed": SubResource("Animation_x8kyy"),
+"Door_Open": SubResource("Animation_4pv8c"),
+"RESET": SubResource("Animation_ys86u")
+}
+
 [node name="Cabin" type="Node3D"]
 
 [node name="WindowPanes" type="MeshInstance3D" parent="."]
@@ -326,7 +380,7 @@ skeleton = NodePath("")
 surface_material_override/0 = ExtResource("5_g67eg")
 
 [node name="Door" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.381248, 0, 0.924473, 0, 1, 0, -0.924473, 0, -0.381248, -0.25457, -0.346506, 0.967076)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25457, -0.346506, 0.967076)
 mesh = SubResource("ArrayMesh_m6hkr")
 skeleton = NodePath("")
 surface_material_override/0 = ExtResource("2_m2hln")
@@ -337,6 +391,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25457, 0, 0.015717)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Door/DoorCol"]
 shape = SubResource("ConcavePolygonShape3D_glrhp")
 
+[node name="DoorCreak" type="AudioStreamPlayer3D" parent="Door"]
+stream = ExtResource("9_4vkvp")
+bus = &"sfx"
+
 [node name="SoundsArea" type="Area3D" parent="."]
 script = ExtResource("9_xoc0f")
 volume_dampening = -4.0
@@ -346,3 +404,8 @@ ground_type = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SoundsArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.527098, 0.393802)
 shape = SubResource("BoxShape3D_6bvlr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ksx7v")
+}

@@ -4,14 +4,26 @@ var pumpkins_picked = 0
 var player = null #filled by the player itself.
 var ended = false
 
+@onready var cabin = $Level/NavigationRegion3D/Cabin
+@onready var cabinator = $Level/NavigationRegion3D/Cabin/AnimationPlayer
+@onready var creak = $Level/NavigationRegion3D/Cabin/Door/DoorCreak
+
 signal call_ended(call)
 signal pumpkin_gathered()
 signal game_over()
 signal villain_sighting()
 
+func droppedOffPumpkin():
+	if pumpkins_picked == 1:
+		#it's kinda late but only a few minutes seem to have passed
+		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
+		await get_tree().create_timer(15.0).timeout
+		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+
 @onready var clouds = $Game/Clouds
 func _process(_delta):
 	if Input.is_action_just_pressed("interact") and in_pumpkin_zone and player.holding_item:
+		droppedOffPumpkin()
 		player.holding_item = false
 		$PumpkinDropZone/PumpkinPile.add_pumpkin()
 		$PumpkinDropZone/Highlite.hide()
@@ -86,11 +98,14 @@ var environments = {
 }
 
 func _ready():
-	skyChange()
+	cabinator.play("Door_Closed")
+	skyChange(true)
 	player.caster.add_exception($Level/NavigationRegion3D/Field/Field/StaticBody3D)
 	player.caster.add_exception(player)
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
+	await get_tree().create_timer(100).timeout
+	change_music(load("res://audio/music/music_1_theme_92bpm_loop.ogg"))
 
 @onready var env:Environment = $WorldEnvironment.environment
 @onready var anim_light = $AnimatedLight
@@ -145,34 +160,37 @@ func despawn_villain():
 		villain=null
 
 var pumpkinsPerChange = 2.0
-func skyChange():
-	env_target = env_target + (1.0 / pumpkinsPerChange)
-	if env_target > 1.0:
-		env_target = (1.0 / pumpkinsPerChange)
-		env_current = 0.0
+func skyChange(reset):
+	if reset:
+		env_target = 0.0
+	else:
+		env_target = env_target + 0.5
+		if env_target > 1.0:
+			env_target = 0.5
+			env_current = 0.0
 	
-	var rounded = ceil(float(pumpkins_picked)/pumpkinsPerChange)
-	if rounded == 1.0:
+	var rounded = ceil(float(pumpkins_picked) / 2.0)
+	if rounded == 1:
 		fromSky = environments.morning
 		targetSky = environments.day
 		from_light = lights.morning
 		target_light = lights.day
-	elif rounded == 2.0:
+	elif rounded == 2:
 		fromSky = environments.day
 		targetSky = environments.evening
 		from_light = lights.day
 		target_light = lights.evening
-	elif rounded == 3.0:
+	elif rounded == 3:
 		fromSky = environments.evening
 		targetSky = environments.dusk
 		from_light = lights.evening
 		target_light = lights.dusk
-	elif rounded == 4.0:
+	elif rounded == 4:
 		fromSky = environments.dusk
 		targetSky = environments.night
 		from_light = lights.dusk
 		target_light = lights.night
-	elif rounded == 5.0:
+	elif rounded == 5:
 		fromSky = environments.night
 		targetSky = environments.night
 		from_light = lights.night
@@ -182,11 +200,6 @@ func skyChange():
 	if pumpkins_picked == 2:
 		#no monsanto, sad
 		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-	elif pumpkins_picked == 1:
-		#it's way late but only a few minutes seem to have passed
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
-		await get_tree().create_timer(15.0).timeout
-		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
 	elif pumpkins_picked == 4:
 		#candy calls back to ask what you wanted
 		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Candy","call5")
@@ -205,7 +218,7 @@ func skyChange():
 func _on_pumpkin_gathered():
 	pumpkins_picked+=1
 	await get_tree().create_timer(1.0).timeout
-	skyChange()
+	skyChange(false)
 	player.waypoint=$PumpkinDropZone
 	#if pumpkins_picked == 1:
 	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
@@ -236,9 +249,14 @@ func tween_sky():
 func _on_call_ended(callid):
 	if callid == "call1":
 		await get_tree().create_timer(2.0).timeout
+		if not music_player.playing:
+			change_music(load("res://audio/music/music_1_theme_92bpm_loop.ogg"))
+		
 		player.waypoint=$Game/PumpkinZones
 		player.PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
 		player.PlayerSounds.play()
+		cabinator.play("Door_Open", 0.5)
+		creak.play()
 	if callid == "holo_voicemail":
 		#change music to new tune
 		change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)

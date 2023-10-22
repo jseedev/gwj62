@@ -16,6 +16,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var Camera = $Camera3D
 @onready var cameraTarget = $Camera_Target
 @onready var phone = $Camera3D/PhoneHolder/Phone
+@onready var PlayerSounds = $PlayerSounds #for the level to see
 @onready var player_sounds = $PlayerSounds/AnimationPlayer
 @onready var caster = $Camera3D/ShapeCast3D
 @onready var stamina_bar = $Control/ProgressBar
@@ -53,7 +54,7 @@ var tilt = 0.0
 # animation junk
 @onready var Viewmodel = $Viewmodel
 @onready var Animations = $Viewmodel/AnimationPlayer
-@onready var waypoint = get_tree().current_scene.get_node("Game/PumpkinZones")
+@onready var waypoint #= get_tree().current_scene.get_node("Game/PumpkinZones")
 
 #this function can be replaced with lerp()
 #func interpolate(from, to, by):
@@ -115,9 +116,12 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 	var arrow = $Camera3D/Arrow
 	if waypoint != null:
-		arrow.look_at(waypoint.global_position)
-		arrow.rotation_degrees.x=88.0
+		arrow.visible = true
+		arrow.look_at(waypoint.global_position + (arrow.global_position - Camera.global_position))
+		arrow.rotation_degrees.x+=90
 		arrow.rotation_degrees.z=0.0
+	else:
+		arrow.visible = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
