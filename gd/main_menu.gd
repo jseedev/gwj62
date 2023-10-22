@@ -32,7 +32,6 @@ func show_main() -> void:
 
 func _on_begin_button_pressed():
 	$SoundUIBeginGame.play()
-	await $SoundUIBeginGame.finished
 	get_tree().change_scene_to_file("res://Scenes/Environment.tscn")
 
 

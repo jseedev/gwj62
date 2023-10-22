@@ -124,8 +124,9 @@ func _ready():
 	await get_tree().create_timer(5.0).timeout
 	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
 	
-#	spawn_villain() # Used to spawn villain immediately for testing purposes
-	
+#	spawn_villain() # Spawns the villain immediately for testing purposes
+
+
 @onready var env:Environment = $WorldEnvironment.environment
 @onready var anim_light = $AnimatedLight
 var fromSky = environments.morning
