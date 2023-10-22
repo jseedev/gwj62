@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=100 format=3 uid="uid://dlpnyn1b5v37v"]
 
 [ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
@@ -36,7 +36,11 @@
 [ext_resource type="AudioStream" uid="uid://dxfkutms02d8f" path="res://audio/enviornment/ambiance_crickets3_loop.ogg" id="30_lsq8c"]
 [ext_resource type="AudioStream" uid="uid://6ls6saxch7wx" path="res://audio/music/music_1_theme_92bpm_loop.ogg" id="31_iixge"]
 [ext_resource type="PackedScene" uid="uid://bjjjkm3b6sjtx" path="res://Art/3D Assets/Cabin.tscn" id="36_fc0h5"]
+[ext_resource type="AudioStream" uid="uid://blpkscmw1n660" path="res://audio/stingers/stinger_transition1.wav" id="38_v1oka"]
+[ext_resource type="AudioStream" uid="uid://bmoo4hboy1kck" path="res://audio/stingers/stinger_transition2.wav" id="39_aaj8d"]
 [ext_resource type="PackedScene" uid="uid://dfrifan71ggdm" path="res://objects/pumpkin_pile.tscn" id="40_gn86w"]
+[ext_resource type="AudioStream" uid="uid://bdf2ijtjrpisy" path="res://audio/stingers/stinger_transition3.wav" id="40_ua573"]
+[ext_resource type="AudioStream" uid="uid://d22wxb0ncpivo" path="res://audio/stingers/stinger_transition4.wav" id="41_213kn"]
 [ext_resource type="Script" path="res://gd/pumpkin_zones.gd" id="49_j67jk"]
 [ext_resource type="Script" path="res://gd/pumpkin_spawn.gd" id="50_u10re"]
 [ext_resource type="PackedScene" uid="uid://bgsdpi6h3lm5i" path="res://objects/pumpkin_patch.tscn" id="51_4vo7y"]
@@ -504,6 +508,19 @@ turbulence_noise_strength = 0.15
 
 [sub_resource type="QuadMesh" id="QuadMesh_1a61l"]
 orientation = 0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r5ymp"]
+streams_count = 4
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("38_v1oka")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("39_aaj8d")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("40_ua573")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("41_213kn")
+stream_3/weight = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uo5g4"]
 size = Vector3(1.90262, 1, 2.18713)
@@ -3143,7 +3160,7 @@ draw_pass_1 = SubResource("QuadMesh_1a61l")
 [node name="birds1" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -126.246, -12.2141, -69.5473)
 stream = ExtResource("21_guumy")
-volume_db = 3.0
+volume_db = 6.0
 unit_size = 15.0
 max_db = 6.0
 autoplay = true
@@ -3155,8 +3172,8 @@ attenuation_filter_db = -18.0
 [node name="birds2" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.3036, 42.8768, -230.611)
 stream = ExtResource("22_0yxd5")
-volume_db = 3.0
-unit_size = 15.0
+volume_db = 6.0
+unit_size = 20.0
 max_db = 6.0
 autoplay = true
 max_distance = 500.0
@@ -3167,7 +3184,7 @@ attenuation_filter_db = -18.0
 [node name="birds3" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 304.253, 6.79443, 78.607)
 stream = ExtResource("23_vvwj2")
-volume_db = 3.0
+volume_db = 6.0
 unit_size = 15.0
 max_db = 6.0
 autoplay = true
@@ -3179,7 +3196,7 @@ attenuation_filter_db = -18.0
 [node name="birds4" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.7369, 21.253, 175.008)
 stream = ExtResource("24_6o1mo")
-volume_db = 3.0
+volume_db = 6.0
 unit_size = 15.0
 max_db = 6.0
 autoplay = true
@@ -3191,7 +3208,7 @@ attenuation_filter_db = -18.0
 [node name="birds5" type="AudioStreamPlayer3D" parent="Level/ambient3daudio"]
 transform = Transform3D(0.970708, -0.240262, 0, 0.240262, 0.970708, 0, 0, 0, 1, 152.272, 0, -221.038)
 stream = ExtResource("25_m8uv0")
-volume_db = 3.0
+volume_db = 6.0
 unit_size = 20.0
 max_db = 6.0
 autoplay = true
@@ -3270,6 +3287,10 @@ attenuation_filter_db = -18.0
 stream = ExtResource("31_iixge")
 volume_db = -12.0
 autoplay = true
+
+[node name="stingers" type="AudioStreamPlayer" parent="Level"]
+stream = SubResource("AudioStreamRandomizer_r5ymp")
+volume_db = -9.0
 
 [node name="AnimatedLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.394006, -0.307831, 0, -0.615661, 0.788011, -0.5, 0.682437, 0.533178, 2.89153, 6.96954, 2.2441)

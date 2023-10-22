@@ -65,6 +65,7 @@ func change_music(new_track,new_volume=-12.0):
 		var mtween = get_tree().create_tween()
 		mtween.tween_property(music_player,"volume_db",-50.0,2.0)
 		mtween.play()
+		$Level/stingers.play()
 		await get_tree().create_timer(2.3).timeout
 		music_player.stop()
 	var vtween = get_tree().create_tween()
