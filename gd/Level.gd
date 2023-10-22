@@ -141,38 +141,27 @@ func despawn_villain():
 		villain.queue_free()
 		villain=null
 
+var pumpkinsPerChange = 2.0
 func skyChange():
 	# Ricky wants 10 tweens, so each sky gets 2 passes
 	if pumpkins_picked <= 10:
-		env_target = env_target + 0.5
+		env_target = env_target + (1.0 / pumpkinsPerChange)
 		if env_target > 1.0:
-			env_target = 0.5
+			env_target = (1.0 / pumpkinsPerChange)
 			env_current = 0.0
 		
-		var rounded = ceil(float(pumpkins_picked)/2.0)
+		var rounded = ceil(float(pumpkins_picked)/pumpkinsPerChange)
 		if rounded == 1.0:
-			if env_target == 0.5:
-				player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-				change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-			elif env_target == 1.0:
-				player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
 			fromSky = environments.morning
 			targetSky = environments.day
 			from_light = lights.morning
 			target_light = lights.day
 		elif rounded == 2.0:
-			if env_target == 1.0:
-				player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Candy","call5")
 			fromSky = environments.day
 			targetSky = environments.evening
 			from_light = lights.day
 			target_light = lights.evening
 		elif rounded == 3.0:
-			if env_target == 0.5:
-				player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call4")
-				change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
-			elif env_target == 1.0:
-				player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
 			fromSky = environments.evening
 			targetSky = environments.dusk
 			from_light = lights.evening
@@ -188,6 +177,29 @@ func skyChange():
 			from_light = lights.night
 			target_light = lights.night
 		tween_sky()
+		
+		if pumpkins_picked == 1:
+			#no monsanto, sad
+			player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+		elif pumpkins_picked == 2:
+			#it's getting darker but only a few minutes have passed
+			player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
+			await get_tree().create_timer(15.0).timeout
+			change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+		elif pumpkins_picked == 4:
+			#candy calls back to ask what you wanted
+			player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Candy","call5")
+			await get_tree().create_timer(30.0).timeout
+			change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
+		elif pumpkins_picked == 5:
+			#holo crisis
+			player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call4")
+			await get_tree().create_timer(9.0).timeout
+			change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
+		elif pumpkins_picked == 6:
+			#oh boy it's gettin spicy
+			player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
+		
 
 func _on_pumpkin_gathered():
 	pumpkins_picked+=1
@@ -223,9 +235,7 @@ func tween_sky():
 
 @onready var music_player = $Level/Music
 func _on_call_ended(callid):
-	if callid == "call3":
-		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
-	elif callid == "holo_voicemail":
+	if callid == "holo_voicemail":
 		#change music to new tune
 		change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
 		#tween the environment
