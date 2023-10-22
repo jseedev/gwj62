@@ -87,6 +87,7 @@ var environments = {
 
 func _ready():
 	#lerp_environment(0.0)
+	skyChange()
 	player.caster.add_exception($Level/NavigationRegion3D/Field/Field/StaticBody3D)
 	player.caster.add_exception(player)
 
