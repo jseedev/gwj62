@@ -21,18 +21,67 @@ func _process(_delta):
 var environments = {
 	day = {
 		sun_angle_max = 30.0,
-		sky_top_color = Color(.17, .30, .36),
-		sky_horizon_color = Color(.67, .73, .68),
+		sky_top_color = Color(.20, .29, .41),
+		sky_horizon_color = Color(.66, .72, .73),
 		fog_light_energy = 0.5,
-		fog_light_color = Color(.71, .71, .67)
+		fog_light_color = Color(.67, .71, .74),
+		ambient_light_color = Color(0.0, 0.0, 0.0, 1.0),
+		ambient_light_sky_contribution = 1.0,
+		sky_energy_multiplier = 1.5,
+		ambient_light_energy = 1.0,
+	},
+	morning = {
+		sun_angle_max = 30.0,
+		sky_top_color = Color(.23, .40, .54),
+		sky_horizon_color = Color(.60, .74, .72),
+		fog_light_energy = 0.5,
+		fog_light_color = Color(.63, .73, .73),
+		ambient_light_color = Color(.74, .77, .74, 1.0),
+		ambient_light_sky_contribution = 0.5,
+		sky_energy_multiplier = 2.0,
+		ambient_light_energy = 0.5,
+	},
+	evening = {
+		sun_angle_max = 20.0,
+		sky_top_color = Color(.34, .39, .48),
+		sky_horizon_color = Color(.75, .70, .67),
+		fog_light_energy = 0.5,
+		fog_light_color = Color(.71, .70, .69),
+		ambient_light_color = Color(.55, .58, .55, 1.0),
+		ambient_light_sky_contribution = 0.0,
+		sky_energy_multiplier = 2.0,
+		ambient_light_energy = 1.0,
+	},
+	dusk = {
+		sun_angle_max = 0.0,
+		sky_top_color = Color(.69, .36, .41),
+		sky_horizon_color = Color(.97, .51, .39),
+		fog_light_energy = 0.35,
+		fog_light_color = Color(.81, .58, .61),
+		ambient_light_color = Color(.18, .05, .04, 1.0),
+		ambient_light_sky_contribution = 0.0,
+		sky_energy_multiplier = 1.0,
+		ambient_light_energy = 1.0,
 	},
 	night = {
 		sun_angle_max = 0.0,
-		sky_top_color = Color(.35, .26, .25),
-		sky_horizon_color = Color(.97, .78, .61),
-		fog_light_energy = 1.0,
-		fog_light_color = Color(.90, .64, .46)
-	}
+		sky_top_color = Color(.12, .12, .29),
+		sky_horizon_color = Color(.08, .05, .14),
+		fog_light_energy = 0.5,
+		fog_light_color = Color(.04, .03, .10),
+		ambient_light_color = Color(0.0, 0.0, 0.0, 1.0),
+		ambient_light_sky_contribution = 0.3,
+		sky_energy_multiplier = 0.3,
+		ambient_light_energy = 1.0,
+	},
+}
+
+@onready var lights = {
+	morning = $MorningSun,
+	day = $DaySun,
+	evening = $EveningSun,
+	dusk = $DuskSun,
+	night = $Moon
 }
 
 func _ready():
@@ -42,23 +91,21 @@ func _ready():
 
 @onready var env:Environment = $WorldEnvironment.environment
 @onready var anim_light = $AnimatedLight
-func lerp_environment(night_weight):
-	var target_light
-	if night_weight >= 0.75:
-		target_light = $Moon
-	elif night_weight >= 0.5:
-		target_light=$DuskSun
-	else:
-		target_light = $MorningSun
-	anim_light.transform = anim_light.transform.interpolate_with(target_light.transform,night_weight)
-	anim_light.light_color = lerp(anim_light.light_color,target_light.light_color,night_weight)
-	anim_light.light_energy = lerp(anim_light.light_energy,target_light.light_energy,night_weight)
+var fromSky = environments.morning
+var targetSky = environments.day
+@onready var from_light = lights.morning
+@onready var target_light = lights.day
+
+func lerp_environment(weight):
+	anim_light.transform = anim_light.transform.interpolate_with(target_light.transform,weight)
+	anim_light.light_color = lerp(from_light.light_color,target_light.light_color,weight)
+	anim_light.light_energy = lerp(from_light.light_energy,target_light.light_energy,weight)
 	var mat = env.sky.sky_material
-	for prop in environments.day.keys():
-		if prop.find("fog") > -1:
-			env[prop]=lerp(environments.day[prop],environments.night[prop],night_weight)
+	for prop in fromSky.keys():
+		if prop.find("fog") > -1 or prop.find("ambient") > -1:
+			env[prop]=lerp(fromSky[prop],targetSky[prop],weight)
 		else:
-			mat[prop]=lerp(environments.day[prop],environments.night[prop],night_weight)
+			mat[prop]=lerp(fromSky[prop],targetSky[prop],weight)
 
 func change_music(new_track,new_volume=-12.0):
 	if music_player.playing:
@@ -92,47 +139,95 @@ func despawn_villain():
 	if villain != null:
 		villain.queue_free()
 		villain=null
+
+func skyChange():
+	# Ricky wants 10 tweens, so each sky gets 2 passes
+	if pumpkins_picked <= 10:
+		env_target = env_target + 0.5
+		if env_target > 1.0:
+			env_target = 0.5
+			env_current = 0.0
 		
+		var rounded = ceil(float(pumpkins_picked)/2.0)
+		if rounded == 1.0:
+			if env_target == 0.5:
+				player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+				change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+			elif env_target == 1.0:
+				player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
+			fromSky = environments.morning
+			targetSky = environments.day
+			from_light = lights.morning
+			target_light = lights.day
+		elif rounded == 2.0:
+			if env_target == 1.0:
+				player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Candy","call5")
+			fromSky = environments.day
+			targetSky = environments.evening
+			from_light = lights.day
+			target_light = lights.evening
+		elif rounded == 3.0:
+			if env_target == 0.5:
+				player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call4")
+				change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
+			elif env_target == 1.0:
+				player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
+			fromSky = environments.evening
+			targetSky = environments.dusk
+			from_light = lights.evening
+			target_light = lights.dusk
+		elif rounded == 4.0:
+			fromSky = environments.dusk
+			targetSky = environments.night
+			from_light = lights.dusk
+			target_light = lights.night
+		elif rounded == 5.0:
+			fromSky = environments.night
+			targetSky = environments.night
+			from_light = lights.night
+			target_light = lights.night
+		tween_sky()
+
 func _on_pumpkin_gathered():
 	pumpkins_picked+=1
-	if pumpkins_picked == 1:
-		await get_tree().create_timer(1.0).timeout
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-		tween_sky(0.30)
-		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-	elif pumpkins_picked == 2:
-		await get_tree().create_timer(1.0).timeout
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
-		tween_sky(0.45)
-		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
-	elif pumpkins_picked == 3:
-		await get_tree().create_timer(1.0).timeout
-		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo","call4")
-		tween_sky(0.55)
-		change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
-	elif pumpkins_picked == 4:
-		await get_tree().create_timer(1.0).timeout
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call5")
-		tween_sky(0.75)
-	elif pumpkins_picked == 5:
-		await get_tree().create_timer(1.0).timeout
-		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
-		tween_sky(1.0)
+	await get_tree().create_timer(1.0).timeout
+	skyChange()
+	
+	#if pumpkins_picked == 1:
+	#	await get_tree().create_timer(1.0).timeout
+	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
+	#	change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+	#elif pumpkins_picked == 2:
+	#	await get_tree().create_timer(1.0).timeout
+	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
+	#	change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
+	#elif pumpkins_picked == 3:
+	#	await get_tree().create_timer(1.0).timeout
+	#	player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo","call4")
+	#	change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
+	#elif pumpkins_picked == 4:
+	#	await get_tree().create_timer(1.0).timeout
+	#	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call5")
+	#elif pumpkins_picked == 5:
+	#	await get_tree().create_timer(1.0).timeout
+	#	player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
 
 var env_current = 0.0
-func tween_sky(amount):
+var env_target = 0.0
+func tween_sky():
 	var sky_tween = get_tree().create_tween()
-	sky_tween.tween_method(get_tree().current_scene.lerp_environment,env_current,amount,4.0)
-	env_current=amount
+	sky_tween.tween_method(get_tree().current_scene.lerp_environment,env_current,env_target,4.0)
+	env_current=env_target
 	sky_tween.play()
 
 @onready var music_player = $Level/Music
 func _on_call_ended(callid):
-	if callid == "holo_voicemail":
+	if callid == "call3":
+		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
+	elif callid == "holo_voicemail":
 		#change music to new tune
 		change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
 		#tween the environment
-		tween_sky(1.0)
 		spawn_villain()
 
 

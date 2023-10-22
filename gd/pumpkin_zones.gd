@@ -3,7 +3,7 @@ extends Node3D
 class_name PumpkinZones
 
 ##Number of pumpkin patches to spawn at a time.
-@export var number_of_spawns = 3 
+@export var number_of_spawns = 3
 
 @onready var spawn_points = get_children() #Array of child PumpkinSpawn
 var spawned = [] #currently spawned pumpkins.
