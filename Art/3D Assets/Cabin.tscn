@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bjjjkm3b6sjtx"]
+[gd_scene load_steps=45 format=3 uid="uid://bjjjkm3b6sjtx"]
 
 [ext_resource type="Material" uid="uid://dh30ykdoo2d8o" path="res://Art/Materials/Cabin/Windows.tres" id="1_716qi"]
 [ext_resource type="Material" uid="uid://ccrjh7pgpy3ag" path="res://Art/Materials/Cabin/Cabin_Interior.tres" id="2_m2hln"]
@@ -10,6 +10,8 @@
 [ext_resource type="Material" uid="uid://bckg1kbl7xnsu" path="res://Art/Materials/Cabin/DeckDecoration.tres" id="7_ish01"]
 [ext_resource type="AudioStream" uid="uid://b8yqaxejo7y3u" path="res://audio/sfx/footsteps/footstep_creakywood7.wav" id="9_4vkvp"]
 [ext_resource type="Script" path="res://gd/CabinSounds.gd" id="9_xoc0f"]
+[ext_resource type="PackedScene" uid="uid://bnhuvs0bfd7ju" path="res://Art/3D Assets/Landscape_Photo.tscn" id="11_ormde"]
+[ext_resource type="PackedScene" uid="uid://jifvc04l0w4v" path="res://Art/3D Assets/Portrait_Photo.tscn" id="12_0dwls"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wednt"]
 
@@ -409,3 +411,9 @@ shape = SubResource("BoxShape3D_6bvlr")
 libraries = {
 "": SubResource("AnimationLibrary_ksx7v")
 }
+
+[node name="LandscapePhoto" parent="." instance=ExtResource("11_ormde")]
+transform = Transform3D(-0.709694, 0, -0.70451, 0, 1, 0, 0.70451, 0, -0.709694, 0.443192, -0.350442, -0.858805)
+
+[node name="Portrait_Photo" parent="." instance=ExtResource("12_0dwls")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93778, -0.0294187, -0.221503)

@@ -4363,10 +4363,7 @@ attenuation_filter_cutoff_hz = 8000.0
 attenuation_filter_db = -18.0
 
 [node name="DistantCabin" parent="Level/NavigationRegion3D" instance=ExtResource("36_fc0h5")]
-transform = Transform3D(-4.78317, 0, 1.04387, 0, 4.89574, 0, -1.04387, 0, -4.78317, -275.038, 3.67596, 287.29)
-
-[node name="DistantCabin2" parent="Level/NavigationRegion3D" instance=ExtResource("36_fc0h5")]
-transform = Transform3D(5.02636, 0, -4.91721, 0, 7.03157, 0, 4.91721, 0, 5.02636, -228.782, 1.94166, 355.974)
+transform = Transform3D(-5.73594, 0, 1.2518, 0, 5.87093, 0, -1.2518, 0, -5.73594, -450.754, 3.67596, 247.913)
 
 [node name="Ground" parent="Level" instance=ExtResource("1_wnivx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
