@@ -75,6 +75,8 @@ func _on_exit_button_pressed():
 func _on_back_button_pressed():
 	show_main()
 	$SoundUIBack.play()
+	scene_animations.stop()
+	$Behind/MainMenuBackground.modulate = Color(1, 1, 1, 1)
 
 
 # Volume Sliders

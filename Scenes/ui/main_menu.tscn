@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://bk162gdkpqxvo"]
+[gd_scene load_steps=44 format=3 uid="uid://bk162gdkpqxvo"]
 
 [ext_resource type="Script" path="res://gd/main_menu.gd" id="1_0tj6m"]
 [ext_resource type="PackedScene" uid="uid://c3kcvcvfe5xil" path="res://objects/2DLeaves.tscn" id="2_1ngt8"]
@@ -9,9 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://bbk1wthbx5fk3" path="res://Scenes/ui/ui_assets/symbol_return.png" id="8_cab1n"]
 [ext_resource type="Texture2D" uid="uid://gm04jyxrbchc" path="res://Scenes/ui/ui_assets/symbol_settings.png" id="9_k3nm3"]
 [ext_resource type="Texture2D" uid="uid://kymalcgs48rt" path="res://Scenes/ui/ui_assets/symbol_keyboard.png" id="9_m5okk"]
+[ext_resource type="Texture2D" uid="uid://b7m8de4qgecbm" path="res://Scenes/ui/ui_assets/mainmenu_background.png" id="10_egj8s"]
 [ext_resource type="Texture2D" uid="uid://cwnqy1urgb23e" path="res://Scenes/ui/ui_assets/symbol_handwave.png" id="10_hmfu5"]
 [ext_resource type="Texture2D" uid="uid://dpj7seocrrttd" path="res://Scenes/ui/ui_assets/familyphoto.png" id="10_trgjp"]
+[ext_resource type="Texture2D" uid="uid://6kqt33wt0m8p" path="res://Scenes/ui/ui_assets/mainmenu_leaves.png" id="11_67tik"]
 [ext_resource type="Theme" uid="uid://csyyanposb0k2" path="res://Scenes/ui/ui_styles/settings_horizontal_slider.tres" id="11_ftg7s"]
+[ext_resource type="Texture2D" uid="uid://cfxcph6wxsv2t" path="res://Scenes/ui/ui_assets/mainmenu_soldier.png" id="12_h2ldf"]
 [ext_resource type="Texture2D" uid="uid://b258b8w62vr0d" path="res://Scenes/ui/ui_assets/symbol_wasd.png" id="12_uwa3l"]
 [ext_resource type="Texture2D" uid="uid://cye22dmjalhc3" path="res://Scenes/ui/ui_assets/symbol_shiftkey.png" id="13_7fydm"]
 [ext_resource type="AudioStream" uid="uid://bu11gqp2acsrd" path="res://audio/sfx/ui/sfx_ui_start.wav" id="13_sufau"]
@@ -265,6 +268,42 @@ tracks/10/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Behind/MainMenuBackground:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.498039, 0.498039, 0.498039, 1)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Front/BackButton:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(1.1, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Front/BackButton:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_kxrf8"]
 resource_name = "credits"
@@ -425,6 +464,42 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector2(1277, 125), Vector2(613, 125)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Behind/MainMenuBackground:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.949804, 0.949804, 0.949804, 1), Color(0.498039, 0.498039, 0.498039, 1)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Front/BackButton:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.1, 2.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Front/BackButton:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_512gb"]
 resource_name = "settings"
@@ -511,7 +586,19 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.5, 1, 2.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.498039, 0.498039, 0.498039, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Front/BackButton:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_l5eak"]
@@ -721,6 +808,54 @@ tracks/16/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Behind/RedBackground:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Behind/MainMenuBackground:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Behind/MainMenuLeaves:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(3, 4.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Behind/MainMenuSoldier:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(5, 6.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gclc6"]
 _data = {
@@ -752,6 +887,28 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.215686, 0, 0, 1)
 
+[node name="MainMenuBackground" type="TextureRect" parent="Behind"]
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("10_egj8s")
+expand_mode = 1
+
+[node name="MainMenuLeaves" type="TextureRect" parent="Behind"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("11_67tik")
+expand_mode = 1
+
+[node name="MainMenuSoldier" type="TextureRect" parent="Behind"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 583.0
+offset_top = 523.0
+offset_right = 674.0
+offset_bottom = 693.0
+texture = ExtResource("12_h2ldf")
+expand_mode = 1
+
 [node name="FallingLeaves" parent="Behind" instance=ExtResource("2_1ngt8")]
 
 [node name="Front" type="CanvasLayer" parent="."]
@@ -766,7 +923,7 @@ rotates = false
 loop = false
 
 [node name="LifeOfAFallenLeafLogo" type="Label" parent="Front/Path2D/PathFollow2D"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(0.596729, 0.825947, 0.476839, 0.833333)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -781,12 +938,11 @@ grow_vertical = 2
 pivot_offset = Vector2(444, 81)
 theme = ExtResource("4_hxpxf")
 theme_override_colors/font_outline_color = Color(0.516075, 0.791136, 0.372207, 1)
-theme_override_constants/outline_size = 20
+theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 100
 text = "Life of a Fallen Leaf"
 
 [node name="Main" type="Control" parent="Front"]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -796,9 +952,9 @@ offset_bottom = 40.0
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 offset_left = 466.0
-offset_top = -150.0
+offset_top = -112.5
 offset_right = 814.0
-offset_bottom = -73.0
+offset_bottom = -35.5
 pivot_offset = Vector2(174, 0)
 focus_mode = 0
 theme = ExtResource("5_yfuvy")
@@ -849,13 +1005,13 @@ theme = SubResource("Theme_mr1gc")
 icon = ExtResource("10_hmfu5")
 
 [node name="Settings" type="Control" parent="Front"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="FamilyTexture" type="TextureRect" parent="Front/Settings"]
-modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 0
 offset_left = 57.0
 offset_right = 1221.0
@@ -877,6 +1033,7 @@ size_flags_vertical = 6
 theme_override_constants/separation = 100
 
 [node name="MusicLabel" type="Label" parent="Front/Settings/VolumeVertical/MusicHorizontal"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_hxpxf")
@@ -884,6 +1041,7 @@ text = "Music"
 horizontal_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="Front/Settings/VolumeVertical/MusicHorizontal"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -900,6 +1058,7 @@ size_flags_vertical = 6
 theme_override_constants/separation = 100
 
 [node name="SFXLabel" type="Label" parent="Front/Settings/VolumeVertical/SFXHorizontal"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_hxpxf")
@@ -907,6 +1066,7 @@ text = "SFX"
 horizontal_alignment = 1
 
 [node name="SFXSlider" type="HSlider" parent="Front/Settings/VolumeVertical/SFXHorizontal"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -923,6 +1083,7 @@ size_flags_vertical = 6
 theme_override_constants/separation = 100
 
 [node name="DialogueLabel" type="Label" parent="Front/Settings/VolumeVertical/DialogueHorizontal"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("4_hxpxf")
@@ -930,6 +1091,7 @@ text = "Dialogue"
 horizontal_alignment = 1
 
 [node name="DialogueSlider" type="HSlider" parent="Front/Settings/VolumeVertical/DialogueHorizontal"]
+modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -941,13 +1103,13 @@ max_value = 10.0
 value = -5.0
 
 [node name="Controls" type="Control" parent="Front"]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="WASDTexture" type="TextureRect" parent="Front/Controls"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 431.0
 offset_top = 114.0
@@ -957,7 +1119,7 @@ texture = ExtResource("12_uwa3l")
 expand_mode = 1
 
 [node name="MoveLabel" type="Label" parent="Front/Controls"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.2)
 layout_mode = 0
 offset_left = 499.0
 offset_top = 346.0
@@ -967,7 +1129,6 @@ theme = ExtResource("4_hxpxf")
 text = "Move"
 
 [node name="ShiftKeyTexture" type="TextureRect" parent="Front/Controls"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 492.0
 offset_top = 481.0
@@ -987,7 +1148,6 @@ theme = ExtResource("4_hxpxf")
 text = "(Hold) Run"
 
 [node name="EKeyTexture" type="TextureRect" parent="Front/Controls"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 772.0
 offset_top = 201.0
@@ -1007,7 +1167,6 @@ theme = ExtResource("4_hxpxf")
 text = "Interact / Harvest"
 
 [node name="RKeyTexture" type="TextureRect" parent="Front/Controls"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 772.0
 offset_top = 337.0
@@ -1017,7 +1176,7 @@ texture = ExtResource("14_7gibv")
 expand_mode = 1
 
 [node name="ReceivePhoneCallLabel" type="Label" parent="Front/Controls"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.6)
 layout_mode = 0
 offset_left = 894.0
 offset_top = 332.0
@@ -1027,7 +1186,6 @@ theme = ExtResource("4_hxpxf")
 text = "Receive Phone Call"
 
 [node name="EscapeKeyTexture" type="TextureRect" parent="Front/Controls"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 0
 offset_left = 760.0
 offset_top = 481.0
@@ -1047,7 +1205,7 @@ theme = ExtResource("4_hxpxf")
 text = "End Phone Call"
 
 [node name="SolidersTexture" type="TextureRect" parent="Front/Controls"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.5)
 layout_mode = 0
 offset_left = 47.0
 offset_top = 179.0
@@ -1082,7 +1240,6 @@ offset_right = 436.0
 offset_bottom = 149.0
 
 [node name="LeadDeveloperLabel" type="Label" parent="Front/Credits/LeadDeveloperContainer"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 theme = ExtResource("18_735lp")
 theme_override_font_sizes/font_size = 40
@@ -1103,7 +1260,7 @@ offset_right = 645.0
 offset_bottom = 285.0
 
 [node name="3DArtistLabel" type="Label" parent="Front/Credits/3DArtistContainer"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.7)
 layout_mode = 2
 theme = ExtResource("18_735lp")
 theme_override_font_sizes/font_size = 40
@@ -1124,7 +1281,7 @@ offset_right = 783.0
 offset_bottom = 421.0
 
 [node name="SoundDesignerLabel" type="Label" parent="Front/Credits/SoundDesignerContainer"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.4)
 layout_mode = 2
 theme = ExtResource("18_735lp")
 theme_override_font_sizes/font_size = 40
@@ -1145,7 +1302,7 @@ offset_right = 917.0
 offset_bottom = 558.0
 
 [node name="ProducerUIWriterLabel" type="Label" parent="Front/Credits/ProducerUIWriterContainer"]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.1)
 layout_mode = 2
 theme = ExtResource("18_735lp")
 theme_override_font_sizes/font_size = 40

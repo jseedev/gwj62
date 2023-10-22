@@ -34,8 +34,7 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kijog")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6j4v3"]
-points = PackedVector3Array(0.546298, -2.98023e-08, 0.806787, 0.273203, 0.473201, 0.806787, 0.273096, -0.473201, 0.806787, 0.546298, -2.98023e-08, -0.806787, -0.273203, 0.473201, 0.806787, 0.273203, 0.473201, -0.806787, -0.546405, -2.98023e-08, 0.806787, -0.27331, -0.473201, 0.806629, 0.273096, -0.473201, -0.806787, -0.273203, 0.473201, -0.806787, -0.546405, -2.98023e-08, -0.806787, -0.273203, -0.473201, -0.806787)
+[sub_resource type="BoxShape3D" id="BoxShape3D_qx5ut"]
 
 [node name="Hay" type="MeshInstance3D"]
 material_override = ExtResource("1_4mgqm")
@@ -45,4 +44,5 @@ skeleton = NodePath("")
 [node name="Hay" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hay"]
-shape = SubResource("ConvexPolygonShape3D_6j4v3")
+transform = Transform3D(1.10893, 0, 0, 0, 0.971153, 0, 0, 0, 1.65192, 0, 0, 0)
+shape = SubResource("BoxShape3D_qx5ut")
