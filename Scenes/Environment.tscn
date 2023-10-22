@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=101 format=3 uid="uid://dlpnyn1b5v37v"]
 
 [ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
@@ -8,7 +8,6 @@
 [ext_resource type="Shader" uid="uid://bns4uwtyb40yw" path="res://Art/Environment/clouds.res" id="6_vtae4"]
 [ext_resource type="PackedScene" uid="uid://drv1aoy6x6g3i" path="res://Art/2D Assets/Vignette.tscn" id="7_kl217"]
 [ext_resource type="CameraAttributesPractical" uid="uid://bmuur8ftv5oj3" path="res://Art/Environment/CameraAttributes.tres" id="8_gek8w"]
-[ext_resource type="Script" path="res://gd/Vignette.gd" id="8_lbfr8"]
 [ext_resource type="Material" uid="uid://lld50bx6ioqd" path="res://Art/Materials/Grass_Test.tres" id="9_c8ft5"]
 [ext_resource type="Material" uid="uid://kn2dd8upk5ns" path="res://Art/Materials/Wheat.tres" id="10_0iq21"]
 [ext_resource type="PackedScene" uid="uid://dts1nex87uiu5" path="res://Art/3D Assets/Grass.tscn" id="10_hg11y"]
@@ -710,7 +709,6 @@ cast_shadow = 0
 mesh = SubResource("SphereMesh_klikl")
 
 [node name="Vignette" parent="Game" instance=ExtResource("7_kl217")]
-script = ExtResource("8_lbfr8")
 
 [node name="Level" type="Node" parent="."]
 

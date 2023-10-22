@@ -7,6 +7,7 @@ var ended = false
 @onready var cabin = $Level/NavigationRegion3D/Cabin
 @onready var cabinator = $Level/NavigationRegion3D/Cabin/AnimationPlayer
 @onready var creak = $Level/NavigationRegion3D/Cabin/Door/DoorCreak
+@onready var vignette = $Game/Vignette
 
 signal call_ended(call)
 signal pumpkin_gathered()
@@ -102,6 +103,10 @@ func _ready():
 	skyChange(true)
 	player.caster.add_exception($Level/NavigationRegion3D/Field/Field/StaticBody3D)
 	player.caster.add_exception(player)
+	vignette.weight = 0.005
+	vignette.softness = 3.0
+	vignette.multiplier = 0.2
+	
 	await get_tree().create_timer(3.0).timeout
 	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
 	await get_tree().create_timer(100).timeout
