@@ -7,7 +7,7 @@ var ended = false
 @onready var cabin = $Level/NavigationRegion3D/Cabin
 @onready var cabinator = $Level/NavigationRegion3D/Cabin/AnimationPlayer
 @onready var creak = $Level/NavigationRegion3D/Cabin/Door/DoorCreak
-@onready var vignette = $Game/player/Vignette
+#@onready var vignette = $Game/player/Vignette
 
 signal call_ended(call)
 signal pumpkin_gathered()
@@ -34,7 +34,7 @@ func _process(_delta):
 	clouds.global_position.z=player.global_position.z
 	if $ArrowHider.overlaps_body(player) and $Game/player/Camera3D/Arrow.visible:
 		$Game/player/Camera3D/Arrow.hide()
-	else:
+	elif !$ArrowHider.overlaps_body(player):
 		$Game/player/Camera3D/Arrow.show()
 
 var environments = {
@@ -108,12 +108,12 @@ func _ready():
 	skyChange(true)
 	player.caster.add_exception($Level/NavigationRegion3D/Field/Field/StaticBody3D)
 	player.caster.add_exception(player)
-	vignette.weight = 0.005
-	vignette.softness = 3.0
-	vignette.multiplier = 0.2
+#	vignette.weight = 0.005
+#	vignette.softness = 3.0
+#	vignette.multiplier = 0.2
 	
 	await get_tree().create_timer(3.0).timeout
-	player.can_update_vignette = true
+	#player.can_update_vignette = true
 	await get_tree().create_timer(2.0).timeout
 	player.waypoint=$Game/PumpkinZones
 	player.PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")

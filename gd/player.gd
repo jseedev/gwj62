@@ -7,8 +7,6 @@ const RUN_MULT = 2.0
 
 const mouse_sensitivity = .005
 
-const max_stamina = 7.0
-var stamina = max_stamina
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -19,7 +17,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var PlayerSounds = $PlayerSounds #for the level to see
 @onready var player_sounds = $PlayerSounds/AnimationPlayer
 @onready var caster = $Camera3D/ShapeCast3D
-@onready var stamina_bar = $Control/ProgressBar
 @onready var vignette = $Vignette
 
 var holding_item = false : set = _set_holding_pumpkin
@@ -77,7 +74,6 @@ func _ready():
 	#await get_tree().create_timer(2.0).timeout
 	#$PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
 	#$PlayerSounds.play()
-	$Control/ProgressBar.max_value=max_stamina
 
 func play_step_sound():
 	get_node("footsteps_" + ground_type).play()
@@ -165,34 +161,24 @@ func _physics_process(delta):
 				vignette.pulse_speed = num
 				vignette.pulse_strength = num * 0.6
 	
-	if not villainOverrideVignette and can_update_vignette:
-		var num = stamina / max_stamina
-		vignette.weight = 0.1
-		vignette.softness = 1 + (num * 2)
-		vignette.multiplier = 0.2
-		vignette.pulse_speed = (1 - num) * 0.4
-		vignette.pulse_strength = (1 - num)
 	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_just_pressed("run"):
 		run_timer=0.0
-	if Input.is_action_pressed("run") and input_dir.y<0 and stamina > 0.0:
+	if input_dir.y<0:
 		if not running:
 			just_running = true
 		
 		running = true
 		walking = false
-		stamina-=delta
 		velocity.x = direction.x * SPEED * RUN_MULT
 		velocity.z = direction.z * SPEED * RUN_MULT
 	elif direction:
 		if not walking:
-			just_walking = true
+			just_walking = false
 		
-		walking = true
+		walking = false
 		running = false
-		stamina+=delta
-		stamina=clamp(stamina,0.0,max_stamina)
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
@@ -207,7 +193,7 @@ func _physics_process(delta):
 	var timeScale = 1.0
 	if walking:
 		move = 1.0
-	if running and stamina > 0.0:
+	if running:
 		run_timer+=delta
 		if !$PlayerSounds.playing and !player_sounds.is_playing() and !$Camera3D/PhoneHolder/Phone/calls/AnimationPlayer.is_playing():
 			if run_timer >= 3.0:
@@ -232,14 +218,6 @@ func _physics_process(delta):
 	
 	tilt = lerp(tilt, -input_dir.x / 15, 0.1)
 	Camera.rotation = cameraTarget.rotation + Vector3(-abs(bob) / 2.5, (bob / 5), tilt)
-	if velocity==Vector3.ZERO:
-		stamina+=delta
-		stamina=clamp(stamina,0.0,max_stamina)
-	stamina_bar.value=stamina
-	if stamina < max_stamina:
-		stamina_bar.show()
-	else:
-		stamina_bar.hide()
 	move_and_slide()
 
 func _input(event):
