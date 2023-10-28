@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://coglyhllruqfh"]
+
+[ext_resource type="Script" path="res://gd/pumpkin_spawn.gd" id="1_wwyna"]
+[ext_resource type="PackedScene" uid="uid://bgsdpi6h3lm5i" path="res://objects/pumpkin_patch.tscn" id="2_1ya83"]
+
+[node name="PumpkinSpawn" type="Marker3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.65951, 0.490754, -15.6227)
+script = ExtResource("1_wwyna")
+
+[node name="pumpkin" parent="." instance=ExtResource("2_1ya83")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.641402, 0)

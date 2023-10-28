@@ -15,12 +15,20 @@ var gameover = false
 var previous_velocity = Vector3.ZERO
 
 func _ready():
+	#target = player.global_position
+	#nav_agent.set_target_position(player.global_position)
+	if get_tree().current_scene.quick_scare:
+		$Timer.stop()
+	animations.play("Idle")
+
+func target_player():
 	target = player.global_position
 	nav_agent.set_target_position(player.global_position)
-	animations.play("Idle")
-	
+
 func _physics_process(delta):
 	# Move to player
+	if target == Vector3.ZERO:
+		return
 	if target != Vector3.ZERO and !nav_agent.is_target_reached() and not gameover:
 		var next_point = nav_agent.get_next_path_position()
 		next_point.y=global_position.y
@@ -38,8 +46,8 @@ func _physics_process(delta):
 		velocity=Vector3.ZERO
 		if player.global_position.distance_to(global_position) <= 5.0 and not gameover:
 			gameover = true
-			
 			animations.play("Catch", 0.3)
+			animations.speed_scale=0.2
 			get_tree().current_scene.emit_signal("game_over")
 	else:
 		target=Vector3.ZERO
@@ -48,7 +56,7 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y = -gravity
 		
-	if previous_velocity != velocity and not gameover:
+	if not gameover:
 		if Vector2(velocity.x, velocity.z) == Vector2.ZERO:
 			animations.play("Idle", 0.5)
 		else:
@@ -95,6 +103,9 @@ func _on_timer_timeout():
 
 func player_is_caught():
 	loss_condition_animation.play("before_main_menu")
-	await get_tree().create_timer(3.0).timeout
-	get_tree().change_scene_to_file("res://Scenes/ui/main_menu.tscn")
+	loss_condition_animation.connect("animation_finished",the_end,CONNECT_ONE_SHOT)
 	
+func the_end(_anim):
+	loss_condition_animation.play("caught",0.3)
+	#get_tree().change_scene_to_file("res://Scenes/ui/main_menu.tscn")
+	pass

@@ -9,7 +9,7 @@ var player = null
 
 func _physics_process(delta):
 	var picked = get_tree().current_scene.pumpkins_picked
-	if Input.is_action_pressed("interact") and hilight.visible and (player.get_node("Camera3D/PhoneHolder/Phone/calls/AnimationPlayer").current_animation != "call1" or picked < 2):
+	if Input.is_action_pressed("interact") and hilight.visible:
 		if !$pumpkin_harvesting.playing:
 			$pumpkin_harvesting.play()
 		ui_part.show() #Show the ui piece for this pumpkin

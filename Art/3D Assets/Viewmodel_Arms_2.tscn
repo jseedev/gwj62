@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://gl8cgqb4sok2"]
+[gd_scene load_steps=14 format=3 uid="uid://gl8cgqb4sok2"]
 
 [ext_resource type="Material" path="res://Art/Materials/Arms.tres" id="1_37cbw"]
 [ext_resource type="Material" uid="uid://c4i657m6woxaf" path="res://Art/Materials/Pumpkin.tres" id="2_q14rd"]
+[ext_resource type="PackedScene" uid="uid://bccsux3kb2wru" path="res://Art/3D Assets/WheelBarrow.tscn" id="3_4g8b5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_787ab"]
 
@@ -1784,3 +1785,7 @@ mesh = SubResource("ArrayMesh_r1cmg")
 libraries = {
 "": SubResource("AnimationLibrary_jndqc")
 }
+
+[node name="WheelBarrow" parent="." instance=ExtResource("3_4g8b5")]
+transform = Transform3D(-2.24317e-08, -0.137505, 0.513177, -6.01056e-09, 0.513177, 0.137505, -0.53128, 0, -2.3223e-08, -0.910787, -0.475818, 0)
+visible = false

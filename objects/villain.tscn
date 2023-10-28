@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cex7vm6iw2oi0"]
+[gd_scene load_steps=15 format=3 uid="uid://cex7vm6iw2oi0"]
 
 [ext_resource type="Script" path="res://gd/Villain.gd" id="1_d2nk1"]
-[ext_resource type="AudioStream" uid="uid://cymalssqr6jtm" path="res://audio/sfx/enemy/sfx_enemyfloat_loop.wav" id="2_1ct51"]
+[ext_resource type="AudioStream" uid="uid://dmjfqaotr5xd" path="res://audio/sfx/enemy/sfx_stab4.wav" id="3_6u0fe"]
+[ext_resource type="AudioStream" uid="uid://hv1l81sj5n1j" path="res://audio/sfx/enemy/sfx_stab3.wav" id="3_oefn2"]
 [ext_resource type="PackedScene" uid="uid://fwmj8tk62fyv" path="res://Art/3D Assets/Shabahan.tscn" id="3_s36bs"]
 [ext_resource type="Texture2D" uid="uid://0sth2ylkpg2n" path="res://Scenes/ui/ui_assets/background_bloody.jpg" id="4_6i41k"]
 [ext_resource type="FontFile" uid="uid://cqnxdb5ww4jsh" path="res://Scenes/ui/ui_fonts/Papyrus.TTF" id="5_5ud6j"]
@@ -20,10 +21,10 @@ tracks/0/path = NodePath("LossConditionLabel:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 1, 2, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.1, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -61,6 +62,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AudioStreamPlayer3D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_6u0fe")
+}],
+"times": PackedFloat32Array(0.1)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_tv5fq"]
 resource_name = "caught"
@@ -87,7 +103,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(6, 7, 8, 9, 10),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0.215686, 0, 0, 1), Color(0.215686, 0, 0, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(0.215686, 0, 0, 1), Color(0, 0, 0, 1)]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -103,6 +119,21 @@ tracks/2/keys = {
 "method": &"player_is_caught"
 }]
 }
+tracks/3/type = "audio"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_oefn2")
+}],
+"times": PackedFloat32Array(7.5)
+}
+tracks/3/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oytbk"]
 _data = {
@@ -114,6 +145,30 @@ _data = {
 font = ExtResource("5_5ud6j")
 font_size = 50
 font_color = Color(0.709804, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7tas"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_1gkdl"]
+resource_name = "flash"
+length = 0.5405
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7b82"]
+_data = {
+"flash": SubResource("Animation_1gkdl")
+}
 
 [node name="Villain" type="CharacterBody3D"]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0.538766, 0)
@@ -134,7 +189,6 @@ wait_time = 0.25
 autostart = true
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_1ct51")
 autoplay = true
 bus = &"ambiance"
 
@@ -171,5 +225,42 @@ grow_vertical = 2
 size_flags_horizontal = 4
 text = " The Shabh Caught You"
 label_settings = SubResource("LabelSettings_1bemt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LossConditionLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 42.0
+offset_right = 250.0
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Restart" type="Button" parent="LossConditionLabel/VBoxContainer"]
+layout_mode = 2
+text = "Restart From Last Dose"
+
+[node name="QuitToMenu" type="Button" parent="LossConditionLabel/VBoxContainer"]
+layout_mode = 2
+text = "Quit To Menu"
+
+[node name="Flash" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_o7tas")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Flash"]
+libraries = {
+"": SubResource("AnimationLibrary_g7b82")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

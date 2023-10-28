@@ -1,12 +1,14 @@
 extends CharacterBody3D
 class_name PlayerBody
 
-const SPEED = 3.0
+var SPEED = 3.0
 const JUMP_VELOCITY = 4.5
 const RUN_MULT = 2.0
 
 const mouse_sensitivity = .005
 
+const max_stamina = 7.0
+var stamina = max_stamina
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -17,8 +19,11 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var PlayerSounds = $PlayerSounds #for the level to see
 @onready var player_sounds = $PlayerSounds/AnimationPlayer
 @onready var caster = $Camera3D/ShapeCast3D
+@onready var stamina_bar = $Control/ProgressBar
 @onready var vignette = $Vignette
+@onready var level = get_tree().current_scene
 
+var caught = false
 var holding_item = false : set = _set_holding_pumpkin
 
 func _set_holding_pumpkin(ibool):
@@ -56,7 +61,7 @@ var tilt = 0.0
 # animation junk
 @onready var Viewmodel = $Viewmodel
 @onready var Animations = $Viewmodel/AnimationPlayer
-@onready var waypoint #= get_tree().current_scene.get_node("Game/PumpkinZones")
+var waypoint = null
 
 #this function can be replaced with lerp()
 #func interpolate(from, to, by):
@@ -74,11 +79,12 @@ func _ready():
 	#await get_tree().create_timer(2.0).timeout
 	#$PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
 	#$PlayerSounds.play()
+	$Control/ProgressBar.max_value=max_stamina
 
 func play_step_sound():
 	get_node("footsteps_" + ground_type).play()
 
-func _process(delta):
+func _process(_delta):
 	if just_walking and walking or just_running and running:
 		timeOffset = runtime()
 	if walking:
@@ -101,15 +107,13 @@ func _process(delta):
 			play_step_sound()
 var run_timer = 0.0
 func _physics_process(delta):
-	if caster.enabled:
-		var bodies = $Camera3D/LineOfSight.get_overlapping_bodies()
-		if bodies.size() > 0:
-			if bodies[0].global_position.distance_to(global_position) > 20.0:
-				get_tree().current_scene.emit_signal("villain_sighting",bodies[0])
-			elif caster.is_colliding():
-				var fc = caster.get_collider(0) #colliding object
-				if fc is Villain:
-					get_tree().current_scene.emit_signal("villain_sighting",fc)
+	#Do i see the villain ?
+	if caster.enabled and caster.is_colliding():
+		for x in range(0,caster.get_collision_count()):
+			var e = caster.get_collider(x)
+			if e is Villain:
+				level.emit_signal("villain_sighting",e)
+				break 
 	if position.y <= -2.0:
 		position.y = 6.0
 	# Add the gravity.
@@ -131,18 +135,14 @@ func _physics_process(delta):
 	var villainOverrideVignette = false
 	if villain != null:
 		if look_at_villain:
+			#Camera.look_at(villain.global_position)
+			#Camera.rotation_degrees.x-=0.5
 			villainOverrideVignette = true
 			input_dir = Vector2.ZERO
 			arrow.visible = false
 			vignette.weight = 0.1
 			vignette.multiplier = 0.2
 			vignette.softness = 1.0
-			look_at(villain.global_position)
-			rotation_degrees.x = 0.0
-			rotation_degrees.z = 0.0
-			Camera.look_at(villain.global_position)
-			Camera.rotation_degrees.y = 0.0
-			Camera.rotation_degrees.x = 0.0
 			await get_tree().create_timer(2).timeout
 			vignette.color = Color.WEB_MAROON
 			vignette.softness = 0.1
@@ -161,24 +161,34 @@ func _physics_process(delta):
 				vignette.pulse_speed = num
 				vignette.pulse_strength = num * 0.6
 	
+	if not villainOverrideVignette and can_update_vignette:
+		var num = 1.0
+		vignette.weight = 0.1
+		vignette.softness = 1 + (num * 2)
+		vignette.multiplier = 0.2
+		vignette.pulse_speed = (1 - num) * 0.4
+		vignette.pulse_strength = (1 - num)
 	
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if Input.is_action_just_pressed("run"):
 		run_timer=0.0
-	if input_dir.y<0:
+	if Input.is_action_pressed("run") and input_dir.y<0 and stamina > 0.0:
 		if not running:
 			just_running = true
 		
 		running = true
 		walking = false
+		stamina-=delta
 		velocity.x = direction.x * SPEED * RUN_MULT
 		velocity.z = direction.z * SPEED * RUN_MULT
 	elif direction:
 		if not walking:
-			just_walking = false
+			just_walking = true
 		
-		walking = false
+		walking = true
 		running = false
+		stamina+=delta
+		stamina=clamp(stamina,0.0,max_stamina)
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
 	else:
@@ -193,7 +203,7 @@ func _physics_process(delta):
 	var timeScale = 1.0
 	if walking:
 		move = 1.0
-	if running:
+	if running and stamina > 0.0:
 		run_timer+=delta
 		if !$PlayerSounds.playing and !player_sounds.is_playing() and !$Camera3D/PhoneHolder/Phone/calls/AnimationPlayer.is_playing():
 			if run_timer >= 3.0:
@@ -218,6 +228,14 @@ func _physics_process(delta):
 	
 	tilt = lerp(tilt, -input_dir.x / 15, 0.1)
 	Camera.rotation = cameraTarget.rotation + Vector3(-abs(bob) / 2.5, (bob / 5), tilt)
+	if velocity==Vector3.ZERO:
+		stamina+=delta
+		stamina=clamp(stamina,0.0,max_stamina)
+	stamina_bar.value=stamina
+	if stamina < max_stamina:
+		stamina_bar.show()
+	else:
+		stamina_bar.hide()
 	move_and_slide()
 
 func _input(event):
@@ -228,7 +246,11 @@ func _input(event):
 		cameraTarget.rotate_x(-event.relative.y * mouse_sensitivity)
 		cameraTarget.rotation.x = clampf(cameraTarget.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 
-
-func _on_line_of_sight_body_entered(body):
-	get_tree().current_scene.change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
+var seen = false
+func _on_line_of_sight_body_entered(_body):
+	if level.quick_scare:
+		return
+	if not seen:
+		seen=true
+		get_tree().current_scene.change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
 	pass # Replace with function body.

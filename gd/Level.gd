@@ -7,35 +7,44 @@ var ended = false
 @onready var cabin = $Level/NavigationRegion3D/Cabin
 @onready var cabinator = $Level/NavigationRegion3D/Cabin/AnimationPlayer
 @onready var creak = $Level/NavigationRegion3D/Cabin/Door/DoorCreak
-#@onready var vignette = $Game/player/Vignette
+@onready var vignette = $Game/player/Vignette
 
+var call_order = [
+	["out","call2","Holo"],
+	["out","call3","Candy","res://audio/music/music_2_acoustic_92bpm_loop.ogg"],
+	["in","call4","Holo","res://audio/music/music_3_hybrid_92bpm_loop.ogg"],
+	["vm","holo_voicemail","Holo","res://audio/music/music_4_electronic_92bpm_loop.ogg"]
+]
 signal call_ended(call)
 signal pumpkin_gathered()
 signal game_over()
 signal villain_sighting()
 
-func droppedOffPumpkin():
-	if pumpkins_picked == 4:
-		#it's kinda late but only a few minutes seem to have passed
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
-		await get_tree().create_timer(15.0).timeout
-		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
+#func droppedOffPumpkin():
+#	if pumpkins_picked == 4:
+#		#it's kinda late but only a few minutes seem to have passed
+#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
+#		await get_tree().create_timer(15.0).timeout
+#		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
 
 @onready var clouds = $Game/Clouds
 func _process(_delta):
 	if Input.is_action_just_pressed("interact") and in_pumpkin_zone and player.holding_item:
-		droppedOffPumpkin()
+		#droppedOffPumpkin()
 		player.holding_item = false
 		$PumpkinDropZone/PumpkinPile.add_pumpkin()
-		$Game/PumpkinZones.spawn_pumpkins()
+		$Game/PumpkinZones.spawn_pumpkins(1)
 		$PumpkinDropZone/Highlite.hide()
-		player.waypoint=$Game/PumpkinZones
+		player.waypoint=null
+		#player.waypoint=$Game/PumpkinZones.get_children()
 	clouds.global_position.x=player.global_position.x
 	clouds.global_position.z=player.global_position.z
 	if $ArrowHider.overlaps_body(player) and $Game/player/Camera3D/Arrow.visible:
 		$Game/player/Camera3D/Arrow.hide()
-	elif !$ArrowHider.overlaps_body(player):
+	elif !$ArrowHider.overlaps_body(player) and player.waypoint != null:
 		$Game/player/Camera3D/Arrow.show()
+#	if Input.is_action_just_pressed("cheater"):
+#		emit_signal("pumpkin_gathered")
 
 var environments = {
 	day = {
@@ -88,9 +97,9 @@ var environments = {
 		sky_horizon_color = Color(.08, .05, .14),
 		fog_light_energy = 0.5,
 		fog_light_color = Color(.04, .03, .10),
-		ambient_light_color = Color(0.0, 0.0, 0.0, 1.0),
-		ambient_light_sky_contribution = 0.3,
-		sky_energy_multiplier = 0.3,
+		ambient_light_color = Color(0.1, 0.1, 0.1, 1.0),
+		ambient_light_sky_contribution = 0.8,#0.3
+		sky_energy_multiplier = 0.8,#0.3
 		ambient_light_energy = 1.0,
 	},
 }
@@ -104,24 +113,25 @@ var environments = {
 }
 
 func _ready():
+	$Game/player/Camera3D/Arrow.hide()
 	cabinator.play("Door_Closed")
 	skyChange(true)
 	player.caster.add_exception($Level/NavigationRegion3D/Field/Field/StaticBody3D)
 	player.caster.add_exception(player)
-#	vignette.weight = 0.005
-#	vignette.softness = 3.0
-#	vignette.multiplier = 0.2
+	vignette.weight = 0.005
+	vignette.softness = 3.0
+	vignette.multiplier = 0.2
 	
-	await get_tree().create_timer(3.0).timeout
-	#player.can_update_vignette = true
 	await get_tree().create_timer(2.0).timeout
-	player.waypoint=$Game/PumpkinZones
+	player.can_update_vignette = true
+	#await get_tree().create_timer(2.0).timeout
+	player.waypoint=null
 	player.PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
 	player.PlayerSounds.play()
 	cabinator.play("Door_Open", 0.5)
 	creak.play()
 	change_music(load("res://audio/music/music_1_theme_92bpm_loop.ogg"))
-	await get_tree().create_timer(5.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
 	
 #	spawn_villain() # Spawns the villain immediately for testing purposes
@@ -181,7 +191,26 @@ func despawn_villain():
 		villain.queue_free()
 		villain=null
 
+var quick_scare=false
+func quick_jump_scare():
+	if villain != null:
+		return
+	quick_scare=true
+	did_quick_scare=true
+	var js = player.get_node("JumpSpot")
+	var temp_villain = villain_scene.instantiate()
+	add_child(temp_villain)
+	temp_villain.global_position = js.global_position
+	temp_villain.look_at(player.global_position)
+	#temp_villain.rotation_degrees.y-=180
+	temp_villain.rotation_degrees.x=0
+	temp_villain.rotation_degrees.z=0
+	temp_villain.animations.play("Catch")
+	temp_villain.animations.speed_scale=2.0
+	
+
 var pumpkinsPerChange = 2.0
+var on_call = 0
 func skyChange(reset):
 	if reset:
 		env_target = 0.0
@@ -218,51 +247,17 @@ func skyChange(reset):
 		from_light = lights.night
 		target_light = lights.night
 	tween_sky()
-#	if pumpkins_picked == 1:
-#		#first call with candy ... fix car.
-#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
-	if pumpkins_picked == 3:
-		#no monsanto, sad
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-	elif pumpkins_picked == 5:
-		#candy calls back to ask what you wanted
-		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Candy","call5")
-		await get_tree().create_timer(30.0).timeout
-		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
-	elif pumpkins_picked == 7:
-		#holo crisis
-		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call4")
-		await get_tree().create_timer(9.0).timeout
-		change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
-	elif pumpkins_picked == 9:
-		#oh boy it's gettin spicy
-		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
-	elif pumpkins_picked == 11:
-		await get_tree().create_timer(3.0).timeout
-		get_tree().change_scene_to_file("res://Scenes/ui/win_condition.tscn")
-		
 
 func _on_pumpkin_gathered():
 	pumpkins_picked+=1
 	await get_tree().create_timer(1.0).timeout
 	skyChange(false)
+	if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare:
+		#sometimes you get jump scared
+		quick_jump_scare()
 	player.waypoint=$PumpkinDropZone
-#	if pumpkins_picked == 1:
-#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call1")
-#		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-#	elif pumpkins_picked == 2:
-#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Holo","call2")
-#		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-#	elif pumpkins_picked == 3:
-#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
-#		change_music(load("res://audio/music/music_3_hybrid_92bpm_loop.ogg"))
-#	elif pumpkins_picked == 4:
-#		player.get_node("Camera3D/PhoneHolder/Phone").incoming_call("Holo","call4")
-#		change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
-#	elif pumpkins_picked == 5:
-#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call5")
-#	elif pumpkins_picked == 6:
-#		player.get_node("Camera3D/PhoneHolder/Phone").voicemail("Holo","holo_voicemail")
+	if !player.phone.get_node("calls/AnimationPlayer").is_playing() and !player.phone.visible:
+		play_next_call()
 
 var env_current = 0.0
 var env_target = 0.0
@@ -274,44 +269,46 @@ func tween_sky():
 
 @onready var music_player = $Level/Music
 func _on_call_ended(callid):
-#	if callid == "call1":
-#		await get_tree().create_timer(2.0).timeout
-#		if not music_player.playing:
-#			change_music(load("res://audio/music/music_1_theme_92bpm_loop.ogg"))
-#		player.waypoint=$Game/PumpkinZones
-#		player.PlayerSounds.stream=load("res://audio/voice/errol_pumpkins.ogg")
-#		player.PlayerSounds.play()
-#		cabinator.play("Door_Open", 0.5)
-#		creak.play()
 	if callid == "holo_voicemail":
-		#change music to new tune
-		#change_music(load("res://audio/music/music_5_chase_var1_145bpm_loop.ogg"),-3.0)
-		#tween the environment
 		spawn_villain()
+		villain.target_player()
 
 
 func _on_game_over():
 	player.look_at_villain = true
-	villain.animations.play("Catch", 0.3)
+	player.look_at(villain.global_position)
+	player.rotation_degrees.x = 5.0
+	player.rotation_degrees.z = 0.0
+#	player.Camera.look_at(villain.global_position)
+#	player.Camera.rotation_degrees.x-=0.5
+	#villain.animations.play("Catch", 0.3)
 	villain.loss_condition_animation.play("caught")
 	await get_tree().create_timer(5.0).timeout
-	villain.animations.stop()
+	#villain.animations.stop()
 	print("Game over .. player was caught.")
 
 var seen_times = 0
-func _on_villain_sighting(villain):
-	if villain.global_position.distance_to(player.global_position) >= 20:
+var did_quick_scare = false
+func _on_villain_sighting(tvillain):
+	if on_call < 3 and quick_scare:
+		print("seen by player,quick")
+		player.player_sounds.play("gasp3")
+		quick_scare=false
+		tvillain.get_node("Flash/AnimationPlayer").play("flash")
+		await get_tree().create_timer(0.3).timeout
+		tvillain.queue_free()
+	elif tvillain.global_position.distance_to(player.global_position) >= 20:
 		if seen_times == 0:
-			print("seen by player")
+			print("seen by player, far away")
 			player.player_sounds.play("gasp2")
-			seen_times+=1
-	else:
+			seen_times=1
+	elif on_call >= 3:
+		#This can only happen on last calls.
 		if seen_times <= 1:
-			print("seen by player")
+			print("seen by player, close")
 			player.player_sounds.play("gasp3")
 			seen_times=2
 			player.caster.enabled=false
-	pass # Replace with function body.
 
 var in_pumpkin_zone=false
 func _on_pumpkin_drop_zone_body_entered(body):
@@ -324,3 +321,31 @@ func _on_pumpkin_drop_zone_body_exited(body):
 	if body is PlayerBody:
 		in_pumpkin_zone=false
 		$PumpkinDropZone/Highlite.hide()
+
+
+func return_closest(anchor,in_array):
+	var closest = null
+	var tdist = null
+	for e in in_array:
+		var d = e.global_position.distance_to(anchor.global_position)
+		if closest == null:
+			closest=e
+			tdist=d
+		elif d < tdist:
+			closest=e
+			tdist=d
+	return closest
+		
+func play_next_call():
+	var tc = call_order[on_call]
+	if tc[1] == "call4":
+		$Level/NavigationRegion3D/DistantCabin.hide()
+	if tc[0] == "in":
+		player.phone.incoming_call(tc[2],tc[1])
+	elif tc[0] == "out":
+		player.phone.outgoing_call(tc[2],tc[1])
+	else:
+		player.phone.voicemail(tc[2],tc[1])
+	if tc.size() > 3:
+		change_music(load(tc[3]))
+	on_call+=1

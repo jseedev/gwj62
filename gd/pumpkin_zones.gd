@@ -20,17 +20,22 @@ func _ready():
 	else:
 		spawn_pumpkins()
 
-func spawn_pumpkins():
-	if spawn_points.size() > 0 and spawned.size() <= number_of_spawns:
-		for x in range(0,number_of_spawns):
+func spawn_pumpkins(how_many=null):
+	if how_many == null:
+		how_many=number_of_spawns
+	var pspawned = 0
+	if spawn_points.size() > 0:
+		for x in range(0,how_many):
 			var random_i = randi() % spawn_points.size() #random index
 			var spawn_point = spawn_points[random_i] #random spawn position
 			spawn_points.remove_at(random_i) #remove it from the spawnable zones for now.
 			spawned.append(spawn_point)
 			spawn_point.get_child(0).enable() #unhide it.
+			pspawned+=1
 			if spawn_points.size() == 0:
 				#out of places to spawn
-				break;
+				break
+	print("Spawned "+str(pspawned)+" ("+str(spawned.size())+")")
 
 #reset all the spawn points back to hidden
 func reset_spawns():
