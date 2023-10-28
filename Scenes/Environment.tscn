@@ -577,12 +577,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -85.1258, -0.138859, 79.5735)
 [node name="PumpkinSpawn8" parent="Game/PumpkinZones" instance=ExtResource("4_y0umk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -101.722, 0.393432, 137.378)
 
-[node name="PumpkinSpawn9" parent="Game/PumpkinZones" instance=ExtResource("4_y0umk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 77.1862, -0.398904, 151.338)
-
-[node name="PumpkinSpawn10" parent="Game/PumpkinZones" instance=ExtResource("4_y0umk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.1679, -0.398904, 156.827)
-
 [node name="PumpkinSpawn11" parent="Game/PumpkinZones" instance=ExtResource("4_y0umk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.2946, -0.398907, 153.012)
 

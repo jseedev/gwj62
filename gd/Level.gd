@@ -13,7 +13,8 @@ var call_order = [
 	["out","call2","Holo"],
 	["out","call3","Candy","res://audio/music/music_2_acoustic_92bpm_loop.ogg"],
 	["in","call4","Holo","res://audio/music/music_3_hybrid_92bpm_loop.ogg"],
-	["vm","holo_voicemail","Holo","res://audio/music/music_4_electronic_92bpm_loop.ogg"]
+	["in","call5","Candy","res://audio/music/music_3_hybrid_92bpm_loop.ogg"],
+	["vm","holo_voicemail","Holo"]
 ]
 signal call_ended(call)
 signal pumpkin_gathered()
@@ -337,6 +338,8 @@ func return_closest(anchor,in_array):
 	return closest
 		
 func play_next_call():
+	if on_call >= call_order.size():
+		return
 	var tc = call_order[on_call]
 	if tc[1] == "call4":
 		$Level/NavigationRegion3D/DistantCabin.hide()

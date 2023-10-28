@@ -19,4 +19,4 @@ func harvest():
 	var my_index = spawned.find(self)
 	if my_index > -1:
 		spawned.remove_at(my_index)
-	get_parent().spawn_points.append(self)
+	#get_parent().spawn_points.append(self)

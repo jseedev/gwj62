@@ -95,6 +95,7 @@ func _on_timer_timeout():
 		hiding=false
 		hiding_spot=null
 		if !$AudioStreamPlayer3D.playing:
+			$AudioStreamPlayer3D.stream=load("res://audio/sfx/enemy/sfx_enemyfloat_loop.wav")
 			$AudioStreamPlayer3D.play()
 	elif tdist > 20.0:
 		if $AudioStreamPlayer3D.playing:

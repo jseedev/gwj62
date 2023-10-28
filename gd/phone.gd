@@ -13,9 +13,9 @@ func _ready():
 	pass
 	
 func _physics_process(_delta):
-#	if ringing and Input.is_action_just_released("answer_phone"):
-#		answer()
-#		play_call(on_call)
+	if ringing and Input.is_action_just_released("answer_phone"):
+		answer()
+		play_call(on_call)
 	if visible and Input.is_action_just_pressed("ui_cancel"):
 		hang_up()
 	if call_playing and !call_player.is_playing():
@@ -41,7 +41,7 @@ func outgoing_call(to_name,call_name):
 	$AnimationPlayer.play("OutgoingCall")
 	$ConnectedTime.hide()
 	await get_tree().create_timer(7.0).timeout
-	if visible:
+	if visible and ringing:
 		answer()
 		play_call(on_call)
 	
@@ -56,7 +56,7 @@ func incoming_call(from_name,call_name):
 	ringing=true
 	on_call=call_name
 	await get_tree().create_timer(7.0).timeout
-	if visible:
+	if visible and ringing:
 		answer()
 		play_call(on_call)
 		

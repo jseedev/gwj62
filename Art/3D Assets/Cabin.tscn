@@ -417,3 +417,10 @@ transform = Transform3D(-0.709694, 0, -0.70451, 0, 1, 0, 0.70451, 0, -0.709694, 
 
 [node name="Portrait_Photo" parent="." instance=ExtResource("12_0dwls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93778, -0.0294187, -0.221503)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.208866, 0)
+light_color = Color(0.968627, 0.878431, 0.521569, 1)
+light_energy = 2.631
+light_size = 0.436
+shadow_enabled = true
