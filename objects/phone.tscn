@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://cy3fthxtphvcv"]
+[gd_scene load_steps=25 format=3 uid="uid://cy3fthxtphvcv"]
 
 [ext_resource type="Script" path="res://gd/phone.gd" id="1_hm8qm"]
 [ext_resource type="AudioStream" uid="uid://dmyh7t52rdmby" path="res://audio/sfx/sfx_phonering.wav" id="1_w1p8m"]
 [ext_resource type="Texture2D" uid="uid://dj7fdfqlln7a1" path="res://images/PhoneIcon.png" id="2_w8v66"]
+[ext_resource type="AudioStream" uid="uid://bquqpingidflw" path="res://audio/sfx/sfxc_phonering_hangup.wav" id="2_wiy1e"]
 [ext_resource type="AudioStream" uid="uid://drkowmaqijxrj" path="res://audio/sfx/sfxc_phonering_outgoing.wav" id="3_wf53q"]
 [ext_resource type="PackedScene" uid="uid://b76j03ldohgh2" path="res://audio/voice/calls/calls.tscn" id="4_117jq"]
 
@@ -198,6 +199,21 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "audio"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PhoneSounds")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_wiy1e")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_txq26"]
 resource_name = "NewCall"

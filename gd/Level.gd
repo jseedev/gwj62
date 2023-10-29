@@ -10,11 +10,14 @@ var ended = false
 @onready var vignette = $Game/player/Vignette
 
 var call_order = [
-	["out","call2","Holo"],
+	["out","errol_missed1","Holo"],
+	["in","call2","Holo"],
 	["out","call3","Candy","res://audio/music/music_2_acoustic_92bpm_loop.ogg"],
 	["in","call4","Holo","res://audio/music/music_3_hybrid_92bpm_loop.ogg"],
+	["out","errol_missed2","Holo"],
 	["in","call5","Candy","res://audio/music/music_3_hybrid_92bpm_loop.ogg"],
-	["vm","holo_voicemail","Holo"]
+	["vm","holo_voicemail","Holo"],
+	["out","errol_missed3","Holo"]
 ]
 signal call_ended(call)
 signal pumpkin_gathered()
@@ -30,7 +33,7 @@ func _process(_delta):
 			$Game/PumpkinZones.spawn_pumpkins(1)
 			$PumpkinDropZone/Highlite.hide()
 			player.waypoint=null
-			if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare and on_call > 2:
+			if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare and on_call > 3:
 				#sometimes you get jump scared
 				quick_jump_scare()
 		elif $Level/NavigationRegion3D/Cabin/Meds/MedsArea.overlaps_body(player) and villain != null:
@@ -253,7 +256,7 @@ func _on_pumpkin_gathered():
 	await get_tree().create_timer(1.0).timeout
 	skyChange(false)
 	player.waypoint=$PumpkinDropZone
-	if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare and on_call > 2:
+	if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare and on_call > 3:
 		#sometimes you get jump scared
 		quick_jump_scare()
 	if !player.phone.get_node("calls/AnimationPlayer").is_playing() and !player.phone.visible:
@@ -304,7 +307,7 @@ func _on_villain_sighting(tvillain):
 			print("seen by player, far away")
 			player.player_sounds.play("gasp2")
 			seen_times=1
-	elif on_call >= 4:
+	elif on_call >= 6:
 		#This can only happen on last call.
 		if seen_times <= 1:
 			print("seen by player, close")

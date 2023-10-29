@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b76j03ldohgh2"]
+[gd_scene load_steps=39 format=3 uid="uid://b76j03ldohgh2"]
 
 [ext_resource type="Script" path="res://gd/Captions.gd" id="1_0rw7s"]
 [ext_resource type="AudioStream" uid="uid://b7j131cxihav0" path="res://audio/voice/errol_candy_call1.ogg" id="1_j8b0w"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://m20hlsp4emmk" path="res://audio/voice/errol_voicemail2.ogg" id="13_w2gty"]
 [ext_resource type="AudioStream" uid="uid://bvptbiavmeksf" path="res://audio/voice/errol_short_vms.ogg" id="14_p1fvt"]
 [ext_resource type="AudioStream" uid="uid://dodcmak3anaqc" path="res://audio/voice/errol_solos.ogg" id="15_egiwg"]
+[ext_resource type="AudioStream" uid="uid://bx86nbwl4rh48" path="res://audio/voice/calls/answering_machine.mp3" id="15_irxp5"]
 
 [sub_resource type="Animation" id="Animation_q3uxb"]
 resource_name = "call1"
@@ -1196,6 +1197,108 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_d6i8n"]
+resource_name = "errol_missed1"
+length = 10.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Caller")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_irxp5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Errol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 12.5,
+"start_offset": 0.0,
+"stream": ExtResource("14_p1fvt")
+}],
+"times": PackedFloat32Array(6.7)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_kns1v"]
+resource_name = "errol_missed2"
+length = 12.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Caller")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_irxp5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Errol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 4.47,
+"start_offset": 5.51,
+"stream": ExtResource("14_p1fvt")
+}],
+"times": PackedFloat32Array(6.8)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="Animation" id="Animation_77tgb"]
+resource_name = "errol_missed3"
+length = 9.5
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Caller")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_irxp5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = true
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Errol")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.15,
+"start_offset": 12.47,
+"stream": ExtResource("14_p1fvt")
+}],
+"times": PackedFloat32Array(6.5)
+}
+tracks/1/use_blend = true
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ns8kx"]
 _data = {
 "call1": SubResource("Animation_q3uxb"),
@@ -1203,6 +1306,9 @@ _data = {
 "call3": SubResource("Animation_3n3vg"),
 "call4": SubResource("Animation_w3c5h"),
 "call5": SubResource("Animation_hab38"),
+"errol_missed1": SubResource("Animation_d6i8n"),
+"errol_missed2": SubResource("Animation_kns1v"),
+"errol_missed3": SubResource("Animation_77tgb"),
 "errol_voicemail1": SubResource("Animation_yhtlo"),
 "errol_voicemail2": SubResource("Animation_ypdml"),
 "holo_voicemail": SubResource("Animation_qy5ve")
