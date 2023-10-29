@@ -122,7 +122,7 @@ func _physics_process(delta):
 	var arrow = $Camera3D/Arrow
 	if waypoint != null:
 		arrow.visible = true
-		arrow.look_at(waypoint.global_position + (arrow.global_position - Camera.global_position))
+		arrow.look_at(waypoint.global_position)
 		arrow.rotation_degrees.x=80
 		arrow.rotation_degrees.z=0.0
 	else:
@@ -236,7 +236,8 @@ func _physics_process(delta):
 		stamina_bar.show()
 	else:
 		stamina_bar.hide()
-	move_and_slide()
+	if !look_at_villain:
+		move_and_slide()
 
 func _input(event):
 	if event is InputEventMouseButton and Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:

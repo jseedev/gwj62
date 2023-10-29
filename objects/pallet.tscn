@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://ft16g2k65f0"]
+
+[ext_resource type="PackedScene" uid="uid://bpg577o8vxcjg" path="res://imports/Pallet.glb" id="1_jjafr"]
+[ext_resource type="Texture2D" uid="uid://duehag15wobo" path="res://Scenes/ui/ui_assets/woodpiece.png" id="2_edc62"]
+[ext_resource type="Texture2D" uid="uid://bi7uiwlcnmpwf" path="res://Art/Textures/Cabin/Cabinets_Normal_DirectX.png" id="3_8reej"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a2cni"]
+albedo_color = Color(0.388235, 0.388235, 0.388235, 1)
+albedo_texture = ExtResource("2_edc62")
+normal_enabled = true
+normal_texture = ExtResource("3_8reej")
+uv1_scale = Vector3(-0.705, -0.705, -0.705)
+uv1_offset = Vector3(-1.195, -0.11, 0)
+
+[node name="Pallet" instance=ExtResource("1_jjafr")]
+
+[node name="Plane_001" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_a2cni")

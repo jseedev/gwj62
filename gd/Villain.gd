@@ -28,6 +28,8 @@ func target_player():
 func _physics_process(delta):
 	# Move to player
 	if target == Vector3.ZERO:
+		velocity.y = -gravity
+		move_and_slide()
 		return
 	if target != Vector3.ZERO and !nav_agent.is_target_reached() and not gameover:
 		var next_point = nav_agent.get_next_path_position()
@@ -82,11 +84,12 @@ var hiding = false
 func _on_timer_timeout():
 	#randomly hide
 	var tdist = player.global_position.distance_to(global_position)
-	if tdist >= 50.0:
+	if tdist >= 30.0:
 		var nspot = get_nearest_hiding_spot()
 		if nspot != null and nspot != hiding_spot:
 			hiding_spot=nspot
 			global_position=hiding_spot.global_position
+			global_position.y+=6.0
 			target=Vector3.ZERO
 			hiding=true
 	if (tdist <= 20.0 and target == Vector3.ZERO) or !hiding:

@@ -15,7 +15,7 @@ roughness = 0.4
 
 [sub_resource type="Gradient" id="Gradient_nlsop"]
 offsets = PackedFloat32Array(0.321739, 0.652174)
-colors = PackedColorArray(0.356168, 0.11744, 0.361702, 1, 0.648529, 0.329179, 0.19788, 1)
+colors = PackedColorArray(0.605688, 0.240552, 0.61346, 1, 0.87651, 0.511789, 0.366301, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_qtfrs"]
 gradient = SubResource("Gradient_nlsop")
@@ -23,11 +23,10 @@ gradient = SubResource("Gradient_nlsop")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ggsd"]
 resource_name = "PhoneScreen"
 cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.905882, 0.905882, 0.905882, 1)
-emission_enabled = true
-emission_energy_multiplier = 0.65
-emission_texture = SubResource("GradientTexture1D_qtfrs")
+shading_mode = 0
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = SubResource("GradientTexture1D_qtfrs")
 uv1_scale = Vector3(2.81, 2.81, 2.81)
 disable_receive_shadows = true
 

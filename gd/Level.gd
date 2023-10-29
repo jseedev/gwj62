@@ -21,29 +21,24 @@ signal pumpkin_gathered()
 signal game_over()
 signal villain_sighting()
 
-#func droppedOffPumpkin():
-#	if pumpkins_picked == 4:
-#		#it's kinda late but only a few minutes seem to have passed
-#		player.get_node("Camera3D/PhoneHolder/Phone").outgoing_call("Candy","call3")
-#		await get_tree().create_timer(15.0).timeout
-#		change_music(load("res://audio/music/music_2_acoustic_92bpm_loop.ogg"))
-
 @onready var clouds = $Game/Clouds
 func _process(_delta):
-	if Input.is_action_just_pressed("interact") and in_pumpkin_zone and player.holding_item:
-		#droppedOffPumpkin()
-		player.holding_item = false
-		$PumpkinDropZone/PumpkinPile.add_pumpkin()
-		$Game/PumpkinZones.spawn_pumpkins(1)
-		$PumpkinDropZone/Highlite.hide()
-		player.waypoint=null
-		#player.waypoint=$Game/PumpkinZones.get_children()
+	if Input.is_action_just_pressed("interact"):
+		if in_pumpkin_zone and player.holding_item:
+			player.holding_item = false
+			$PumpkinDropZone/PumpkinPile.add_pumpkin()
+			$Game/PumpkinZones.spawn_pumpkins(1)
+			$PumpkinDropZone/Highlite.hide()
+			player.waypoint=null
+			if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare and on_call > 2:
+				#sometimes you get jump scared
+				quick_jump_scare()
+		elif $Level/NavigationRegion3D/Cabin/Meds/MedsArea.overlaps_body(player) and villain != null:
+			despawn_villain()
+			$Level/NavigationRegion3D/Cabin/Meds/MedsArea/MedsLabel.hide()
+			change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))
 	clouds.global_position.x=player.global_position.x
 	clouds.global_position.z=player.global_position.z
-	if $ArrowHider.overlaps_body(player) and $Game/player/Camera3D/Arrow.visible:
-		$Game/player/Camera3D/Arrow.hide()
-	elif !$ArrowHider.overlaps_body(player) and player.waypoint != null:
-		$Game/player/Camera3D/Arrow.show()
 #	if Input.is_action_just_pressed("cheater"):
 #		emit_signal("pumpkin_gathered")
 
@@ -157,7 +152,7 @@ func lerp_environment(weight):
 			mat[prop]=lerp(fromSky[prop],targetSky[prop],weight)
 
 func change_music(new_track,new_volume=-12.0):
-	if music_player.playing:
+	if music_player.playing and new_track != music_player.stream:
 		var mtween = get_tree().create_tween()
 		mtween.tween_property(music_player,"volume_db",-50.0,2.0)
 		mtween.play()
@@ -175,6 +170,7 @@ var villain_scene = preload("res://objects/villain.tscn")
 var villain = null
 func spawn_villain():
 	if villain == null:
+		has_spawned_villain=true
 		villain = villain_scene.instantiate()
 		villain.player=player
 		player.villain = villain
@@ -200,6 +196,7 @@ func quick_jump_scare():
 	did_quick_scare=true
 	var js = player.get_node("JumpSpot")
 	var temp_villain = villain_scene.instantiate()
+	await get_tree().create_timer(1.5).timeout
 	add_child(temp_villain)
 	temp_villain.global_position = js.global_position
 	temp_villain.look_at(player.global_position)
@@ -242,6 +239,7 @@ func skyChange(reset):
 		targetSky = environments.night
 		from_light = lights.dusk
 		target_light = lights.night
+		$Level/NavigationRegion3D/Cabin/InsideLight.show()
 	elif rounded == 5:
 		fromSky = environments.night
 		targetSky = environments.night
@@ -249,16 +247,19 @@ func skyChange(reset):
 		target_light = lights.night
 	tween_sky()
 
+var has_spawned_villain = false
 func _on_pumpkin_gathered():
 	pumpkins_picked+=1
 	await get_tree().create_timer(1.0).timeout
 	skyChange(false)
-	if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare:
+	player.waypoint=$PumpkinDropZone
+	if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare and on_call > 2:
 		#sometimes you get jump scared
 		quick_jump_scare()
-	player.waypoint=$PumpkinDropZone
 	if !player.phone.get_node("calls/AnimationPlayer").is_playing() and !player.phone.visible:
 		play_next_call()
+	if villain == null and has_spawned_villain:
+		spawn_villain()
 
 var env_current = 0.0
 var env_target = 0.0
@@ -291,7 +292,7 @@ func _on_game_over():
 var seen_times = 0
 var did_quick_scare = false
 func _on_villain_sighting(tvillain):
-	if on_call < 3 and quick_scare:
+	if quick_scare:
 		print("seen by player,quick")
 		player.player_sounds.play("gasp3")
 		quick_scare=false
@@ -303,8 +304,8 @@ func _on_villain_sighting(tvillain):
 			print("seen by player, far away")
 			player.player_sounds.play("gasp2")
 			seen_times=1
-	elif on_call >= 3:
-		#This can only happen on last calls.
+	elif on_call >= 4:
+		#This can only happen on last call.
 		if seen_times <= 1:
 			print("seen by player, close")
 			player.player_sounds.play("gasp3")
@@ -352,3 +353,13 @@ func play_next_call():
 	if tc.size() > 3:
 		change_music(load(tc[3]))
 	on_call+=1
+
+
+func _on_meds_area_body_entered(body):
+	if body is PlayerBody:
+		if villain != null and !player.look_at_villain:
+			$Level/NavigationRegion3D/Cabin/Meds/MedsArea/MedsLabel.show()
+
+func _on_meds_area_body_exited(body):
+	if body is PlayerBody:
+		$Level/NavigationRegion3D/Cabin/Meds/MedsArea/MedsLabel.hide()
