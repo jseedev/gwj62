@@ -420,6 +420,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.93778, -0.0294187, -0.2215
 
 [node name="InsideLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.208866, 0)
+visible = false
 light_color = Color(0.968627, 0.878431, 0.521569, 1)
 light_energy = 2.631
 light_size = 0.436
