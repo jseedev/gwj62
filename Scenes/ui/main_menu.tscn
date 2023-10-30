@@ -1401,6 +1401,7 @@ bus = &"sfx"
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_n5thb")
+volume_db = -3.0
 autoplay = true
 bus = &"music"
 
