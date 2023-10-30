@@ -624,10 +624,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113.516, -1.52588e-05, -114.8
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.6859, -3.8147e-06, 38.3533)
 
 [node name="CabinHiding" type="Marker3D" parent="Game/HidingSpots"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 102.139, -1.14441e-05, 101.628)
-
-[node name="Hiding2" type="Marker3D" parent="Game/HidingSpots"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 117.002, -3.8147e-06, 120.084)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 115.309, -1.14441e-05, 111.974)
 
 [node name="Hiding3" type="Marker3D" parent="Game/HidingSpots"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.03, -3.8147e-06, -98.4361)

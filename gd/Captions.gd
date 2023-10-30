@@ -157,6 +157,15 @@ var captions = {
 		"I just know that I’ll be leaving it with an understanding of what was right and what was wrong, if that means anything.", 
 		"You were the best daughter I could ever hope for. I have to go now.", 
 		"I—have to go rake these leaves."
+	],
+	errol_missed1 = [
+		"Hey man. Give me a ring. Thanks."
+	],
+	errol_missed2 = [
+		"Holo. You know I love ya, right?\nTough love is sometimes what's needed. Let's talk before today ends."
+	],
+	errol_missed3 = [
+		"Call me IMMEDIATELY. That's an ORDER."
 	]
 }
 

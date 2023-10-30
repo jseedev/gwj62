@@ -89,7 +89,7 @@ func voicemail(to_name,call_name):
 	$AnimationPlayer.play("NewVoicemail")
 	$ConnectedTime.hide()
 	await get_tree().create_timer(4.0).timeout
-	if visible:
+	if visible and ringing:
 		answer()
 		play_call(on_call)
 

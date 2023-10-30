@@ -36,6 +36,8 @@ func _process(_delta):
 			if not player.phone.get_node("calls/AnimationPlayer").is_playing() and !did_quick_scare and on_call > 3:
 				#sometimes you get jump scared
 				quick_jump_scare()
+			if !player.phone.get_node("calls/AnimationPlayer").is_playing() and !player.phone.visible:
+				play_next_call()
 		elif $Level/NavigationRegion3D/Cabin/Meds/MedsArea.overlaps_body(player) and villain != null:
 			despawn_villain()
 			$Level/NavigationRegion3D/Cabin/Meds/MedsArea/MedsLabel.hide()
