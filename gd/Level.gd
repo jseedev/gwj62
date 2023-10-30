@@ -39,6 +39,7 @@ func _process(_delta):
 			if !player.phone.get_node("calls/AnimationPlayer").is_playing() and !player.phone.visible:
 				play_next_call()
 		elif $Level/NavigationRegion3D/Cabin/Meds/MedsArea.overlaps_body(player) and villain != null:
+			$Level/NavigationRegion3D/Cabin/Meds/sfx_takemeds.play()
 			despawn_villain()
 			$Level/NavigationRegion3D/Cabin/Meds/MedsArea/MedsLabel.hide()
 			change_music(load("res://audio/music/music_4_electronic_92bpm_loop.ogg"))

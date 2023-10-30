@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://dlpnyn1b5v37v"]
+[gd_scene load_steps=112 format=3 uid="uid://dlpnyn1b5v37v"]
 
 [ext_resource type="Script" path="res://gd/Level.gd" id="1_bvmg2"]
 [ext_resource type="PackedScene" uid="uid://be4apj3l3qxea" path="res://Art/3D Assets/Ground.tscn" id="1_wnivx"]
@@ -32,9 +32,14 @@
 [ext_resource type="PackedScene" uid="uid://dl0txf5313eto" path="res://Art/3D Assets/Grain_Bin.tscn" id="24_tkc0h"]
 [ext_resource type="AudioStream" uid="uid://dr2hxhv74v8ee" path="res://audio/enviornment/ambiance_birds5_loop.ogg" id="25_m8uv0"]
 [ext_resource type="AudioStream" uid="uid://bkmxfoj085upt" path="res://audio/enviornment/ambiance_distantcars1_loop.ogg" id="26_6k6ps"]
+[ext_resource type="AudioStream" uid="uid://7ka2mw2ut2yn" path="res://audio/sfx/pills/sfx_pills1.wav" id="26_u1f8g"]
 [ext_resource type="AudioStream" uid="uid://k6j4t5fogrkm" path="res://audio/enviornment/ambiance_distantcars2_loop.ogg" id="27_23p5i"]
+[ext_resource type="AudioStream" uid="uid://bl85vw5a3y6e" path="res://audio/sfx/pills/sfx_pills2.wav" id="27_wjndq"]
 [ext_resource type="AudioStream" uid="uid://dr3rnm0comwgr" path="res://audio/enviornment/ambiance_crickets1_loop.ogg" id="28_48dk4"]
+[ext_resource type="AudioStream" uid="uid://dluj1pf50cfdp" path="res://audio/sfx/pills/sfx_pills3.wav" id="28_m6rd0"]
 [ext_resource type="AudioStream" uid="uid://djt6w45oa21ep" path="res://audio/enviornment/ambiance_crickets2_loop.ogg" id="29_1crol"]
+[ext_resource type="AudioStream" uid="uid://dpan4xbv2kxg5" path="res://audio/sfx/pills/sfx_pills4.wav" id="29_o1o71"]
+[ext_resource type="AudioStream" uid="uid://eymg7oyecww6" path="res://audio/sfx/pills/sfx_pills5.wav" id="30_jok2b"]
 [ext_resource type="AudioStream" uid="uid://dxfkutms02d8f" path="res://audio/enviornment/ambiance_crickets3_loop.ogg" id="30_lsq8c"]
 [ext_resource type="AudioStream" uid="uid://6ls6saxch7wx" path="res://audio/music/music_1_theme_92bpm_loop.ogg" id="31_iixge"]
 [ext_resource type="PackedScene" uid="uid://bjjjkm3b6sjtx" path="res://Art/3D Assets/Cabin.tscn" id="36_fc0h5"]
@@ -44,6 +49,9 @@
 [ext_resource type="AudioStream" uid="uid://bdf2ijtjrpisy" path="res://audio/stingers/stinger_transition3.wav" id="40_ua573"]
 [ext_resource type="AudioStream" uid="uid://d22wxb0ncpivo" path="res://audio/stingers/stinger_transition4.wav" id="41_213kn"]
 [ext_resource type="FontFile" uid="uid://cqnxdb5ww4jsh" path="res://Scenes/ui/ui_fonts/Papyrus.TTF" id="44_fdtvc"]
+[ext_resource type="AudioStream" uid="uid://b16e6g1he0veo" path="res://audio/sfx/pumpkin/sfx_pumpkinplace1.wav" id="46_08d4e"]
+[ext_resource type="AudioStream" uid="uid://djrjwdl26i3jl" path="res://audio/sfx/pumpkin/sfx_pumpkinplace2.wav" id="47_kj08s"]
+[ext_resource type="AudioStream" uid="uid://dyu2x8mj2kk4e" path="res://audio/sfx/pumpkin/sfx_pumpkinplace3.wav" id="48_713q8"]
 [ext_resource type="Script" path="res://gd/pumpkin_zones.gd" id="49_j67jk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7u756"]
@@ -474,6 +482,21 @@ shadow_mesh = SubResource("ArrayMesh_o23fk")
 [sub_resource type="BoxShape3D" id="BoxShape3D_fb8r2"]
 size = Vector3(17.7896, 22.2901, 22.0704)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1x21x"]
+streams_count = 5
+random_pitch = 1.0
+random_volume_offset_db = 2.0
+stream_0/stream = ExtResource("26_u1f8g")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("27_wjndq")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("28_m6rd0")
+stream_2/weight = 1.0
+stream_3/stream = ExtResource("29_o1o71")
+stream_3/weight = 1.0
+stream_4/stream = ExtResource("30_jok2b")
+stream_4/weight = 1.0
+
 [sub_resource type="Gradient" id="Gradient_u4xvw"]
 offsets = PackedFloat32Array(0, 0.326087, 1)
 colors = PackedColorArray(0.816912, 0.527793, 0.285962, 1, 0.46255, 0.275261, 0.10222, 1, 0.917911, 0.841263, 0.487483, 1)
@@ -539,6 +562,17 @@ emission = Color(1, 0.772549, 0.168627, 1)
 material = SubResource("StandardMaterial3D_gf7y0")
 radius = 1.105
 is_hemisphere = true
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1c8fi"]
+streams_count = 3
+random_pitch = 1.05
+random_volume_offset_db = 2.0
+stream_0/stream = ExtResource("46_08d4e")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("47_kj08s")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("48_713q8")
+stream_2/weight = 1.0
 
 [node name="Environment" type="Node3D"]
 script = ExtResource("1_bvmg2")
@@ -4319,6 +4353,9 @@ modulate = Color(1, 1, 0.662745, 1)
 text = "Press E to Use Meds"
 font = ExtResource("44_fdtvc")
 
+[node name="sfx_takemeds" type="AudioStreamPlayer" parent="Level/NavigationRegion3D/Cabin/Meds"]
+stream = SubResource("AudioStreamRandomizer_1x21x")
+
 [node name="DistantCabin" parent="Level/NavigationRegion3D" instance=ExtResource("36_fc0h5")]
 transform = Transform3D(-5.73594, 0, 1.2518, 0, 5.87093, 0, -1.2518, 0, -5.73594, -450.754, 3.67596, 247.913)
 
@@ -4692,6 +4729,10 @@ font = ExtResource("44_fdtvc")
 
 [node name="PumpkinPile" parent="PumpkinDropZone" instance=ExtResource("40_gn86w")]
 transform = Transform3D(-2.023, 0, 1.46883, 0, 2.5, 0, -1.46883, 0, -2.023, 0, -1.731, 0)
+
+[node name="sfx_placepumpkin" type="AudioStreamPlayer" parent="PumpkinDropZone"]
+stream = SubResource("AudioStreamRandomizer_1c8fi")
+bus = &"sfx"
 
 [connection signal="call_ended" from="." to="." method="_on_call_ended"]
 [connection signal="game_over" from="." to="." method="_on_game_over"]
